@@ -1,5 +1,6 @@
 module.exports = {
     module: {
+        entry: ['babel-polyfill', 'index.js'],
         loaders: [
             {
                 test: /\.js$/,
@@ -11,6 +12,11 @@ module.exports = {
                         "es2015"
                     ]
                 }
+            },
+            {
+                test: /\.css$/,
+                loader: 'style!css?modules',
+                include: /flexboxgrid/,
             }
         ]
     }

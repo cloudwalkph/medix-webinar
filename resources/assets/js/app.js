@@ -1,7 +1,11 @@
-import React from 'react';
+var React = require('react');
 import ReactDOM from 'react-dom';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Main from './Main';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
+import {Router, browserHistory} from 'react-router';
+import Main from './container/Main';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -10,16 +14,26 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 var App = React.createClass({
-  render() {
-    return(
-      <MuiThemeProvider>
-        <Main />
-      </MuiThemeProvider>
-    )
-  }
+    getDefaultProps() {
+        return {
+            theme: getMuiTheme()
+        };
+    },
+    getInitialState () {
+        return {
+            theme: this.props.theme
+        };
+    },
+    render() {
+        return(
+            <MuiThemeProvider muiTheme={this.state.theme}>
+                <Main />
+            </MuiThemeProvider>
+        )
+    }
 });
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+    <App />,
+    document.getElementById('root')
 );

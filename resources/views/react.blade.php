@@ -4,15 +4,19 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Material-UI Example</title>
-  <meta name="description" content="Google's material design UI components built with React.">
+  <title>Medix Webinar</title>
+  <meta name="description" content="Medix Dental Webinar.">
 
   <!-- Use minimum-scale=1 to enable GPU rasterization -->
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1"
   >
-  <link rel="stylesheet" type="text/css" href="main.css">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="{{ URL::to('css/materialize.min.css') }}"  media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" type="text/css" href="{{ URL::to('css/app.css') }}">
 </head>
 
 <body>
@@ -32,6 +36,10 @@
       s.parentNode.insertBefore(wf, s);
     })();
   </script>
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="{{ URL::to('js/materialize.min.js') }}"></script>
 
     <!--<script src="https://unpkg.com/react@15/dist/react.min.js"></script>-->
     <!--<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>-->
