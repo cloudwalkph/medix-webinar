@@ -11,6 +11,8 @@ import Header from '../commons/Header';
 import LatestUploads from './LatestUploads';
 import WeeklyPics from './WeeklyPics';
 import TopSpecialization from './TopSpecialization';
+import About from './About';
+import Footer from './Footer';
 
 export default class Main extends Component {
 	
@@ -26,6 +28,8 @@ export default class Main extends Component {
                     <LatestUploads />
                     <WeeklyPics />
                     <TopSpecialization />
+                    <About />
+                    <Footer />
                 </div>
             </MuiThemeProvider>
 		)
