@@ -32,12 +32,12 @@ var TopSpecialization = React.createClass({
     render() {
         return(
             <div className="section">
-                <div className="container">
 
-                    <h4 className="center">TOP SPECIALIZATIONS</h4>
+                <h4 className="center" style={{fontFamily: 'Oxygen'}}>TOP SPECIALIZATIONS</h4>
 
-                    <div className="row">
-                        <div className="col s12">
+                <div className="row container">
+                    <div className="col s12">
+                        
                             <ul className="tabs tabs-fixed-width">
                                 <li className="tab"><a className="active" href="#test1">All</a></li>
                                 <li className="tab"><a href="#test2">Endodontics</a></li>
@@ -46,32 +46,32 @@ var TopSpecialization = React.createClass({
                                 <li className="tab"><a href="#test5">Prothodontics</a></li>
                                 
                             </ul>
-                        </div>
 
-                        <div id="test1" className="col s12">
-                            <div className="row">
+                    </div>
+
+                    <div id="test1" className="col s12">
+                        <div className="row">
 
 {tilesData.map((tile) => (
-                                <div key={tile.img} className="col s12 m3">
-                                    <div className="card small">
-                                        <div className="card-image">
-                                            <img src={tile.img} />
-                                            <span className="card-title">Card Title</span>
-                                        </div>
+                            <div key={tile.img} className="col s12 m3">
+                                <div className="card small">
+                                    <div className="card-image">
+                                        <img src={tile.img} />
+                                        <span className="card-title">Card Title</span>
                                     </div>
                                 </div>
-))}
                             </div>
+))}
                         </div>
-                        <div id="test2" className="col s12">Test 2</div>
-                        <div id="test3" className="col s12">Test 3</div>
-                        <div id="test4" className="col s12">Test 4</div>
-                        <div id="test5" className="col s12">Test 4</div>
                     </div>
+                    <div id="test2" className="col s12">Test 2</div>
+                    <div id="test3" className="col s12">Test 3</div>
+                    <div id="test4" className="col s12">Test 4</div>
+                    <div id="test5" className="col s12">Test 4</div>
+                </div>
 
-                    <div className="row center">
-                        <a href="#" id="download-button" className="btn-large waves-effect waves-light teal lighten-1">VIEW ALL COURSES</a>
-                    </div>
+                <div className="row center">
+                    <a style={{fontFamily: 'Oxygen'}} href="#" id="download-button" className="btn-large waves-effect waves-light indigo darken-3">VIEW ALL COURSES</a>
                 </div>
             </div>
         )

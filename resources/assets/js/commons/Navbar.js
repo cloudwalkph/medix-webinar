@@ -15,7 +15,7 @@ export default class Navbar extends Component {
                             <li><a href="#">NEW COURSES</a></li>
                             <li><a href="#">ABOUT</a></li>
                             <li><a href="#">LOG IN</a></li>
-                            <li><a href="#" className="btn">SIGN UP</a></li>
+                            <li><a href="#" className="btn waves-effect waves-light indigo darken-3">SIGN UP</a></li>
                             
                         </ul>
 
@@ -24,7 +24,7 @@ export default class Navbar extends Component {
                             <li><a href="#">NEW COURSES</a></li>
                             <li><a href="#">ABOUT</a></li>
                             <li><a href="#">LOG IN</a></li>
-                            <li><a href="#" className="btn waves-effect webinar-color">SIGN UP</a></li>
+                            <li><a href="#" className="btn waves-effect waves-light indigo darken-3">SIGN UP</a></li>
                         </ul>
                         <a href="#" data-activates="nav-mobile" className="button-collapse"><i className="material-icons">menu</i></a>
                         </div>

@@ -15,7 +15,7 @@ export default class Header extends Component {
 					</div>
 					
 					<div className="row center">
-						<a href="#" id="download-button" className="btn-large waves-effect waves-light">Get Started</a>
+						<a href="#" id="download-button" className="btn-large waves-effect waves-light indigo darken-4">Get Started</a>
 					</div>
 				</div>
 			</div>

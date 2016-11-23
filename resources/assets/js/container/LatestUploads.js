@@ -8,8 +8,8 @@ var LatestUploads = React.createClass({
                 <div className="row">
                     <div className="col s5">
                         <div className="section">
-                            <h5>LATEST UPLOADS</h5>
-                            <div style={{ fontFamily: 'Source Sans Pro' }}>
+                            <h5 style={{fontFamily: 'Oxygen'}}>LATEST UPLOADS</h5>
+                            <div style={{fontFamily: 'Source Sans Pro'}}>
                                 Save me, God by your name. Vindicate me in your might. 
                                 Hear my prayer, God. Listen to the words of my mouth. 
                                 For strangers have risen up against me. 
@@ -20,13 +20,13 @@ var LatestUploads = React.createClass({
                         <div className="divider"></div>
 
                         <div className="section">
-                            <h5>NANO-TECHNOLOGY IN DENTAL INDUSTRY</h5>
-                            <p>By Chapin Aaron Harris</p>
-                            <p>I will lift up my eyes to the hills. Where does my help come from? My help comes from Yahweh, who made heaven and earth.</p>
+                            <h5 style={{fontFamily: 'Oxygen'}}>NANO-TECHNOLOGY IN DENTAL INDUSTRY</h5>
+                            <p style={{fontFamily: 'Source Sans Pro'}}>By Chapin Aaron Harris</p>
+                            <div style={{fontFamily: 'Source Sans Pro'}}>I will lift up my eyes to the hills. Where does my help come from? My help comes from Yahweh, who made heaven and earth.</div>
                         </div>
                         <div className="section">
                             <div className="row">
-                                <a href="#" id="download-button" className="btn waves-effect waves-light teal lighten-1">VIEW COURSE</a>
+                                <a style={{fontFamily: 'Oxygen', fontWeight: 'bold'}} href="#" id="download-button" className="btn waves-effect waves-light indigo darken-3">VIEW COURSE</a>
                             </div>
                         </div>
 

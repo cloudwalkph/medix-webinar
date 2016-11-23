@@ -4,37 +4,32 @@ var Footer = React.createClass({
 
     render() {
         return(
-            <footer className="page-footer teal">
-                <div className="container">
-                    <div className="row">
-                        <div className="col l6 s12">
-                            <h5 className="white-text">Company Bio</h5>
-                            <p className="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-                        </div>
-                        <div className="col l3 s12">
-                            <h5 className="white-text">Settings</h5>
-                            <ul>
-                                <li><a className="white-text" href="#!">Link 1</a></li>
-                                <li><a className="white-text" href="#!">Link 2</a></li>
-                                <li><a className="white-text" href="#!">Link 3</a></li>
-                                <li><a className="white-text" href="#!">Link 4</a></li>
-                            </ul>
-                        </div>
-                        <div className="col l3 s12">
-                            <h5 className="white-text">Connect</h5>
-                            <ul>
-                                <li><a className="white-text" href="#!">Link 1</a></li>
-                                <li><a className="white-text" href="#!">Link 2</a></li>
-                                <li><a className="white-text" href="#!">Link 3</a></li>
-                                <li><a className="white-text" href="#!">Link 4</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div className="footer-copyright">
+            <footer className="page-footer white">
+                <div className="footer-copyright white" style={{color: 'rgba(0, 0, 0, 0.87)'}}>
                     <div className="container">
-                        Made by <a className="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+                        <div className="row">
+                            <div className="col m4">
+                                <img src="img/Dental-Access.png" height="10px" />
+                            </div>
+                            <div className="col m4">
+                                
+                                <span style={{fontFamily: 'Oxygen', fontWeight: 300}}>Copyright 2016 DentalAccessWebinars | All Rights Reserved</span>
+                                
+                            </div>
+                            <div className="col m4">
+                                <div className="row">
+                                    <div className="col s4 center">
+                                        <span style={{fontFamily: 'Oxygen', fontWeight: 700}}>TERMS</span>
+                                    </div>
+                                    <div className="col s4 center">
+                                        <span style={{fontFamily: 'Oxygen', fontWeight: 700}}>POLICIES</span>
+                                    </div>
+                                    <div className="col s4 center">
+                                        <span style={{fontFamily: 'Oxygen', fontWeight: 700}}>CONTACT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </footer>

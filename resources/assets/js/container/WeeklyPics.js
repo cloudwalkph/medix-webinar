@@ -49,8 +49,8 @@ var WeeklyPics = React.createClass({
         return(
             <div className="container" style={{marginBottom : '16%'}}>
                 <div className="section center-align">
-                    <h4 >DEAN'S WEEKLY PICS</h4>
-                    <p>Many times they have afflicted me from my youth up. Let Israel now say, many times they have afflicted my from my youth up, yet they have not prevailed against me. The plowers plowed on my back. They made their furrows long. Yahweh is righteous.</p>
+                    <h4 style={{fontFamily: 'Oxygen'}}>DEAN'S WEEKLY PICS</h4>
+                    <p style={{fontFamily: 'Source Sans Pro'}}>Many times they have afflicted me from my youth up. Let Israel now say, many times they have afflicted my from my youth up, yet they have not prevailed against me. The plowers plowed on my back. They made their furrows long. Yahweh is righteous.</p>
                 </div>
 
                 <GridList
