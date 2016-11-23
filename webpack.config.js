@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
     module: {
         entry: ['babel-polyfill', 'index.js'],
@@ -18,6 +20,14 @@ module.exports = {
                 loader: 'style!css?modules',
                 include: /flexboxgrid/,
             }
+        ],
+        plugins: [
+            new webpack.DefinePlugin({
+                'process.env': {
+                    NODE_ENV: JSON.stringify('production')
+                }
+            }),
+            new webpack.optimize.UglifyJsPlugin()
         ]
     }
 

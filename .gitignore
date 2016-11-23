@@ -6,3 +6,5 @@ Homestead.json
 .env
 
 .elasticbeanstalk/
+public/css/app.css
+public/css/app.js

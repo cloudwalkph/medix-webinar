@@ -13,7 +13,6 @@
     content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1"
   >
   <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="{{ URL::to('css/materialize.min.css') }}"  media="screen,projection"/>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
   <link rel="stylesheet" type="text/css" href="{{ URL::to('css/app.css') }}">
@@ -37,13 +36,14 @@
     })();
   </script>
 
-  <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="{{ URL::to('js/materialize.min.js') }}"></script>
-
     <!--<script src="https://unpkg.com/react@15/dist/react.min.js"></script>-->
     <!--<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>-->
     <!--<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>-->
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
   <script src="{{ URL::to('js/app.js') }}"></script>
 </body>

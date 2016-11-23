@@ -10,7 +10,7 @@ import Navbar from '../commons/Navbar';
 import Header from '../commons/Header';
 import LatestUploads from './LatestUploads';
 import WeeklyPics from './WeeklyPics';
-
+import TopSpecialization from './TopSpecialization';
 
 export default class Main extends Component {
 	
@@ -25,6 +25,7 @@ export default class Main extends Component {
 
                     <LatestUploads />
                     <WeeklyPics />
+                    <TopSpecialization />
                 </div>
             </MuiThemeProvider>
 		)
