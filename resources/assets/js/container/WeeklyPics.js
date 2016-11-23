@@ -47,7 +47,7 @@ var WeeklyPics = React.createClass({
 
     render() {
         return(
-            <div className="container">
+            <div className="container" style={{marginBottom : '16%'}}>
                 <div className="section center-align">
                     <h4 >DEAN'S WEEKLY PICS</h4>
                     <p>Many times they have afflicted me from my youth up. Let Israel now say, many times they have afflicted my from my youth up, yet they have not prevailed against me. The plowers plowed on my back. They made their furrows long. Yahweh is righteous.</p>
@@ -57,8 +57,8 @@ var WeeklyPics = React.createClass({
                     cols={4}
                     cellHeight={200}
                     padding={1}
-                    style={styles.gridList}
-                >
+                    style={styles.gridList} >
+
                     {tilesData.map((tile) => (
                         <GridTile
                             key={tile.img}
@@ -67,9 +67,9 @@ var WeeklyPics = React.createClass({
                             actionPosition="left"
                             titlePosition="top"
                             titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-                            cols={tile.featured ? 2 : 1}
-                            rows={tile.featured ? 2 : 1}
-                        >
+                            cols={tile.featured ? 4 : 1}
+                            rows={tile.featured ? 2 : 1}>
+
                             <img src={tile.img} />
                         </GridTile>
                     ))}
