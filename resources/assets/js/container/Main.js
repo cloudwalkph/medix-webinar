@@ -1,28 +1,32 @@
 import React, {Component} from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const {Grid, Row, Col} = require('react-flexbox-grid');
 
 const {AppBar} = require('material-ui');
 
-var Navbar = require('../components/Navbar');
+import Navbar from '../commons/Navbar'; 
 import Header from '../commons/Header';
-var LatestUploads = require('./LatestUploads');
-var WeeklyPics = require('./WeeklyPics');
+import LatestUploads from './LatestUploads';
+import WeeklyPics from './WeeklyPics';
 
 
 export default class Main extends Component {
-	render() {
+	
+    render() {
 		return (
-            <div>
-                <Navbar />
-                <Header />
+            <MuiThemeProvider muiTheme={getMuiTheme()}>
+                <div>
+                    <Navbar />
+                    <Header />
 
-                <div className="divider"></div>
+                    <div className="divider"></div>
 
-                <LatestUploads />
-                <WeeklyPics />
-            </div>
-
+                    <LatestUploads />
+                    <WeeklyPics />
+                </div>
+            </MuiThemeProvider>
 		)
 	}
 }

@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('react');
 });
+
+Route::get('/{page}', function () {
+	return view('react');
+})->where('page', '[0-9A-Za-z\-]+');

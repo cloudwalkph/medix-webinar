@@ -6,7 +6,6 @@ export default class Header extends Component {
 			<div className="section">
 				<div className="container">
 					<br />
-					<br />
 					<h4 className="header center">ONLINE COURSES FOR <span style={{ fontFamily: 'Oxygen', fontWeight: 'bold', color: '#1b584c' }}>CONTINUING EDUCATION</span></h4>
 
 					<div className="row center">

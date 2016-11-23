@@ -34,7 +34,7 @@ const tilesData = [
   {
     img: 'img/pexels-photo.jpg',
     title: 'Dry Mouth Discomfort Treatment',
-    author: 'fancycrave1'
+    author: 'fancycrave1',
   },
   {
     img: 'img/pexels-photo-127873.jpg',
@@ -48,8 +48,8 @@ var WeeklyPics = React.createClass({
     render() {
         return(
             <div className="container">
-                <div className="section">
-                    <h4>DEAN'S WEEKLY PICS</h4>
+                <div className="section center-align">
+                    <h4 >DEAN'S WEEKLY PICS</h4>
                     <p>Many times they have afflicted me from my youth up. Let Israel now say, many times they have afflicted my from my youth up, yet they have not prevailed against me. The plowers plowed on my back. They made their furrows long. Yahweh is righteous.</p>
                 </div>
 
