@@ -7,31 +7,50 @@ const {Grid, Row, Col} = require('react-flexbox-grid');
 const {AppBar} = require('material-ui');
 
 import Navbar from '../commons/Navbar'; 
-import Header from '../commons/Header';
-import LatestUploads from './LatestUploads';
-import WeeklyPics from './WeeklyPics';
-import TopSpecialization from './TopSpecialization';
-import About from './About';
 import Footer from './Footer';
 
-export default class Main extends Component {
+import Homepage from './Homepage';
+import Inside from '../courses/Inside';
+
+class Main extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            page: props.initialValue || 'placeholder'
+        };
+
+        this.getPage = this.getPage.bind(this);
+    }
+
+    getPage(page) {
+        this.setState({
+            page: page
+        })
+    }
 	
     render() {
 		return (
             <MuiThemeProvider muiTheme={getMuiTheme()}>
                 <div>
-                    <Navbar />
-                    <Header />
+                    <Navbar getPage={this.getPage} />
 
-                    <div className="divider"></div>
-
-                    <LatestUploads />
-                    <WeeklyPics />
-                    <TopSpecialization />
-                    <About />
+                        {this.state.page == 'homepage' ? <Homepage /> : ''}
+                        {this.state.page == 'inside' ? <Inside /> : ''}
+                        
                     <Footer />
                 </div>
             </MuiThemeProvider>
 		)
 	}
 }
+
+Main.propTypes = {
+  initialValue: React.PropTypes.string
+};
+Main.defaultProps = {
+  initialValue: 'inside'
+};
+
+export default Main;

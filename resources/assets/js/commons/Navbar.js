@@ -1,17 +1,33 @@
 import React, {Component} from 'react';
 
 export default class Navbar extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.getPage = this.getPage.bind(this);
+    }
+
+    getPage(event) {
+        if(event.target.id == 'logo-container') {
+            this.props.getPage('homepage');
+        }
+        if(event.target.text == 'TOP COURSES') {
+            this.props.getPage('inside');
+        }
+    }
+    
 	render() {
         return(
             <div className="navbar-fixed">
                 <nav className="white" role="navigation">
                     <div className="container">
                         <div className="nav-wrapper" style={{fontFamily: 'Oxygen', fontWeight: 'bold'}}>
-                        <a id="logo-container" href="#" className="brand-logo">
+                        <a id="logo-container" onClick={this.getPage} href="#" className="brand-logo">
                             <img src="img/logo.png" />
                         </a>
                         <ul className="right hide-on-med-and-down">
-                            <li><a href="#">TOP COURSES</a></li>
+                            <li><a href="#" onClick={this.getPage}>TOP COURSES</a></li>
                             <li><a href="#">NEW COURSES</a></li>
                             <li><a href="#">ABOUT</a></li>
                             <li><a href="#">LOG IN</a></li>
@@ -20,7 +36,7 @@ export default class Navbar extends Component {
                         </ul>
 
                         <ul id="nav-mobile" className="side-nav">
-                            <li><a href="#">TOP COURSES</a></li>
+                            <li><a href="#" onClick={this.getPage}>TOP COURSES</a></li>
                             <li><a href="#">NEW COURSES</a></li>
                             <li><a href="#">ABOUT</a></li>
                             <li><a href="#">LOG IN</a></li>
