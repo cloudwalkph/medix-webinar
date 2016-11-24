@@ -49,7 +49,7 @@ Main.propTypes = {
   initialValue: React.PropTypes.string
 };
 Main.defaultProps = {
-  initialValue: 'inside'
+  initialValue: 'homepage'
 };
 
 export default Main;

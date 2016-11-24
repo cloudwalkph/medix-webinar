@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {Router, browserHistory} from 'react-router';
@@ -13,9 +13,7 @@ injectTapEventPlugin();
 var App = React.createClass({
     render() {
         return(
-            <Router history={browserHistory}>
-                {route}
-            </Router>
+            <Router history={browserHistory} routes={route} />
         )
     }
 });

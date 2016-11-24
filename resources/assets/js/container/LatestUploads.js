@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 var LatestUploads = React.createClass({
 
@@ -23,7 +24,8 @@ var LatestUploads = React.createClass({
                                             <div style={{fontFamily: 'Source Sans Pro',marginTop: '20px'}}>I will lift up my eyes to the hills. Where does my help come from? My help comes from Yahweh, who made heaven and earth.</div>
                                         </div>
                                         <div className="section" style={{paddingTop : '20px'}}>
-                                            <a style={{fontFamily: 'Oxygen', fontWeight: 'bold'}} href="#" id="download-button" className="btn waves-effect waves-light indigo darken-3">VIEW COURSE</a>
+                                            <Link style={{fontFamily: 'Oxygen', fontWeight: 'bold'}} to="/courses" id="download-button" className="btn waves-effect waves-light indigo darken-3">VIEW COURSE</Link>
+                                            {/*<a style={{fontFamily: 'Oxygen', fontWeight: 'bold'}} href="/courses" id="download-button" className="btn waves-effect waves-light indigo darken-3">VIEW COURSE</a>*/}
                                         </div>
                                     </div>
                                 </li>
