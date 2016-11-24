@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
 export default class Navbar extends Component {
-
     state = {
         active : ''
     }
@@ -33,7 +32,7 @@ export default class Navbar extends Component {
                         <ul className="right hide-on-med-and-down">
                             <li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>
                             <li><a href="#">NEW COURSES</a></li>
-                            <li className={this.state.active == 'aboutUs' ? 'active' : ''}><a href="#aboutUs">ABOUT</a></li>
+                            <li className={this.state.active == 'aboutUs' ? 'active' : ''}><a href="#aboutUs" onClick={this.handleLinkClick}>ABOUT</a></li>
                             <li><a href="#">LOG IN</a></li>
                             <li><a href="#" className="btn waves-effect waves-light indigo darken-3">SIGN UP</a></li>
                             
