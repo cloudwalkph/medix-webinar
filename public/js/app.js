@@ -67,7 +67,7 @@
 	
 	var _router2 = _interopRequireDefault(_router);
 	
-	var _reactTapEventPlugin = __webpack_require__(641);
+	var _reactTapEventPlugin = __webpack_require__(642);
 	
 	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
 	
@@ -26799,13 +26799,13 @@
 	
 	var _AboutUs2 = _interopRequireDefault(_AboutUs);
 	
-	var _Inside = __webpack_require__(456);
+	var _Courses = __webpack_require__(640);
 	
-	var _Inside2 = _interopRequireDefault(_Inside);
+	var _Courses2 = _interopRequireDefault(_Courses);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var path = __webpack_require__(640);
+	var path = __webpack_require__(641);
 	exports.default = _react2.default.createElement(
 		_reactRouter.Route,
 		{ path: path.join(location.pathname + '/') },
@@ -26818,7 +26818,7 @@
 		_react2.default.createElement(
 			_reactRouter.Route,
 			{ path: '/courses', component: _App2.default },
-			_react2.default.createElement(_reactRouter.IndexRoute, { component: _Inside2.default })
+			_react2.default.createElement(_reactRouter.IndexRoute, { component: _Courses2.default })
 		)
 	);
 
@@ -70008,6 +70008,203 @@
 /* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Courses = function (_Component) {
+	    _inherits(Courses, _Component);
+	
+	    function Courses() {
+	        _classCallCheck(this, Courses);
+	
+	        return _possibleConstructorReturn(this, (Courses.__proto__ || Object.getPrototypeOf(Courses)).apply(this, arguments));
+	    }
+	
+	    _createClass(Courses, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            $('.parallax').parallax();
+	            $('.scrollspy').scrollSpy();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'row' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'col m8' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: '' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'parallax-container' },
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'parallax' },
+	                                    _react2.default.createElement('img', { src: 'img/pexels-photo-87346.jpg', width: '100%' })
+	                                )
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'col m4' },
+	                        _react2.default.createElement(
+	                            'h4',
+	                            null,
+	                            'ACCELERATED ALIGNER THERAPY'
+	                        ),
+	                        _react2.default.createElement(
+	                            'p',
+	                            { style: { lineHeight: '1.4rem' } },
+	                            'Yahweh Reigns! Let the people tremble. He sits enthroned among the cherubim. Let the earth be moved. Yahweh is great in Zion. He is high above all the peoples. Let them praise your great and awesome name. He is Holy! The King\'s strength also loves justice. You do establish equity.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'h5',
+	                            null,
+	                            'COURSE DETAILS'
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            '3 Courses'
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            '20 Articles'
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            '8 Videos'
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'section' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col hide-on-small-only m3 l2' },
+	                            _react2.default.createElement(
+	                                'ul',
+	                                { className: 'section table-of-contents' },
+	                                _react2.default.createElement(
+	                                    'li',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { href: '#introduction' },
+	                                        'Overview'
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'li',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { href: '#structure' },
+	                                        'Syllabus'
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'li',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { href: '#initialization' },
+	                                        'Course Rating'
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'li',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'button',
+	                                        null,
+	                                        'Enroll Now'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        null,
+	                                        'This course requires at least 2 hours per session.'
+	                                    )
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col s12 m9 l10' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { id: 'introduction', className: 'section scrollspy' },
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    null,
+	                                    'Content '
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { id: 'structure', className: 'section scrollspy' },
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    null,
+	                                    'Content '
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { id: 'initialization', className: 'section scrollspy' },
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    null,
+	                                    'Content '
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Courses;
+	}(_react.Component);
+	
+	exports.default = Courses;
+
+/***/ },
+/* 641 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
 	//
 	// Permission is hereby granted, free of charge, to any person obtaining a
@@ -70236,11 +70433,11 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 641 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(642);
-	var defaultClickRejectionStrategy = __webpack_require__(643);
+	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(643);
+	var defaultClickRejectionStrategy = __webpack_require__(644);
 	
 	var alreadyInjected = false;
 	
@@ -70262,14 +70459,14 @@
 	  alreadyInjected = true;
 	
 	  __webpack_require__(44).injection.injectEventPluginsByName({
-	    'TapEventPlugin':       __webpack_require__(644)(shouldRejectClick)
+	    'TapEventPlugin':       __webpack_require__(645)(shouldRejectClick)
 	  });
 	};
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 642 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -70324,7 +70521,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 643 */
+/* 644 */
 /***/ function(module, exports) {
 
 	module.exports = function(lastTouchEvent, clickTimestamp) {
@@ -70335,7 +70532,7 @@
 
 
 /***/ },
-/* 644 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -70363,10 +70560,10 @@
 	var EventPluginUtils = __webpack_require__(46);
 	var EventPropagators = __webpack_require__(43);
 	var SyntheticUIEvent = __webpack_require__(80);
-	var TouchEventUtils = __webpack_require__(645);
+	var TouchEventUtils = __webpack_require__(646);
 	var ViewportMetrics = __webpack_require__(81);
 	
-	var keyOf = __webpack_require__(646);
+	var keyOf = __webpack_require__(647);
 	var topLevelTypes = EventConstants.topLevelTypes;
 	
 	var isStartish = EventPluginUtils.isStartish;
@@ -70512,7 +70709,7 @@
 
 
 /***/ },
-/* 645 */
+/* 646 */
 /***/ function(module, exports) {
 
 	/**
@@ -70560,7 +70757,7 @@
 
 
 /***/ },
-/* 646 */
+/* 647 */
 /***/ function(module, exports) {
 
 	"use strict";

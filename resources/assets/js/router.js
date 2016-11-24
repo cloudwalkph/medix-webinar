@@ -4,7 +4,7 @@ import {Route, IndexRoute} from 'react-router';
 import Main from './container/Main';
 import index from './container/App';
 import AboutUs from './container/AboutUs';
-import Inside from './courses/Inside';
+import Courses from './container/Courses';
 
 export default (
 	<Route path={path.join(location.pathname + '/')}>
@@ -15,7 +15,7 @@ export default (
 			
 		</Route>
 		<Route path="/courses" component={index}>
-			<IndexRoute component={Inside}/>
+			<IndexRoute component={Courses}/>
 		</Route>
 	</Route>
 )
