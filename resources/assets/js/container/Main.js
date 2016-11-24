@@ -22,9 +22,6 @@ export default class Main extends Component {
                 <div>
                     <Navbar />
                     <Header />
-
-                    <div className="divider"></div>
-
                     <LatestUploads />
                     <WeeklyPics />
                     <TopSpecialization />

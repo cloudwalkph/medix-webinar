@@ -9,7 +9,7 @@ var About = React.createClass({
     render() {
         return(
             <div className="section">
-                <div className="parallax-container">
+                <div className="parallax-container scrollspy" id="aboutUs">
                     <div style={{color: 'rgba(0, 0, 0, 0.87)'}}className="container">
                         <div className="row">
                             <div className="col s12 m6">

@@ -1,9 +1,21 @@
 import React, {Component} from 'react';
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 export default class Header extends Component {
+
+	state = {
+		items : ['hello', 'world', 'click', 'me']
+	}
+
+	componentDidMount() {
+		
+	}
+
 	render() {
+		let fullscreen = screen.height - 262 - 64;
+			fullscreen = fullscreen / 2;
+
 		return (
-			<div className="section">
+			<div className="section" style={{paddingTop: fullscreen,paddingBottom: fullscreen}}>
 				<div className="container">
 					<br />
 					<h4 className="header center">ONLINE COURSES FOR <span style={{ fontFamily: 'Oxygen', fontWeight: 'bold', color: '#1b584c' }}>CONTINUING EDUCATION</span></h4>
@@ -15,7 +27,7 @@ export default class Header extends Component {
 					</div>
 					
 					<div className="row center">
-						<a href="#" id="download-button" className="btn-large waves-effect waves-light indigo darken-4">Get Started</a>
+						<a href="#LatestUploads" id="download-button" className="btn-large waves-effect waves-light indigo darken-4">Get Started</a>
 					</div>
 				</div>
 			</div>

@@ -31,7 +31,7 @@ var TopSpecialization = React.createClass({
 
     render() {
         return(
-            <div className="section">
+            <div className="section scrollspy" id="topSpecializations">
 
                 <h4 className="center" style={{fontFamily: 'Oxygen'}}>TOP SPECIALIZATIONS</h4>
 
