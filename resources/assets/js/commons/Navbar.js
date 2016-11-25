@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router';
 
 export default class Navbar extends Component {
     state = {
@@ -20,15 +21,15 @@ export default class Navbar extends Component {
     }
 
 	render() {
-        console.log(this.state.active)
+        
         return(
             <div className="navbar-fixed">
                 <nav className="white" role="navigation">
                     <div className="container">
                         <div className="nav-wrapper" style={{fontFamily: 'Oxygen', fontWeight: 'bold'}}>
-                        <a id="logo-container" href="/" className="brand-logo">
+                        <Link to="/" id="logo-container" className="brand-logo">
                             <img src="img/logo.png" />
-                        </a>
+                        </Link>
                         <ul className="right hide-on-med-and-down">
                             <li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>
                             <li><a href="#LatestUploads">NEW COURSES</a></li>

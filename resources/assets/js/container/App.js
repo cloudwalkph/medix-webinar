@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Navbar from '../commons/Navbar';
+import Footer from './Footer';
 
 const {Grid, Row, Col} = require('react-flexbox-grid');
 
@@ -15,6 +16,7 @@ export default class App extends Component {
                 <div>
                     <Navbar/>
                     {this.props.children}
+                    <Footer/>
                 </div>
             </MuiThemeProvider>
 		)

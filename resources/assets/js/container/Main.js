@@ -10,7 +10,7 @@ import Navbar from '../commons/Navbar';
 import Footer from './Footer';
 
 import Homepage from './Homepage';
-import Inside from '../courses/Inside';
+import Inside from '../container/Courses';
 
 class Main extends Component {
 
