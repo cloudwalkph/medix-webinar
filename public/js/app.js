@@ -41110,63 +41110,108 @@
 
 	'use strict';
 	
-	var React = __webpack_require__(2);
-	
-	var About = React.createClass({
-	    displayName: 'About',
-	    componentDidMount: function componentDidMount() {
-	        $('.parallax').parallax();
-	    },
-	    render: function render() {
-	        return React.createElement(
-	            'div',
-	            { className: 'section' },
-	            React.createElement(
-	                'div',
-	                { className: 'parallax-container scrollspy', id: 'aboutUs' },
-	                React.createElement(
-	                    'div',
-	                    { style: { color: 'rgba(0, 0, 0, 0.87)' }, className: 'container' },
-	                    React.createElement(
-	                        'div',
-	                        { className: 'row' },
-	                        React.createElement(
-	                            'div',
-	                            { className: 'col s12 m6' },
-	                            React.createElement(
-	                                'h2',
-	                                { style: { fontFamily: 'Oxygen', fontWeight: 'bold' } },
-	                                'ABOUT DENTAL ACCESS WEBINARS'
-	                            )
-	                        ),
-	                        React.createElement(
-	                            'div',
-	                            { className: 'col s12 m6' },
-	                            React.createElement(
-	                                'p',
-	                                { style: { fontFamily: 'Source Sans Pro' } },
-	                                'Let God arise! Let his enemies be scattered! Let them who hate him also flee before him. As smoke is driven away, so drive them away. As was melts before the fire, so let the wicked perish at the presence of God. But let the righteous be glad. Let them rejoice before God. Yes, let them rejoice with gladness. Sing to God! Sing praises to his name! Extol him who rides on the clouds: to Yah, his name! Rejoice before him! A father of the fatherless, and a defender of the widows, is God in his holy habitation. God sets the lonely in families. He brings out the prisoners with singing, but the rebellious dwell in a sun-scorched land.'
-	                            ),
-	                            React.createElement('div', { className: 'divider' }),
-	                            React.createElement(
-	                                'h4',
-	                                { style: { fontFamily: 'Oxygen', fontWeight: 'bold' } },
-	                                'EDUCATION IS KEY TO OUR DENTAL COMMUNITY\'S DEVELOPMENT'
-	                            )
-	                        )
-	                    )
-	                ),
-	                React.createElement(
-	                    'div',
-	                    { className: 'parallax' },
-	                    React.createElement('img', { src: 'img/Rectangle-532.jpg', width: '100%' })
-	                )
-	            )
-	        );
-	    }
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 	
-	module.exports = About;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(184);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var About = function (_Component) {
+	    _inherits(About, _Component);
+	
+	    function About() {
+	        _classCallCheck(this, About);
+	
+	        return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).apply(this, arguments));
+	    }
+	
+	    _createClass(About, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            $('.parallax').parallax();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'section' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'parallax-container scrollspy', id: 'aboutUs' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { style: { color: 'rgba(0, 0, 0, 0.87)' }, className: 'container' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'row' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col s12 m6' },
+	                                _react2.default.createElement(
+	                                    'h2',
+	                                    { style: { fontFamily: 'Oxygen', fontWeight: 'bold' } },
+	                                    'ABOUT DENTAL ACCESS WEBINARS'
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col s12 m6' },
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    { style: { fontFamily: 'Source Sans Pro' } },
+	                                    'Dental Access Webinar is an upstart technology platform that aims to deliver continuing dental education for all dentists that is easily accessible through the world-wide web. It provides an alternative venue where Dentists would interact with each other and share basic and advanced knowledge in their field of specializations'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'section' },
+	                                    _react2.default.createElement(
+	                                        _reactRouter.Link,
+	                                        { style: { fontFamily: 'Oxygen', fontWeight: 'bold' }, to: '/aboutUs', className: 'btn waves-effect waves-light indigo darken-3' },
+	                                        'READ MORE'
+	                                    )
+	                                ),
+	                                _react2.default.createElement('div', { className: 'divider' }),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'section' },
+	                                    _react2.default.createElement(
+	                                        'h4',
+	                                        { style: { fontFamily: 'Oxygen', fontWeight: 'bold', color: '#a8a8a8' } },
+	                                        'EDUCATION IS KEY TO OUR DENTAL COMMUNITY\'S DEVELOPMENT'
+	                                    )
+	                                )
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'parallax' },
+	                        _react2.default.createElement('img', { src: 'img/Rectangle-532.jpg', width: '100%' })
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return About;
+	}(_react.Component);
+	
+	exports.default = About;
 
 /***/ },
 /* 456 */
@@ -41261,6 +41306,8 @@
 			value: function componentDidMount() {
 				$('.parallax').parallax();
 				$('.scrollspy').scrollSpy();
+	
+				$('body').scrollTop(0);
 			}
 		}, {
 			key: 'render',
@@ -41361,7 +41408,7 @@
 											{ style: this.state.styles.linkList },
 											_react2.default.createElement(
 												'a',
-												{ href: '#initialization', style: this.state.styles.linkFont },
+												{ href: '#ratingReview', style: this.state.styles.linkFont },
 												'Course Rating'
 											)
 										),
@@ -41540,7 +41587,7 @@
 									),
 									_react2.default.createElement(
 										'div',
-										{ className: 'section' },
+										{ className: 'section scrollspy', id: 'ratingReview' },
 										_react2.default.createElement(
 											'div',
 											{ className: 'row' },
@@ -70448,12 +70495,98 @@
 		}
 	
 		_createClass(AboutUs, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				$('.parallax').parallax();
+				$('body').scrollTop(0);
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					null,
-					'sample'
+					{ className: 'row' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'parallax-container' },
+						_react2.default.createElement(
+							'div',
+							{ style: { color: 'rgba(0, 0, 0, 0.87)' }, className: 'container' },
+							_react2.default.createElement(
+								'h5',
+								null,
+								'ABOUT DENTAL ACCESS WEBINARS'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'section' },
+								_react2.default.createElement(
+									'p',
+									{ style: { fontFamily: 'Source Sans Pro' } },
+									'Dental Access Webinar is committed to provide the highest standards of education in the Dental profession with the noble intention of helping address human problems through introduction of the latest technologies, keeping in par with global standards, thereby helping people live better lives.'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'section' },
+								_react2.default.createElement(
+									'h5',
+									null,
+									'Philosophy'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'section' },
+								_react2.default.createElement(
+									'p',
+									{ style: { fontFamily: 'Source Sans Pro' } },
+									'\u201CEducation is nurtured through a conscious commitment of continuous learning throughout life.\u201D'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'section' },
+								_react2.default.createElement(
+									'h5',
+									null,
+									'Vision'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'section' },
+								_react2.default.createElement(
+									'p',
+									{ style: { fontFamily: 'Source Sans Pro' } },
+									'To become the leading web-based continuing professional education provider for Dentistry as well as in the delivery of basic dental health education for dental patients in the Philippines and the rest of Asia-Pacific Region in the next five years.'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'section' },
+								_react2.default.createElement(
+									'h5',
+									null,
+									'Mission'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'section' },
+								_react2.default.createElement(
+									'p',
+									{ style: { fontFamily: 'Source Sans Pro' } },
+									'To provide easy access to continuing professional education to Dentists who are having difficulty in personally attending clinical conferences, seminars and conventions and at the same time assist dental patients in reaching information as regards dental health situations.'
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'parallax' },
+							_react2.default.createElement('img', { src: 'img/Rectangle-532.jpg', width: '100%' })
+						)
+					)
 				);
 			}
 		}]);

@@ -1,10 +1,11 @@
-var React = require('react');
+import React, {Component} from 'react';
+import { Link } from 'react-router';
 
-var About = React.createClass({
+export default class About extends Component {
 
-    componentDidMount () {
+    componentDidMount() {
         $('.parallax').parallax();
-    },
+    }
 
     render() {
         return(
@@ -16,11 +17,19 @@ var About = React.createClass({
                                 <h2 style={{fontFamily: 'Oxygen', fontWeight: 'bold'}}>ABOUT DENTAL ACCESS WEBINARS</h2>
                             </div>
                             <div className="col s12 m6">
-                                <p style={{fontFamily: 'Source Sans Pro'}}>Let God arise! Let his enemies be scattered! Let them who hate him also flee before him. As smoke is driven away, so drive them away. As was melts before the fire, so let the wicked perish at the presence of God. But let the righteous be glad. Let them rejoice before God. Yes, let them rejoice with gladness. Sing to God! Sing praises to his name! Extol him who rides on the clouds: to Yah, his name! Rejoice before him! A father of the fatherless, and a defender of the widows, is God in his holy habitation. God sets the lonely in families. He brings out the prisoners with singing, but the rebellious dwell in a sun-scorched land.</p>
-
+                                <p style={{fontFamily: 'Source Sans Pro'}}>
+                                    Dental Access Webinar is an upstart technology platform that aims to deliver continuing dental education for all dentists that is easily accessible through the world-wide web. It provides an 
+                                    alternative venue where Dentists would interact with each other and share basic and advanced knowledge in their field of specializations
+                                </p>
+                                <div className="section">
+                                    <Link style={{fontFamily: 'Oxygen', fontWeight: 'bold'}} to="/aboutUs" className="btn waves-effect waves-light indigo darken-3">READ MORE</Link>
+                                </div>
+                                
                                 <div className="divider"></div>
-
-                                <h4 style={{fontFamily: 'Oxygen', fontWeight: 'bold'}}>EDUCATION IS KEY TO OUR DENTAL COMMUNITY'S DEVELOPMENT</h4>
+                                
+                                <div className="section">
+                                    <h4 style={{fontFamily: 'Oxygen', fontWeight: 'bold', color: '#a8a8a8'}}>EDUCATION IS KEY TO OUR DENTAL COMMUNITY'S DEVELOPMENT</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -32,6 +41,4 @@ var About = React.createClass({
             </div>
         )
     }
-});
-
-module.exports = About;
+}

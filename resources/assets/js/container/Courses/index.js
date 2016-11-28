@@ -40,6 +40,8 @@ export default class Courses extends Component {
 	componentDidMount () {
         $('.parallax').parallax();
         $('.scrollspy').scrollSpy();
+
+        $('body').scrollTop(0);
     }
 
 	render() {
@@ -93,7 +95,7 @@ export default class Courses extends Component {
 	                                	<a href="#syllabus" style={this.state.styles.linkFont}>Syllabus</a>
 	                                </li>
 	                                <li style={this.state.styles.linkList}>
-	                                	<a href="#initialization" style={this.state.styles.linkFont}>Course Rating</a>
+	                                	<a href="#ratingReview" style={this.state.styles.linkFont}>Course Rating</a>
 	                                </li>
 	                                <li style={this.state.styles.linkList}>
 	                                	<div className='section'>
@@ -181,7 +183,7 @@ export default class Courses extends Component {
 	                            <div className="section">
 	                            	<h5>Rating & Reviews</h5>
 	                            </div>
-	                            <div className="section">
+	                            <div className="section scrollspy" id="ratingReview">
 	                            	<div className="row">
 		                            	<div className="col m6 offset-m3">
 		                            		<img src="http://www.emergingrnleader.com/wp-content/uploads/2016/08/Five-Stars.jpg" style={{width : '100%'}}/>
