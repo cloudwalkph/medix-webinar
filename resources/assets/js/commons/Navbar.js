@@ -21,7 +21,9 @@ export default class Navbar extends Component {
     }
 
 	render() {
-        
+        let pathName = this.props.storeData.location.pathname;
+
+
         return(
             <div className="navbar-fixed">
                 <nav className="white" role="navigation">
@@ -30,22 +32,30 @@ export default class Navbar extends Component {
                         <Link to="/" id="logo-container" className="brand-logo">
                             <img src="img/logo.png" />
                         </Link>
-                        <ul className="right hide-on-med-and-down">
-                            <li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>
-                            <li><a href="#LatestUploads">NEW COURSES</a></li>
-                            <li className={this.state.active == 'aboutUs' ? 'active' : ''}><a href="#aboutUs" onClick={this.handleLinkClick}>ABOUT</a></li>
-                            <li><a href="/aboutUs">LOG IN</a></li>
-                            <li><a href="#" className="btn waves-effect waves-light indigo darken-3">SIGN UP</a></li>
-                            
-                        </ul>
+                        
+                        {
+                            pathName == '/' ?
+                        <div>
+                            <ul className="right hide-on-med-and-down">
+                                <li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>
+                                <li className={this.state.active == 'LatestUploads' ? 'active' : ''}><a href="#LatestUploads" onClick={this.handleLinkClick}>NEW COURSES</a></li>
+                                <li className={this.state.active == 'aboutUs' ? 'active' : ''}><a href="#aboutUs" onClick={this.handleLinkClick}>ABOUT</a></li>
+                                <li><a href="/">LOG IN</a></li>
+                                <li><a href="#" className="btn waves-effect waves-light indigo darken-3">SIGN UP</a></li>
+                                
+                            </ul>
 
-                        <ul id="nav-mobile" className="side-nav">
-                            <li><a href="#">TOP COURSES</a></li>
-                            <li><a href="#">NEW COURSES</a></li>
-                            <li><a href="#">ABOUT</a></li>
-                            <li><a href="#">LOG IN</a></li>
-                            <li><a href="#" className="btn waves-effect waves-light indigo darken-3">SIGN UP</a></li>
-                        </ul>
+                            <ul id="nav-mobile" className="side-nav">
+                                <li><a href="#">TOP COURSES</a></li>
+                                <li><a href="#">NEW COURSES</a></li>
+                                <li><a href="#">ABOUT</a></li>
+                                <li><a href="#">LOG IN</a></li>
+                                <li><a href="#" className="btn waves-effect waves-light indigo darken-3">SIGN UP</a></li>
+                            </ul>
+                        </div>
+                            :
+                                null
+                        }
                         <a href="#" data-activates="nav-mobile" className="button-collapse"><i className="material-icons">menu</i></a>
                         </div>
                     </div>

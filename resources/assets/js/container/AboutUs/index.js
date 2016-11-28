@@ -8,6 +8,7 @@ export default class AboutUs extends Component {
     }
 
 	render() {
+		
 		return (
 			<div className="row">
 				<div className="parallax-container">

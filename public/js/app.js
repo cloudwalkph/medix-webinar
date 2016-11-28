@@ -26881,27 +26881,13 @@
 	var Main = function (_Component) {
 	    _inherits(Main, _Component);
 	
-	    function Main(props) {
+	    function Main() {
 	        _classCallCheck(this, Main);
 	
-	        var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
-	
-	        _this.state = {
-	            page: props.initialValue || 'placeholder'
-	        };
-	
-	        _this.getPage = _this.getPage.bind(_this);
-	        return _this;
+	        return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
 	    }
 	
 	    _createClass(Main, [{
-	        key: 'getPage',
-	        value: function getPage(page) {
-	            this.setState({
-	                page: page
-	            });
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -26910,9 +26896,8 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    null,
-	                    _react2.default.createElement(_Navbar2.default, { getPage: this.getPage }),
-	                    this.state.page == 'homepage' ? _react2.default.createElement(_Homepage2.default, null) : '',
-	                    this.state.page == 'inside' ? _react2.default.createElement(_Courses2.default, null) : '',
+	                    _react2.default.createElement(_Navbar2.default, { storeData: this.props }),
+	                    _react2.default.createElement(_Homepage2.default, null),
 	                    _react2.default.createElement(_Footer2.default, null)
 	                )
 	            );
@@ -26921,13 +26906,6 @@
 	
 	    return Main;
 	}(_react.Component);
-	
-	Main.propTypes = {
-	    initialValue: _react2.default.PropTypes.string
-	};
-	Main.defaultProps = {
-	    initialValue: 'homepage'
-	};
 	
 	exports.default = Main;
 
@@ -34348,6 +34326,7 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var pathName = this.props.storeData.location.pathname;
 	
 	            return _react2.default.createElement(
 	                'div',
@@ -34366,104 +34345,108 @@
 	                                { to: '/', id: 'logo-container', className: 'brand-logo' },
 	                                _react2.default.createElement('img', { src: 'img/logo.png' })
 	                            ),
-	                            _react2.default.createElement(
-	                                'ul',
-	                                { className: 'right hide-on-med-and-down' },
+	                            pathName == '/' ? _react2.default.createElement(
+	                                'div',
+	                                null,
 	                                _react2.default.createElement(
-	                                    'li',
-	                                    { className: this.state.active == 'topSpecializations' ? 'active' : '' },
+	                                    'ul',
+	                                    { className: 'right hide-on-med-and-down' },
 	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '#topSpecializations', onClick: this.handleLinkClick },
-	                                        'TOP COURSES'
+	                                        'li',
+	                                        { className: this.state.active == 'topSpecializations' ? 'active' : '' },
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#topSpecializations', onClick: this.handleLinkClick },
+	                                            'TOP COURSES'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        { className: this.state.active == 'LatestUploads' ? 'active' : '' },
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#LatestUploads', onClick: this.handleLinkClick },
+	                                            'NEW COURSES'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        { className: this.state.active == 'aboutUs' ? 'active' : '' },
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#aboutUs', onClick: this.handleLinkClick },
+	                                            'ABOUT'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '/' },
+	                                            'LOG IN'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#', className: 'btn waves-effect waves-light indigo darken-3' },
+	                                            'SIGN UP'
+	                                        )
 	                                    )
 	                                ),
 	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
+	                                    'ul',
+	                                    { id: 'nav-mobile', className: 'side-nav' },
 	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '#LatestUploads' },
-	                                        'NEW COURSES'
-	                                    )
-	                                ),
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    { className: this.state.active == 'aboutUs' ? 'active' : '' },
+	                                        'li',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'TOP COURSES'
+	                                        )
+	                                    ),
 	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '#aboutUs', onClick: this.handleLinkClick },
-	                                        'ABOUT'
-	                                    )
-	                                ),
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
+	                                        'li',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'NEW COURSES'
+	                                        )
+	                                    ),
 	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '/aboutUs' },
-	                                        'LOG IN'
-	                                    )
-	                                ),
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
+	                                        'li',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'ABOUT'
+	                                        )
+	                                    ),
 	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '#', className: 'btn waves-effect waves-light indigo darken-3' },
-	                                        'SIGN UP'
+	                                        'li',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'LOG IN'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#', className: 'btn waves-effect waves-light indigo darken-3' },
+	                                            'SIGN UP'
+	                                        )
 	                                    )
 	                                )
-	                            ),
-	                            _react2.default.createElement(
-	                                'ul',
-	                                { id: 'nav-mobile', className: 'side-nav' },
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
-	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '#' },
-	                                        'TOP COURSES'
-	                                    )
-	                                ),
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
-	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '#' },
-	                                        'NEW COURSES'
-	                                    )
-	                                ),
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
-	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '#' },
-	                                        'ABOUT'
-	                                    )
-	                                ),
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
-	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '#' },
-	                                        'LOG IN'
-	                                    )
-	                                ),
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
-	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '#', className: 'btn waves-effect waves-light indigo darken-3' },
-	                                        'SIGN UP'
-	                                    )
-	                                )
-	                            ),
+	                            ) : null,
 	                            _react2.default.createElement(
 	                                'a',
 	                                { href: '#', 'data-activates': 'nav-mobile', className: 'button-collapse' },
@@ -34599,6 +34582,7 @@
 	var Homepage = React.createClass({
 	    displayName: 'Homepage',
 	    render: function render() {
+	
 	        return React.createElement(
 	            'div',
 	            null,
@@ -41147,6 +41131,7 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'section' },
@@ -41322,15 +41307,17 @@
 							'div',
 							{ className: 'col m8' },
 							_react2.default.createElement(
-								'div',
-								{ className: '' },
+								'video',
+								{ id: 'my-video', className: 'video-js', controls: true, preload: 'auto', width: '876', height: '380', 'data-setup': '{}' },
+								_react2.default.createElement('source', { src: 'rtmp://54.249.112.76/live/test', type: 'rtmp/mp4' }),
 								_react2.default.createElement(
-									'div',
-									{ className: 'parallax-container' },
+									'p',
+									{ className: 'vjs-no-js' },
+									'To view this video please enable JavaScript, and consider upgrading to a web browser that',
 									_react2.default.createElement(
-										'div',
-										{ className: 'parallax' },
-										_react2.default.createElement('img', { src: 'img/pexels-photo-87346.jpg', width: '100%' })
+										'a',
+										{ href: 'http://videojs.com/html5-video-support/', target: '_blank' },
+										'supports HTML5 video'
 									)
 								)
 							)
@@ -70448,7 +70435,7 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    null,
-	                    _react2.default.createElement(_Navbar2.default, null),
+	                    _react2.default.createElement(_Navbar2.default, { storeData: this.props }),
 	                    this.props.children,
 	                    _react2.default.createElement(_Footer2.default, null)
 	                )
@@ -70503,6 +70490,7 @@
 		}, {
 			key: 'render',
 			value: function render() {
+	
 				return _react2.default.createElement(
 					'div',
 					{ className: 'row' },

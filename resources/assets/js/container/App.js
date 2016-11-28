@@ -14,7 +14,7 @@ export default class App extends Component {
 		return (
             <MuiThemeProvider muiTheme={getMuiTheme()}>
                 <div>
-                    <Navbar/>
+                    <Navbar storeData={this.props} />
                     {this.props.children}
                     <Footer/>
                 </div>

@@ -13,43 +13,20 @@ import Homepage from './Homepage';
 import Inside from '../container/Courses';
 
 class Main extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            page: props.initialValue || 'placeholder'
-        };
-
-        this.getPage = this.getPage.bind(this);
-    }
-
-    getPage(page) {
-        this.setState({
-            page: page
-        })
-    }
 	
     render() {
 		return (
             <MuiThemeProvider muiTheme={getMuiTheme()}>
                 <div>
-                    <Navbar getPage={this.getPage} />
+                    <Navbar storeData={this.props} />
 
-                        {this.state.page == 'homepage' ? <Homepage /> : ''}
-                        {this.state.page == 'inside' ? <Inside /> : ''}
+                        <Homepage />
+                        
                     <Footer />
                 </div>
             </MuiThemeProvider>
 		)
 	}
 }
-
-Main.propTypes = {
-  initialValue: React.PropTypes.string
-};
-Main.defaultProps = {
-  initialValue: 'homepage'
-};
 
 export default Main;
