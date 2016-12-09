@@ -20,7 +20,7 @@ var LatestUploads = React.createClass({
                                     <div className="caption center-align">
                                         <div>
                                             <h5 style={{fontFamily: 'Oxygen'}}>NANO-TECHNOLOGY IN DENTAL INDUSTRY</h5>
-                                            <strong style={{fontFamily: 'Source Sans Pro'}}>By Chapin Aaron Harris</strong>
+                                            <strong style={{fontFamily: 'Source Sans Pro'}}>Lecture of Dr. Kim Fajardo</strong>
                                             <div style={{fontFamily: 'Source Sans Pro',marginTop: '20px'}}>I will lift up my eyes to the hills. Where does my help come from? My help comes from Yahweh, who made heaven and earth.</div>
                                         </div>
                                         <div className="section" style={{paddingTop : '20px'}}>
