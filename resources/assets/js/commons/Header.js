@@ -22,7 +22,10 @@ export default class Header extends Component {
 
 					<div className="row center">
 						<div className="col s8 offset-s2">
-							<h6 style={{ fontFamily: 'Source Sans Pro' }}>Blessed is the man who doesn&rsquo;t walk in the counsel of the wicked, nor stand in the way of sinners, nor sit in the seat of scoffers; but his delight is in Yahweh&rsquo;s law.</h6>
+							<h6 style={{ fontFamily: 'Source Sans Pro' }}>
+								Dental Access Webinar is an upstart technology platform that aims to deliver continuing dental education for all dentists that is easily accessible through the world-wide web. It provides an 
+                                alternative venue where Dentists would interact with each other and share basic and advanced knowledge in their field of specializations
+							</h6>
 						</div>
 					</div>
 					
