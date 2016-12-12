@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import DatePicker from 'material-ui/DatePicker';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import moment from 'moment';
 
 
 export default class SignUp extends Component {
 	
 	state = {
+		birthdate : '',
 		styles : {
 			radioButton : {
 				width : '120px',
@@ -19,6 +21,12 @@ export default class SignUp extends Component {
 		}
 	}
 
+	handleChange = (event, date) => {
+		this.setState({
+			birthdate : moment(date).format('YYYY-MM-DD')
+		})
+	}
+
 	render () {
 		return (
 			<div className="section">
@@ -26,27 +34,32 @@ export default class SignUp extends Component {
 					<form className="col s12" id="signUpForm">
 						<div className="row">
 							<div className="input-field col s6">
-								<input id="first_name" type="text" className="validate" />
+								<input id="first_name" type="text" className="validate" name="first_name" />
 								<label htmlFor="first_name">First Name</label>
 							</div>
 							<div className="input-field col s6">
-								<input id="last_name" type="text" className="validate" />
+								<input id="last_name" type="text" className="validate" name="last_name" />
 								<label htmlFor="last_name">Last Name</label>
 							</div>
 						</div>
 						<div className="row">
 							<div className="input-field col s6">
-								<input id="email" type="email" className="validate" />
+								<input id="email" type="email" className="validate" name="email" />
 								<label htmlFor="email" data-error="Please input a correct email">Email</label>
 							</div>
 							<div className="input-field col s6">
-								<input id="password" type="password" className="validate" />
+								<input id="password" type="password" name="password" className="validate" />
 								<label htmlFor="password">Password</label>
 							</div>
 						</div>
 						<div className="row">
 							<div className="input-field col s6">
-								<DatePicker hintText="Birthday" />
+								<input type="hidden" name="birthdate" value={this.state.birthdate}/>
+								<DatePicker 
+									hintText="Birthday" 
+									className="birthdate" 
+									autoOk={true}
+									onChange={this.handleChange} />
 							</div>
 						</div>
 						<div className="row">

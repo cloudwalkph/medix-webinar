@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('/{page}', function () {
 	return view('react');
 })->where('page', '[0-9A-Za-z\-]+');
+
+Route::post('user/add','UserController@store');

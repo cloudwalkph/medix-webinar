@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import SignUp from './SignUp';
+import baseUrl from '../config';
+import axios from 'axios';
 
 export default class Navbar extends Component {
     state = {
@@ -26,7 +28,15 @@ export default class Navbar extends Component {
     }
 
     handleSubmitForm = () => {
+        let url = baseUrl.apiUrl + 'user/add';
+        let formData = $('#signUpForm').serialize();
+        console.log(formData)
         
+        axios.post(url, formData).then((res) => {
+            console.log(res);
+        }).catch((error) => {
+            console.log(error);
+        })
     }
 
     handleSignUpButton = () => {
