@@ -38,14 +38,15 @@ export default class Readmore extends Component {
 		return (
 			<div className="sidebar-box">
 				<p>
-					Exalt Yahweh our God. Worship at his footstool. He is holy! Moses and Aaron were among his
-					priest, Samuel among those who call on his name:they called on Yahweh, and he answered
-					them. He spoke to them in the pillar of cloud. They kept his testimonies, the statute that he
-					gave them. You answered them. Yahweh our God. You are a God who forgave them, although you took
-					vengeance for their doings. Exalt Yahweh, our God. Worship at his holy hill, for Yahweh, Our God
-					is Holy! Praise Yahweh Give thanks to Yahweh, for he is good, for his loving kindness
-					endures forever. Who can utter the mighty acts of Yahweh, for he is good, for his loving kindness
-					endures forever. Who can utter the might acts of Yahweh, or fully declare all his praise?
+					Dr.  Kimberly Ray R. Fajardo is an alumni of the University of the East College of Dentistry way 
+					back in 2009. He became  a professor at the same university at the department of Prosthodontics, 
+					Practice Management and Undergraduate Research. In 2013, he became a visiting scholar at the 
+					Seoul National University - Bounding Hospital.  Among his many achievements, Dr Kim as he is 
+					fondly called co-authored and published a study entitled: "The Antimicrobial Effect of Different 
+					Xylitol Concentrations on Streptococcus mutant and Lactobacillus acidophilus count" for the 
+					Journal of Restorative Dentistry. Today, he is an active member of officer of the Philippine 
+					Prosthodontics Society, member of the Cavite Dental Chapter and  International Association of 
+					Orthodontics - Philippine Section.
 				</p>
 				<p className="read-more">
 					<a href="javascript:void(0)" className="btn-flat waves-effect waves-teal" onClick={this.handleClickButton}>Read More</a>
