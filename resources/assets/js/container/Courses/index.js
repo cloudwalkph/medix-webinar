@@ -141,7 +141,7 @@ export default class Courses extends Component {
 	                            </div>
 
 	                            <div className="section"><div className="divider"></div></div>
-	                            <div className="section scrollspy" id="syllabus">
+	                            {/*<div className="section scrollspy" id="syllabus">
 	                            	<h5>Syllabus</h5>
 	                            	<h5 className="grey-text">Week 1</h5>
 	                            </div>
@@ -203,7 +203,7 @@ export default class Courses extends Component {
 
 	                            <div className="section center-align">
 	                            	<a href="javascript:void(0)" className="btn waves-effect waves-light indigo darken-3">see all reviews</a>
-	                            </div>
+	                            </div>*/}
 
 	                        </div>
                         </div>
