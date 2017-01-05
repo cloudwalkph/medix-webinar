@@ -15,7 +15,7 @@ export default class Header extends Component {
 			fullscreen = fullscreen / 2;
 
 		return (
-			<div className="section" style={{paddingTop: fullscreen,paddingBottom: fullscreen}}>
+			<div className="section valign-wrapper" style={{height : '90vh'}}>
 				<div className="container">
 					<br />
 					<h4 className="header center">ONLINE COURSES FOR <span style={{ fontFamily: 'Oxygen', fontWeight: 'bold', color: '#1b584c' }}>CONTINUING EDUCATION</span></h4>

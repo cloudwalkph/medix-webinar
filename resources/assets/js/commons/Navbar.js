@@ -47,7 +47,9 @@ export default class Navbar extends Component {
 
     componentDidMount() {
         $('.button-collapse').sideNav();
-        $('.scrollspy').scrollSpy();
+        $('.scrollspy').scrollSpy({
+            offset : 0
+        });
     }
 
 	render() {
@@ -81,7 +83,7 @@ export default class Navbar extends Component {
                                 pathName == '/' ?
                             <div>
                                 <ul className="right hide-on-med-and-down">
-                                    <li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>
+                                    {/*<li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>*/}
                                     <li className={this.state.active == 'LatestUploads' ? 'active' : ''}><a href="#LatestUploads" onClick={this.handleLinkClick}>NEW COURSES</a></li>
                                     <li className={this.state.active == 'aboutUs' ? 'active' : ''}><a href="#aboutUs" onClick={this.handleLinkClick}>ABOUT</a></li>
                                     <li><a href="/">LOG IN</a></li>
