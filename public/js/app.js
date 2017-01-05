@@ -65387,7 +65387,7 @@
 	                                    _react2.default.createElement(
 	                                        'div',
 	                                        { className: 'col l6' },
-	                                        _react2.default.createElement('img', { className: 'responsive-img', src: 'img/Courses/pajards.png', style: { filter: 'hue-rotate(200deg)' } })
+	                                        _react2.default.createElement('img', { className: 'responsive-img', src: 'img/Courses/pajards.png' })
 	                                    )
 	                                )
 	                            )

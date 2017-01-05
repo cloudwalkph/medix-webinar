@@ -34,7 +34,7 @@ var LatestUploads = React.createClass({
                                             </div>
                                         </div>
                                         <div className="col l6">
-                                            <img className="responsive-img" src="img/Courses/pajards.png" style={{filter: 'hue-rotate(200deg)'}} />
+                                            <img className="responsive-img" src="img/Courses/pajards.png" />
                                         </div>
                                     </li>
                                 </ul>
