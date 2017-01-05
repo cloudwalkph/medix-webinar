@@ -14,12 +14,12 @@ var Homepage = React.createClass({
             <div>
                 <Header />
 
-                <div className="divider"></div>
+                {/*<div className="divider"></div>*/}
 
                 <LatestUploads />
-                <WeeklyPics />
+                {/*<WeeklyPics />
                 <TopSpecialization />
-                <About />
+*/}                <About />
             </div>
         )
     }

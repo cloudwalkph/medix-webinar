@@ -34360,7 +34360,9 @@
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            $('.button-collapse').sideNav();
-	            $('.scrollspy').scrollSpy();
+	            $('.scrollspy').scrollSpy({
+	                offset: 0
+	            });
 	        }
 	    }, {
 	        key: 'render',
@@ -34404,15 +34406,6 @@
 	                                    _react2.default.createElement(
 	                                        'ul',
 	                                        { className: 'right hide-on-med-and-down' },
-	                                        _react2.default.createElement(
-	                                            'li',
-	                                            { className: this.state.active == 'topSpecializations' ? 'active' : '' },
-	                                            _react2.default.createElement(
-	                                                'a',
-	                                                { href: '#topSpecializations', onClick: this.handleLinkClick },
-	                                                'TOP COURSES'
-	                                            )
-	                                        ),
 	                                        _react2.default.createElement(
 	                                            'li',
 	                                            { className: this.state.active == 'LatestUploads' ? 'active' : '' },
@@ -64663,10 +64656,8 @@
 	            'div',
 	            null,
 	            React.createElement(_Header2.default, null),
-	            React.createElement('div', { className: 'divider' }),
 	            React.createElement(_LatestUploads2.default, null),
-	            React.createElement(_WeeklyPics2.default, null),
-	            React.createElement(_TopSpecialization2.default, null),
+	            '                ',
 	            React.createElement(_About2.default, null)
 	        );
 	    }
@@ -64732,7 +64723,7 @@
 	
 				return _react2.default.createElement(
 					'div',
-					{ className: 'section', style: { paddingTop: fullscreen, paddingBottom: fullscreen } },
+					{ className: 'section valign-wrapper', style: { height: '90vh' } },
 					_react2.default.createElement(
 						'div',
 						{ className: 'container' },
@@ -65331,58 +65322,77 @@
 	    render: function render() {
 	        return _react2.default.createElement(
 	            'div',
-	            { className: 'container' },
+	            { className: 'section scrollspy', id: 'LatestUploads', style: { height: '90vh' } },
 	            _react2.default.createElement(
 	                'div',
-	                { className: 'row' },
+	                { className: 'container' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'col s12' },
-	                    _react2.default.createElement(
-	                        'h5',
-	                        { style: { fontFamily: "Source Sans Pro" } },
-	                        'LATEST UPLOADS'
-	                    ),
+	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'slider scrollspy', id: 'LatestUploads' },
+	                        { className: 'col s12' },
 	                        _react2.default.createElement(
-	                            'ul',
-	                            { className: 'slides' },
+	                            'div',
+	                            { className: 'slider', id: 'latestSliders' },
 	                            _react2.default.createElement(
-	                                'li',
-	                                null,
-	                                _react2.default.createElement('img', { src: 'img/medic-hospital-laboratory-medical-40559.gif', style: { opacity: '0.5' } }),
+	                                'ul',
+	                                { className: 'slides', style: { backgroundColor: '#FFF', height: '90vh' } },
 	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'caption center-align' },
+	                                    'li',
+	                                    null,
 	                                    _react2.default.createElement(
 	                                        'div',
-	                                        null,
-	                                        _react2.default.createElement(
-	                                            'h5',
-	                                            { style: { fontFamily: 'Oxygen' } },
-	                                            'NANO-TECHNOLOGY IN DENTAL INDUSTRY'
-	                                        ),
-	                                        _react2.default.createElement(
-	                                            'strong',
-	                                            { style: { fontFamily: 'Source Sans Pro' } },
-	                                            'Lecture of Dr. Kim Fajardo'
-	                                        ),
+	                                        { className: 'col l6' },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { style: { fontFamily: 'Source Sans Pro', marginTop: '20px' } },
-	                                            'I will lift up my eyes to the hills. Where does my help come from? My help comes from Yahweh, who made heaven and earth.'
+	                                            { className: 'row' },
+	                                            _react2.default.createElement(
+	                                                'h3',
+	                                                { style: { fontFamily: "Source Sans Pro" } },
+	                                                'LATEST UPLOADS'
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'strong',
+	                                                { style: { fontFamily: 'Oxygen' } },
+	                                                'NANO-TECHNOLOGY IN DENTAL INDUSTRY'
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement('hr', null),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'row' },
+	                                            _react2.default.createElement(
+	                                                'h5',
+	                                                null,
+	                                                _react2.default.createElement(
+	                                                    'strong',
+	                                                    null,
+	                                                    'TEMPORIZATION:'
+	                                                ),
+	                                                ' THE ROAD TO FINAL RESTORATION'
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'strong',
+	                                                { style: { fontFamily: 'Source Sans Pro' } },
+	                                                'Lecture of Dr. Kim Fajardo'
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'p',
+	                                                { className: 'webinarDescription' },
+	                                                'The current trent of the dental profession is geared towards esthetics and beauty.'
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                _reactRouter.Link,
+	                                                { style: { fontFamily: 'Oxygen', fontWeight: 'bold' }, to: '/courses', id: 'download-button', className: 'btn waves-effect waves-light indigo darken-3' },
+	                                                'VIEW COURSE'
+	                                            )
 	                                        )
 	                                    ),
 	                                    _react2.default.createElement(
 	                                        'div',
-	                                        { className: 'section', style: { paddingTop: '20px' } },
-	                                        _react2.default.createElement(
-	                                            _reactRouter.Link,
-	                                            { style: { fontFamily: 'Oxygen', fontWeight: 'bold' }, to: '/courses', id: 'download-button', className: 'btn waves-effect waves-light indigo darken-3' },
-	                                            'VIEW COURSE'
-	                                        )
+	                                        { className: 'col l6' },
+	                                        _react2.default.createElement('img', { className: 'responsive-img', src: 'img/Courses/pajards.png', style: { filter: 'hue-rotate(200deg)' } })
 	                                    )
 	                                )
 	                            )
@@ -66281,7 +66291,7 @@
 	                                _react2.default.createElement(
 	                                    'p',
 	                                    { style: { fontFamily: 'Source Sans Pro' } },
-	                                    'Dental Access Webinar is an upstart technology platform that aims to deliver continuing dental education for all dentists that is easily accessible through the world-wide web. It provides an alternative venue where Dentists would interact with each other and share basic and advanced knowledge in their field of specializations'
+	                                    'Dental Access Webinar is committed to provide the highest standards of education in the Dental profession with the noble intention of helping address human problems through introduction of the latest technologies, keeping in par with global standards, thereby helping people live better lives.'
 	                                ),
 	                                _react2.default.createElement(
 	                                    'div',

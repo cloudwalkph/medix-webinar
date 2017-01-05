@@ -19,8 +19,7 @@ export default class About extends Component {
                             </div>
                             <div className="col s12 m6">
                                 <p style={{fontFamily: 'Source Sans Pro'}}>
-                                    Dental Access Webinar is an upstart technology platform that aims to deliver continuing dental education for all dentists that is easily accessible through the world-wide web. It provides an 
-                                    alternative venue where Dentists would interact with each other and share basic and advanced knowledge in their field of specializations
+                                    Dental Access Webinar is committed to provide the highest standards of education in the Dental profession with the noble intention of helping address human problems through introduction of the latest technologies, keeping in par with global standards, thereby helping people live better lives.
                                 </p>
                                 <div className="section">
                                     <Link style={{fontFamily: 'Oxygen', fontWeight: 'bold'}} to="/aboutUs" className="btn waves-effect waves-light indigo darken-3">READ MORE</Link>
