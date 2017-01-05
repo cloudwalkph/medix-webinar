@@ -65351,11 +65351,6 @@
 	                                                'h3',
 	                                                { style: { fontFamily: "Source Sans Pro" } },
 	                                                'LATEST UPLOADS'
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                'strong',
-	                                                { style: { fontFamily: 'Oxygen' } },
-	                                                'NANO-TECHNOLOGY IN DENTAL INDUSTRY'
 	                                            )
 	                                        ),
 	                                        _react2.default.createElement('hr', null),
@@ -65380,7 +65375,7 @@
 	                                            _react2.default.createElement(
 	                                                'p',
 	                                                { className: 'webinarDescription' },
-	                                                'The current trent of the dental profession is geared towards esthetics and beauty.'
+	                                                'The current trend of the dental profession is geared towards esthetics and beauty.'
 	                                            ),
 	                                            _react2.default.createElement(
 	                                                _reactRouter.Link,
@@ -65392,7 +65387,7 @@
 	                                    _react2.default.createElement(
 	                                        'div',
 	                                        { className: 'col l6' },
-	                                        _react2.default.createElement('img', { className: 'responsive-img', src: 'img/Courses/pajards.png', style: { filter: 'hue-rotate(200deg)' } })
+	                                        _react2.default.createElement('img', { className: 'responsive-img', src: 'img/Courses/pajards.png' })
 	                                    )
 	                                )
 	                            )

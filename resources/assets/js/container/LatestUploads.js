@@ -19,7 +19,7 @@ var LatestUploads = React.createClass({
                                         <div className="col l6">
                                             <div className="row">
                                                 <h3 style={{fontFamily: "Source Sans Pro"}}>LATEST UPLOADS</h3>
-                                                <strong style={{fontFamily: 'Oxygen'}}>NANO-TECHNOLOGY IN DENTAL INDUSTRY</strong>
+                                                
                                             </div>
                                             <hr/>
                                             <div className="row">
@@ -28,13 +28,13 @@ var LatestUploads = React.createClass({
                                                 </h5>
                                                 <strong style={{fontFamily: 'Source Sans Pro'}}>Lecture of Dr. Kim Fajardo</strong>
                                                 <p className="webinarDescription">
-                                                    The current trent of the dental profession is geared towards esthetics and beauty.
+                                                    The current trend of the dental profession is geared towards esthetics and beauty.
                                                 </p>
                                                 <Link style={{fontFamily: 'Oxygen', fontWeight: 'bold'}} to="/courses" id="download-button" className="btn waves-effect waves-light indigo darken-3">VIEW COURSE</Link>
                                             </div>
                                         </div>
                                         <div className="col l6">
-                                            <img className="responsive-img" src="img/Courses/pajards.png" style={{filter: 'hue-rotate(200deg)'}} />
+                                            <img className="responsive-img" src="img/Courses/pajards.png" />
                                         </div>
                                     </li>
                                 </ul>
