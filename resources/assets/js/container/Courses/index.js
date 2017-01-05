@@ -6,6 +6,7 @@ import Divider from 'material-ui/Divider';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
+
 export default class Courses extends Component {
 	
 	state = {
@@ -32,7 +33,7 @@ export default class Courses extends Component {
 				position : 'relative'
 			},
 			profileContent : {
-				fontSize: '25px'
+				fontSize: '24px'
 			}
 		}
 	}
@@ -48,46 +49,32 @@ export default class Courses extends Component {
 		return (
 			<div>
 
-                <div className="row">
-                    <div className="col m8">
-                    	<video id="my-video" className="video-js" controls preload="auto" width="876" height="380" data-setup="{}">
-						    <source src="rtmp://54.249.112.76/live/test" type='rtmp/mp4' />
-						    <p className="vjs-no-js">
-						      To view this video please enable JavaScript, and consider upgrading to a web browser that
-						      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-						    </p>
-						  </video>
-                        {/*<div className="">
-                            <div className="parallax-container">
-                                <div className="parallax">
-                                	
-                                	 
-                                </div>
-                            </div>
-                        </div>*/}
+                <div className="row valign-wrapper">
+                    <div className="col l5">
+	                    <div className="row">
+	                        <img className="responsive-img" src="img/Courses/pajards.png" />
+                        </div>
                     </div>
-                    <div className="col m4">
-                        <h4>
-                            ACCELERATED ALIGNER THERAPY
-                        </h4>
-                        <p style={{lineHeight : '1.4rem'}}>
-                            Yahweh Reigns! Let the people tremble. He sits enthroned among the cherubim. Let the earth be moved. 
-                            Yahweh is great in Zion. He is high above all the peoples. Let them praise your great and awesome name. 
-                            He is Holy! The King's strength also loves justice. You do establish equity.
-                        </p>
-                        <h5>
-                            COURSE DETAILS
-                        </h5>
-                        <div>
-                            3 Courses
-                        </div>
-                        <div>
-                            20 Articles
-                        </div>
-                        <div>
-                            8 Videos
-                        </div>
-                        
+                    <div className="col l6 offset-l1">
+	                    <div className="row">
+	                    	<div className="col l7">
+	                    		<h4>
+		                        	<strong>TEMPORIZATION:</strong> THE ROAD TO FINAL RESTORATION
+		                        </h4>
+		                        <p className="webinarDescription">
+		                            The current trent of the dental profession is geared towards esthetics and beauty. All patients want a beautiful and pleasant smile. 
+		                            Practitioners all agree that Temporization is one basic and essential procedure that ensures optimal esthetics for our fixed
+		                            restorative cases.
+		                        </p>
+		                        <h6 style={{color: '#4444ff'}}>LEARNING OBJECTIVES:</h6>
+		                        <p className="webinarDescription">
+		                            Review the basic fundamentals of Temporization <br/>
+		                            Revisit the classic techniques<br/>
+		                            Introduce new innovations to create an easy work
+		                            flow to the clinician and the patient.
+		                        </p>
+	                    	</div>
+	                    </div>
                     </div>
                     
                 </div>
@@ -123,9 +110,9 @@ export default class Courses extends Component {
 	                            <div id="introduction" className="section scrollspy">
 	                            	<div className="section">
 	                            		<div style={this.state.styles.profileDiv}>
-	                            			<img src="img/pexels-photo.jpg" style={this.state.styles.imgProfile}/>
+	                            			<img src="img/Courses/pajards.png" style={this.state.styles.imgProfile}/>
 	                            			<div style={this.state.styles.profileContent}>
-	                            				<strong>Professor:</strong> Chapin Aaron Harris
+	                            				<strong>Professor:</strong><span className="webinarDescription"> Dr. Kimberly Ray R. Fajardo</span>
 	                            			</div>
 	                            		</div>
 	                            	</div>
@@ -134,29 +121,23 @@ export default class Courses extends Component {
 	                            </div>
 
 	                            <div className="section">
-	                            	<h5>Course 1 : <span className="grey-text">Introduction to Aligner Therapy</span></h5>
-	                            	<p className="grey-text">
-	                            		Visit me with your salvation, that i may see the prosperity of your chosen, that i may rejoice
-	                            		in the gladness of your nation, that i may glory with your inheritance.
-	                            	</p>
+	                            	<h5>Title : <span className="grey-text">Temporization: The Road to Final Restoration</span></h5>
 	                            </div>
 
 	                            <div className="section">
-	                                <h5>Course 2 : <span className="grey-text">Basic Aligner Therapy</span></h5>
-	                                <p className="grey-text">
-	                                	We have sinned with our fathers. We have committed iniquity. We have done wickedly. Our fathers
-	                                	didn't understand your wonders in Egypt
-	                                </p>
+	                                <h5>Time : <span className="grey-text">8:00 pm - 9:00 pm (Sunday)</span></h5>
 	                            </div>
 
 	                            <div className="section">
-	                                <h5>Course 3 : <span className="grey-text">Accelerated Aligner Therapy</span></h5>
-	                                <p className="grey-text">
-	                                	They didn't remember the multitude of your loving kindnesses, but were rebellious at the sea,
-	                                	even at the Red sea. Nevertheless he saved them for his name's sake, that he might make his
-	                                	mighty power known. He rebuked the Red Sea also, and it was dried up;so he led them through 
-	                                	the depths, as through a desert.
-	                                </p>
+	                                <h5>Duration : <span className="grey-text">1 Hour</span></h5>
+	                            </div>
+
+	                            <div className="section">
+	                                <h5>Language : <span className="grey-text">English</span></h5>
+	                            </div>
+
+	                            <div className="section">
+	                                <h5>Price : <span className="grey-text">Free</span></h5>
 	                            </div>
 
 	                            <div className="section"><div className="divider"></div></div>

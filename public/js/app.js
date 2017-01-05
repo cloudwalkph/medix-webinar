@@ -66402,7 +66402,7 @@
 						position: 'relative'
 					},
 					profileContent: {
-						fontSize: '25px'
+						fontSize: '24px'
 					}
 				}
 			}, _temp), _possibleConstructorReturn(_this, _ret);
@@ -66424,58 +66424,55 @@
 					null,
 					_react2.default.createElement(
 						'div',
-						{ className: 'row' },
+						{ className: 'row valign-wrapper' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'col m8' },
+							{ className: 'col l5' },
 							_react2.default.createElement(
-								'video',
-								{ id: 'my-video', className: 'video-js', controls: true, preload: 'auto', width: '876', height: '380', 'data-setup': '{}' },
-								_react2.default.createElement('source', { src: 'rtmp://54.249.112.76/live/test', type: 'rtmp/mp4' }),
-								_react2.default.createElement(
-									'p',
-									{ className: 'vjs-no-js' },
-									'To view this video please enable JavaScript, and consider upgrading to a web browser that',
-									_react2.default.createElement(
-										'a',
-										{ href: 'http://videojs.com/html5-video-support/', target: '_blank' },
-										'supports HTML5 video'
-									)
-								)
+								'div',
+								{ className: 'row' },
+								_react2.default.createElement('img', { className: 'responsive-img', src: 'img/Courses/pajards.png' })
 							)
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'col m4' },
-							_react2.default.createElement(
-								'h4',
-								null,
-								'ACCELERATED ALIGNER THERAPY'
-							),
-							_react2.default.createElement(
-								'p',
-								{ style: { lineHeight: '1.4rem' } },
-								'Yahweh Reigns! Let the people tremble. He sits enthroned among the cherubim. Let the earth be moved. Yahweh is great in Zion. He is high above all the peoples. Let them praise your great and awesome name. He is Holy! The King\'s strength also loves justice. You do establish equity.'
-							),
-							_react2.default.createElement(
-								'h5',
-								null,
-								'COURSE DETAILS'
-							),
+							{ className: 'col l6 offset-l1' },
 							_react2.default.createElement(
 								'div',
-								null,
-								'3 Courses'
-							),
-							_react2.default.createElement(
-								'div',
-								null,
-								'20 Articles'
-							),
-							_react2.default.createElement(
-								'div',
-								null,
-								'8 Videos'
+								{ className: 'row' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'col l7' },
+									_react2.default.createElement(
+										'h4',
+										null,
+										_react2.default.createElement(
+											'strong',
+											null,
+											'TEMPORIZATION:'
+										),
+										' THE ROAD TO FINAL RESTORATION'
+									),
+									_react2.default.createElement(
+										'p',
+										{ className: 'webinarDescription' },
+										'The current trent of the dental profession is geared towards esthetics and beauty. All patients want a beautiful and pleasant smile. Practitioners all agree that Temporization is one basic and essential procedure that ensures optimal esthetics for our fixed restorative cases.'
+									),
+									_react2.default.createElement(
+										'h6',
+										{ style: { color: '#4444ff' } },
+										'LEARNING OBJECTIVES:'
+									),
+									_react2.default.createElement(
+										'p',
+										{ className: 'webinarDescription' },
+										'Review the basic fundamentals of Temporization ',
+										_react2.default.createElement('br', null),
+										'Revisit the classic techniques',
+										_react2.default.createElement('br', null),
+										'Introduce new innovations to create an easy work flow to the clinician and the patient.'
+									)
+								)
 							)
 						)
 					),
@@ -66557,7 +66554,7 @@
 											_react2.default.createElement(
 												'div',
 												{ style: this.state.styles.profileDiv },
-												_react2.default.createElement('img', { src: 'img/pexels-photo.jpg', style: this.state.styles.imgProfile }),
+												_react2.default.createElement('img', { src: 'img/Courses/pajards.png', style: this.state.styles.imgProfile }),
 												_react2.default.createElement(
 													'div',
 													{ style: this.state.styles.profileContent },
@@ -66566,7 +66563,11 @@
 														null,
 														'Professor:'
 													),
-													' Chapin Aaron Harris'
+													_react2.default.createElement(
+														'span',
+														{ className: 'webinarDescription' },
+														' Dr. Kimberly Ray R. Fajardo'
+													)
 												)
 											)
 										),
@@ -66578,17 +66579,12 @@
 										_react2.default.createElement(
 											'h5',
 											null,
-											'Course 1 : ',
+											'Title : ',
 											_react2.default.createElement(
 												'span',
 												{ className: 'grey-text' },
-												'Introduction to Aligner Therapy'
+												'Temporization: The Road to Final Restoration'
 											)
-										),
-										_react2.default.createElement(
-											'p',
-											{ className: 'grey-text' },
-											'Visit me with your salvation, that i may see the prosperity of your chosen, that i may rejoice in the gladness of your nation, that i may glory with your inheritance.'
 										)
 									),
 									_react2.default.createElement(
@@ -66597,17 +66593,12 @@
 										_react2.default.createElement(
 											'h5',
 											null,
-											'Course 2 : ',
+											'Time : ',
 											_react2.default.createElement(
 												'span',
 												{ className: 'grey-text' },
-												'Basic Aligner Therapy'
+												'8:00 pm - 9:00 pm (Sunday)'
 											)
-										),
-										_react2.default.createElement(
-											'p',
-											{ className: 'grey-text' },
-											'We have sinned with our fathers. We have committed iniquity. We have done wickedly. Our fathers didn\'t understand your wonders in Egypt'
 										)
 									),
 									_react2.default.createElement(
@@ -66616,17 +66607,40 @@
 										_react2.default.createElement(
 											'h5',
 											null,
-											'Course 3 : ',
+											'Duration : ',
 											_react2.default.createElement(
 												'span',
 												{ className: 'grey-text' },
-												'Accelerated Aligner Therapy'
+												'1 Hour'
 											)
-										),
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'section' },
 										_react2.default.createElement(
-											'p',
-											{ className: 'grey-text' },
-											'They didn\'t remember the multitude of your loving kindnesses, but were rebellious at the sea, even at the Red sea. Nevertheless he saved them for his name\'s sake, that he might make his mighty power known. He rebuked the Red Sea also, and it was dried up;so he led them through the depths, as through a desert.'
+											'h5',
+											null,
+											'Language : ',
+											_react2.default.createElement(
+												'span',
+												{ className: 'grey-text' },
+												'English'
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'section' },
+										_react2.default.createElement(
+											'h5',
+											null,
+											'Price : ',
+											_react2.default.createElement(
+												'span',
+												{ className: 'grey-text' },
+												'Free'
+											)
 										)
 									),
 									_react2.default.createElement(
@@ -66923,7 +66937,7 @@
 					_react2.default.createElement(
 						"p",
 						null,
-						"Exalt Yahweh our God. Worship at his footstool. He is holy! Moses and Aaron were among his priest, Samuel among those who call on his name:they called on Yahweh, and he answered them. He spoke to them in the pillar of cloud. They kept his testimonies, the statute that he gave them. You answered them. Yahweh our God. You are a God who forgave them, although you took vengeance for their doings. Exalt Yahweh, our God. Worship at his holy hill, for Yahweh, Our God is Holy! Praise Yahweh Give thanks to Yahweh, for he is good, for his loving kindness endures forever. Who can utter the mighty acts of Yahweh, for he is good, for his loving kindness endures forever. Who can utter the might acts of Yahweh, or fully declare all his praise?"
+						"Dr.  Kimberly Ray R. Fajardo is an alumni of the University of the East College of Dentistry way back in 2009. He became  a professor at the same university at the department of Prosthodontics, Practice Management and Undergraduate Research. In 2013, he became a visiting scholar at the Seoul National University - Bounding Hospital.  Among his many achievements, Dr Kim as he is fondly called co-authored and published a study entitled: \"The Antimicrobial Effect of Different Xylitol Concentrations on Streptococcus mutant and Lactobacillus acidophilus count\" for the Journal of Restorative Dentistry. Today, he is an active member of officer of the Philippine Prosthodontics Society, member of the Cavite Dental Chapter and  International Association of Orthodontics - Philippine Section."
 					),
 					_react2.default.createElement(
 						"p",
