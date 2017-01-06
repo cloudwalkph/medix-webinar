@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Model
 {
@@ -34,4 +34,8 @@ class User extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    function emails() {
+        return $this->hasMany('App\Models\Email');
+    }
 }
