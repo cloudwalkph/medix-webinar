@@ -28,15 +28,44 @@ export default class Navbar extends Component {
     }
 
     handleSubmitForm = () => {
-        let url = baseUrl.apiUrl + 'user/add';
+        let url = baseUrl.apiUrl + 'user';
         let formData = $('#signUpForm').serialize();
-        console.log(formData)
+
+        if(this.formValidation() == 1)
+        {
+            axios.post(url, formData).then((res) => {
+                console.log(res);
+            }).catch((error) => {
+                console.log(error);
+            })
+        }
+
         
-        axios.post(url, formData).then((res) => {
-            console.log(res);
-        }).catch((error) => {
-            console.log(error);
-        })
+    }
+
+    formValidation = () => {
+
+        if(!$('#signUpForm')[0].first_name.value)
+        {
+            return 0;
+        }
+        
+        if(!$('#signUpForm')[0].last_name.value)
+        {
+            return 0;
+        }
+        
+        if(!$('#signUpForm')[0].email.value)
+        {
+            return 0;
+        }
+        
+        if(!$('#signUpForm')[0].gender.value)
+        {
+            return 0;
+        }
+
+        return 1;
     }
 
     handleSignUpButton = () => {
@@ -81,24 +110,24 @@ export default class Navbar extends Component {
                             
                             {
                                 pathName == '/' ?
-                            <div>
-                                <ul className="right hide-on-med-and-down">
-                                    {/*<li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>*/}
-                                    <li className={this.state.active == 'LatestUploads' ? 'active' : ''}><a href="#LatestUploads" onClick={this.handleLinkClick}>NEW COURSES</a></li>
-                                    <li className={this.state.active == 'aboutUs' ? 'active' : ''}><a href="#aboutUs" onClick={this.handleLinkClick}>ABOUT</a></li>
-                                    <li><a href="/">LOG IN</a></li>
-                                    <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>
-                                    
-                                </ul>
+                                <div>
+                                    <ul className="right hide-on-med-and-down">
+                                        {/*<li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>*/}
+                                        <li className={this.state.active == 'LatestUploads' ? 'active' : ''}><a href="#LatestUploads" onClick={this.handleLinkClick}>NEW COURSES</a></li>
+                                        <li className={this.state.active == 'aboutUs' ? 'active' : ''}><a href="#aboutUs" onClick={this.handleLinkClick}>ABOUT</a></li>
+                                        <li><a href="/">LOG IN</a></li>
+                                        <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>
+                                        
+                                    </ul>
 
-                                <ul id="nav-mobile" className="side-nav">
-                                    <li><a href="#">TOP COURSES</a></li>
-                                    <li><a href="#">NEW COURSES</a></li>
-                                    <li><a href="#">ABOUT</a></li>
-                                    <li><a href="#">LOG IN</a></li>
-                                    <li><a href="#" className="btn waves-effect waves-light indigo darken-3">SIGN UP</a></li>
-                                </ul>
-                            </div>
+                                    <ul id="nav-mobile" className="side-nav">
+                                        <li><a href="#">TOP COURSES</a></li>
+                                        <li><a href="#">NEW COURSES</a></li>
+                                        <li><a href="#">ABOUT</a></li>
+                                        <li><a href="#">LOG IN</a></li>
+                                        <li><a href="#" className="btn waves-effect waves-light indigo darken-3">SIGN UP</a></li>
+                                    </ul>
+                                </div>
                                 :
                                     null
                             }

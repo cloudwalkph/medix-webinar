@@ -34340,15 +34340,35 @@
 	                open: false
 	            });
 	        }, _this.handleSubmitForm = function () {
-	            var url = _config2.default.apiUrl + 'user/add';
+	            var url = _config2.default.apiUrl + 'user';
 	            var formData = $('#signUpForm').serialize();
-	            console.log(formData);
 	
-	            _axios2.default.post(url, formData).then(function (res) {
-	                console.log(res);
-	            }).catch(function (error) {
-	                console.log(error);
-	            });
+	            if (_this.formValidation() == 1) {
+	                _axios2.default.post(url, formData).then(function (res) {
+	                    console.log(res);
+	                }).catch(function (error) {
+	                    console.log(error);
+	                });
+	            }
+	        }, _this.formValidation = function () {
+	
+	            if (!$('#signUpForm')[0].first_name.value) {
+	                return 0;
+	            }
+	
+	            if (!$('#signUpForm')[0].last_name.value) {
+	                return 0;
+	            }
+	
+	            if (!$('#signUpForm')[0].email.value) {
+	                return 0;
+	            }
+	
+	            if (!$('#signUpForm')[0].gender.value) {
+	                return 0;
+	            }
+	
+	            return 1;
 	        }, _this.handleSignUpButton = function () {
 	            _this.setState({
 	                open: true
@@ -66670,7 +66690,7 @@
 /* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -66704,7 +66724,13 @@
 				args[_key] = arguments[_key];
 			}
 	
-			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Readmore.__proto__ || Object.getPrototypeOf(Readmore)).call.apply(_ref, [this].concat(args))), _this), _this.handleClickButton = function (e) {
+			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Readmore.__proto__ || Object.getPrototypeOf(Readmore)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+				style: {
+					button: {
+						display: 'block'
+					}
+				}
+			}, _this.handleClickButton = function (e) {
 	
 				var $el = void 0,
 				    $ps = void 0,
@@ -66715,7 +66741,7 @@
 				totalHeight = 0;
 	
 				$el = $(e.target);
-				$p = $el.parent();
+				$p = $el.parent().find('.read-more');
 				$up = $p.parent();
 				$ps = $up.find("p:not('.read-more')");
 	
@@ -66733,6 +66759,7 @@
 	
 				// fade out read-more
 				$p.fadeOut();
+				$el.fadeOut();
 	
 				// prevent jump-down
 				return false;
@@ -66740,24 +66767,25 @@
 		}
 	
 		_createClass(Readmore, [{
-			key: "render",
+			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
-					"div",
-					{ className: "sidebar-box" },
+					'div',
+					null,
 					_react2.default.createElement(
-						"p",
-						null,
-						"Dr.  Kimberly Ray R. Fajardo is an alumni of the University of the East College of Dentistry way back in 2009. He became  a professor at the same university at the department of Prosthodontics, Practice Management and Undergraduate Research. In 2013, he became a visiting scholar at the Seoul National University - Bounding Hospital.  Among his many achievements, Dr Kim as he is fondly called co-authored and published a study entitled: \"The Antimicrobial Effect of Different Xylitol Concentrations on Streptococcus mutant and Lactobacillus acidophilus count\" for the Journal of Restorative Dentistry. Today, he is an active member of officer of the Philippine Prosthodontics Society, member of the Cavite Dental Chapter and  International Association of Orthodontics - Philippine Section."
+						'div',
+						{ className: 'sidebar-box' },
+						_react2.default.createElement(
+							'p',
+							null,
+							'Dr.  Kimberly Ray R. Fajardo is an alumni of the University of the East College of Dentistry way back in 2009. He became  a professor at the same university at the department of Prosthodontics, Practice Management and Undergraduate Research. In 2013, he became a visiting scholar at the Seoul National University - Bounding Hospital.  Among his many achievements, Dr Kim as he is fondly called co-authored and published a study entitled: "The Antimicrobial Effect of Different Xylitol Concentrations on Streptococcus mutant and Lactobacillus acidophilus count" for the Journal of Restorative Dentistry. Today, he is an active member of officer of the Philippine Prosthodontics Society, member of the Cavite Dental Chapter and  International Association of Orthodontics - Philippine Section.'
+						),
+						_react2.default.createElement('p', { className: 'read-more' })
 					),
 					_react2.default.createElement(
-						"p",
-						{ className: "read-more" },
-						_react2.default.createElement(
-							"a",
-							{ href: "javascript:void(0)", className: "btn-flat waves-effect waves-teal", onClick: this.handleClickButton },
-							"Read More"
-						)
+						'a',
+						{ href: 'javascript:void(0)', className: 'btn-flat waves-effect waves-teal center-align', onClick: this.handleClickButton, style: this.state.style.button },
+						'Read More'
 					)
 				);
 			}
