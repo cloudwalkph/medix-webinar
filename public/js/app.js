@@ -63065,7 +63065,7 @@
 	
 	module.exports = {
 	  env: 'local',
-	  apiUrl: 'http://medix-webinar.dev/'
+	  apiUrl: 'http://medix-webinar.dev/api/'
 	};
 
 /***/ },
