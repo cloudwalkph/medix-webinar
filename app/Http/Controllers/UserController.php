@@ -9,6 +9,9 @@ use App\Http\Requests;
 use App\Models\User;
 use App\Models\Email;
 
+use Hash;
+use Mail;
+
 class UserController extends Controller
 {
     /**
@@ -46,26 +49,31 @@ class UserController extends Controller
         $password = $request->input('password');
 
         try {
-            $user = User::create(
-                [
+            $user = [
                     'first_name' => $first_name, 
                     'last_name' => $last_name,
                     'gender' => $gender,
                     'birthdate' => $birthdate,
-                    'password' => $password
-                ]
-            );
+                    'password' => Hash::make($password)
+            ];
+            $user_id = User::insert($user);
 
-            $email = $request->input('email');
+            $email = [
+                'user_id' => $user_id,
+                'email' => $request->input('email')
+            ];
+            Email::insert($email);
 
-            $result = Email::create([
-                'user_id' => $user->id,
-                'email' => $email
-            ]);
+            /* Send Email */
+            Mail::send('emails.reminder', ['user' => $user, 'email' => $email ], function($m) use ($user, $email) {
+                $m->from('info@medix.ph', 'Webinar Application');
 
-            return User::with('emails')->where('id', $user->id)->first();
+                $m->to($email['email'], $user['first_name'] . ' ' . $user['last_name'])->subject('Webinar Confirmation');
+            });
+
+            return User::with('emails')->where('id', $user_id)->first();
         } catch(\Exception $e) {
-            return response()->json(['error' => 'email exists'],400);
+            return response()->json(['error' => $e->getMessage()],400);
         }
 
     }

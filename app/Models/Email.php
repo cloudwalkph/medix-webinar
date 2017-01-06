@@ -9,6 +9,8 @@ class Email extends Model
 {
     use SoftDeletes;
 
+    protected $guarded = ['id'];
+
     function user() {
         return $this->belongsTo('App\Models\User');
     }
