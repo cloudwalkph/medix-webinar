@@ -209,7 +209,7 @@ export default class Courses extends Component {
                         </div>
                         
                     </div>
-                    <div className="row">
+                    {/*<div className="row">
                     	<div className="container">
                     		<div className="section">
                     			<h4>RELATED COURSES</h4>
@@ -250,7 +250,7 @@ export default class Courses extends Component {
 	                    		</div>
                     		</div>
                     	</div>
-                    </div>
+                    </div>*/}
 
                 </div>
 
