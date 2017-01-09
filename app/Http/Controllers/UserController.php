@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Jobs\SendRegistrationEmail;
+
 use App\Models\User;
 use App\Models\Email;
 
@@ -21,7 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::get();
+        return User::with('emails')->get();
     }
 
     /**
@@ -42,40 +44,54 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $first_name = $request->input('first_name');
-        $last_name = $request->input('last_name');
-        $gender = $request->input('gender');
-        $birthdate = $request->input('birthdate');
-        $password = $request->input('password');
+        $email = $request->input('email');
 
-        try {
-            $user = [
-                    'first_name' => $first_name, 
-                    'last_name' => $last_name,
-                    'gender' => $gender,
-                    'birthdate' => $birthdate,
-                    'password' => Hash::make($password)
-            ];
-            $user_id = User::insert($user);
+        $user_email = Email::where('email', $email)->get();
 
-            $email = [
-                'user_id' => $user_id,
-                'email' => $request->input('email')
-            ];
-            Email::insert($email);
+        if($user_email->count() == 0) {
+            $first_name = $request->input('first_name');
+            $last_name = $request->input('last_name');
+            $gender = $request->input('gender');
+            $birthdate = $request->input('birthdate');
+            $password = $request->input('password');
 
-            /* Send Email */
-            Mail::send('emails.reminder', ['user' => $user, 'email' => $email ], function($m) use ($user, $email) {
-                $m->from('info@medix.ph', 'Webinar Application');
+            
+                /* insert to users table */
+                $created_user = User::create([
+                        'first_name' => $first_name, 
+                        'last_name' => $last_name,
+                        'gender' => $gender,
+                        'birthdate' => $birthdate,
+                        'password' => Hash::make($password)
+                ]);
 
-                $m->to($email['email'], $user['first_name'] . ' ' . $user['last_name'])->subject('Webinar Confirmation');
-            });
+                /* insert to emails table */
+                $created_email = Email::create([
+                    'user_id' => $created_user->id,
+                    'email' => $email
+                ]);
 
-            return User::with('emails')->where('id', $user_id)->first();
-        } catch(\Exception $e) {
-            return response()->json(['error' => $e->getMessage()],400);
+                if($created_email->id) {
+                    $email_user = Email::with('user')->where('id', $created_email->id)->first();
+
+                    Mail::queue('emails.reminder', ['email_user' => $email_user], function($m) use ($email_user) {
+                        $m->from('info@medix.ph', 'Webinar Application');
+
+                        $m->to($email_user->email, $email_user->user->first_name . ' ' . $email_user->user->last_name)->subject('Webinar Confirmation');
+                        $response['message'] = $m->getSwiftMessage();
+                    });
+
+                    
+                    $response['data'] = $email_user;
+                    $code = 200;
+                }
+            
+        } else {
+            $response = ['error' => 'email already exists'];
+            $code = 400;
         }
 
+        return response()->json($response, $code);
     }
 
     /**
@@ -86,7 +102,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return User::findOrFail($id);
+        return User::with('emails')->findOrFail($id);
     }
 
     /**
