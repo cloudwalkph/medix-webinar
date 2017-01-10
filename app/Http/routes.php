@@ -16,11 +16,20 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'api'], function () {
+    header('Access-Control-Allow-Origin: *');
+
     Route::get('/', function() {
         return view('api/documentation');
     });
 
     Route::resource('user', 'UserController');
+
+    Route::post('login', 'LoginController@index');
+
+    Route::resource('course', 'CourseController');
+
+    Route::post('enroll', 'EnrollCourseController@index');
+
 });
 
 Route::get('/{page}', function () {
