@@ -9,7 +9,7 @@ var LatestUploads = React.createClass({
 
     render() {
         return(
-            <div className="section scrollspy" id="LatestUploads" style={{height : '90vh'}}>
+            <div className="section scrollspy" id="LatestUploads">
                 <div className="container" >
                     <div className="row">
                         <div className="col s12">

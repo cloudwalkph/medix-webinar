@@ -3,13 +3,20 @@ import { Link } from 'react-router';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import SignUp from './SignUp';
+import Login from './Login';
 import baseUrl from '../config';
 import axios from 'axios';
 
 export default class Navbar extends Component {
     state = {
         active : '',
-        open : false
+        open : false,
+        openLogin : false,
+        disableButton : false,
+        style : {
+            logo : {width : '100%'},
+            smallModal : {width : '50%'}
+        }
     }
 
     handleLinkClick = (e) => {
@@ -23,24 +30,64 @@ export default class Navbar extends Component {
 
     handleClose = () => {
         this.setState({
-            open : false
+            open : false,
+            openLogin : false
         });
     }
 
-    handleSubmitForm = () => {
+    handleSubmitForm = (e) => {
+
         let url = baseUrl.apiUrl + 'user';
         let formData = $('#signUpForm').serialize();
-
+        this.setState({
+            disableButton : true
+        });
         if(this.formValidation() == 1)
         {
             axios.post(url, formData).then((res) => {
-                console.log(res);
+                this.setState({
+                    disableButton : false,
+                    open : false
+                });
             }).catch((error) => {
-                console.log(error);
+                this.setState({
+                    disableButton : false
+                });
             })
         }
 
         
+    }
+
+    handleLoginForm = (e) => {
+        let url = baseUrl.apiUrl + 'login';
+        let formData = $('#loginForm');
+        if(this.loginValidation(formData) == 1)
+        {
+            let data = formData.serialize();
+            axios.post(url, data).then((res) => {
+                this.setState({
+                    disableButton : false,
+                    openLogin : false
+                });
+            }).catch((error) => {
+                this.setState({
+                    disableButton : false
+                });
+            })
+        }
+    }
+
+    loginValidation = (form) => {
+        if(form[0].email.value)
+        {
+            return 0;
+        }
+        if(form[0].password.value)
+        {
+            return 0;
+        }
+        return 1;
     }
 
     formValidation = () => {
@@ -68,14 +115,22 @@ export default class Navbar extends Component {
         return 1;
     }
 
-    handleSignUpButton = () => {
+    handleSignUpButton = (e) => {
         this.setState({
             open : true
         })
     }
 
+    handleLogin = (e) => {
+        this.setState({
+            openLogin : true
+        })
+    }
+
     componentDidMount() {
-        $('.button-collapse').sideNav();
+        $('.button-collapse').sideNav({
+            closeOnClick: true
+        });
         $('.scrollspy').scrollSpy({
             offset : 0
         });
@@ -94,9 +149,24 @@ export default class Navbar extends Component {
                 label="Submit"
                 primary={true}
                 keyboardFocused={true}
+                disabled={this.state.disableButton}
                 onTouchTap={this.handleSubmitForm}
             />
-      ]
+        ];
+        let loginActions = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onTouchTap={this.handleClose}
+            />,
+            <FlatButton
+                label="Login"
+                primary={true}
+                keyboardFocused={true}
+                disabled={this.state.disableButton}
+                onTouchTap={this.handleLoginForm}
+            />
+        ];
 
         return(
             <div>
@@ -105,7 +175,7 @@ export default class Navbar extends Component {
                         <div className="container">
                             <div className="nav-wrapper" style={{fontFamily: 'Oxygen', fontWeight: 'bold'}}>
                             <Link to="/" id="logo-container" className="brand-logo">
-                                <img src="img/logo.png" />
+                                <img src="img/logo.png" style={this.state.style.logo} />
                             </Link>
                             
                             {
@@ -115,28 +185,26 @@ export default class Navbar extends Component {
                                         {/*<li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>*/}
                                         <li className={this.state.active == 'LatestUploads' ? 'active' : ''}><a href="#LatestUploads" onClick={this.handleLinkClick}>NEW COURSES</a></li>
                                         <li className={this.state.active == 'aboutUs' ? 'active' : ''}><a href="#aboutUs" onClick={this.handleLinkClick}>ABOUT</a></li>
-                                        <li><a href="/">LOG IN</a></li>
+                                        <li><a href="#" onClick={this.handleLogin}>LOG IN</a></li>
                                         <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>
                                         
-                                    </ul>
-
-                                    <ul id="nav-mobile" className="side-nav">
-                                        <li><a href="#">TOP COURSES</a></li>
-                                        <li><a href="#">NEW COURSES</a></li>
-                                        <li><a href="#">ABOUT</a></li>
-                                        <li><a href="#">LOG IN</a></li>
-                                        <li><a href="#" className="btn waves-effect waves-light indigo darken-3">SIGN UP</a></li>
                                     </ul>
                                 </div>
                                 :
                                     null
                             }
-                            <a href="#" data-activates="nav-mobile" className="button-collapse"><i className="material-icons">menu</i></a>
+                            <a href="#" data-activates="nav-mobile" className="button-collapse"><i className="material-icons black-text">menu</i></a>
                             </div>
                         </div>
                     </nav>
                 </div>
-
+                <ul id="nav-mobile" className="side-nav">
+                    <li><a href="#">TOP COURSES</a></li>
+                    <li><a href="#LatestUploads">NEW COURSES</a></li>
+                    <li><a href="#aboutUs">ABOUT</a></li>
+                    <li><a href="#">LOG IN</a></li>
+                    <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>
+                </ul>
                 <Dialog
                     title="Sign up"
                     actions={actions}
@@ -145,6 +213,18 @@ export default class Navbar extends Component {
                     autoScrollBodyContent={true}
                 >
                     <SignUp/>
+
+                </Dialog>
+
+                <Dialog
+                    title="Login"
+                    actions={loginActions}
+                    modal={false}
+                    open={this.state.openLogin}
+                    autoScrollBodyContent={true}
+
+                >
+                    <Login/>
 
                 </Dialog>
 
