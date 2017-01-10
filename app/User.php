@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Model
 {
-
+    //
     use SoftDeletes;
 
     /**
@@ -20,13 +20,6 @@ class User extends Model
     ];
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
-
-    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
@@ -35,7 +28,13 @@ class User extends Model
         'password', 'remember_token',
     ];
 
-    function emails() {
-        return $this->hasMany('App\Models\Email');
+    function emails()
+    {
+        return $this->hasMany('App\Email');
+    }
+
+    function courses()
+    {
+        return $this->belongsToMany('App\Course');
     }
 }

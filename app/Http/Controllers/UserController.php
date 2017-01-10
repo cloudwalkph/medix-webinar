@@ -8,8 +8,8 @@ use App\Http\Requests;
 
 use App\Jobs\SendRegistrationEmail;
 
-use App\Models\User;
-use App\Models\Email;
+use App\User;
+use App\Email;
 
 use Hash;
 use Mail;
@@ -23,7 +23,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::with('emails')->get();
+        return User::with('emails', 'courses')
+            ->get();
     }
 
     /**
@@ -46,7 +47,7 @@ class UserController extends Controller
     {
         $email = $request->input('email');
 
-        $user_email = Email::where('email', $email)->get();
+        $user_email = Email::where('email', $email);
 
         if($user_email->count() == 0) {
             $first_name = $request->input('first_name');
@@ -102,7 +103,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return User::with('emails')->findOrFail($id);
+        return User::with('emails', 'courses')->findOrFail($id);
     }
 
     /**
