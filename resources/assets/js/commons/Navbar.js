@@ -62,6 +62,10 @@ export default class Navbar extends Component {
     handleLoginForm = (e) => {
         let url = baseUrl.apiUrl + 'login';
         let formData = $('#loginForm');
+
+        this.setState({
+            disableButton : true
+        });
         if(this.loginValidation(formData) == 1)
         {
             let data = formData.serialize();
@@ -69,8 +73,11 @@ export default class Navbar extends Component {
                 this.setState({
                     disableButton : false,
                     openLogin : false
+                },() => {
+                    this.getSession(res.data);
                 });
             }).catch((error) => {
+                console.log(error);
                 this.setState({
                     disableButton : false
                 });
@@ -78,12 +85,16 @@ export default class Navbar extends Component {
         }
     }
 
+    getSession = (data) => {
+        sessionStorage.setItem('access',JSON.stringify(data));
+    }
+
     loginValidation = (form) => {
-        if(form[0].email.value)
+        if(!form[0].username.value)
         {
             return 0;
         }
-        if(form[0].password.value)
+        if(!form[0].password.value)
         {
             return 0;
         }
@@ -175,7 +186,7 @@ export default class Navbar extends Component {
                         <div className="container">
                             <div className="nav-wrapper" style={{fontFamily: 'Oxygen', fontWeight: 'bold'}}>
                             <Link to="/" id="logo-container" className="brand-logo">
-                                <img src="img/logo.png" style={this.state.style.logo} />
+                                <img src={window.location.origin + '/img/logo.png'} style={this.state.style.logo} />
                             </Link>
                             
                             {

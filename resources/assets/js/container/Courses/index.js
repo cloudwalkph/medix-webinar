@@ -5,11 +5,14 @@ import Avatar from 'material-ui/Avatar';
 import Divider from 'material-ui/Divider';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import baseUrl from '../../config';
+import axios from 'axios';
 
 
 export default class Courses extends Component {
 	
 	state = {
+		data : [],
 		styles : {
 			linkList : {
 				padding : '20px 0'
@@ -38,21 +41,56 @@ export default class Courses extends Component {
 		}
 	}
 
+	getApiCourses = () => {
+		let user = JSON.parse(sessionStorage.getItem('access'));
+		
+		let url = baseUrl.apiUrl + 'user/' + user.data.user.id;
+		
+		axios.get(url).then((res) => {
+            this.setState({
+            	data : res.data
+            })
+        }).catch((error) => {
+            
+        });
+	}
+
 	componentDidMount () {
         $('.parallax').parallax();
         $('.scrollspy').scrollSpy();
 
         $('body').scrollTop(0);
+
+        this.getApiCourses();
     }
 
 	render() {
+		let courses = this.state.data.courses;
+		let startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3">Enroll Now</button>;
+		let hasCourse = false;
+		
+		if(courses)
+		{
+			for (var i = 0; i < courses.length; i++) {
+			    if(courses[i].id == this.props.params.courseId)
+			    {
+			    	hasCourse = true;
+			    }
+			}	
+		}
+
+		if(hasCourse)
+		{
+			startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3">Start</button>;
+		}
+		
 		return (
 			<div>
 
                 <div className="row valign-wrapper">
                     <div className="col l5">
 	                    <div className="row">
-	                        <img className="responsive-img" src="img/Courses/pajards.png" />
+	                        <img className="responsive-img" src={window.location.origin + '/img/Courses/pajards.png'} />
                         </div>
                     </div>
                     <div className="col l6 offset-l1">
@@ -97,7 +135,7 @@ export default class Courses extends Component {
 	                                </li>
 	                                <li style={this.state.styles.linkList}>
 	                                	<div className='section'>
-	                                    	<button className="btn waves-effect waves-light indigo darken-3">Enroll Now</button>
+	                                    	{startEnrollButton}
 	                                    </div>
 	                                    <div className="grey-text">
 	                                        This course requires at least 2 hours per session. 
@@ -111,7 +149,7 @@ export default class Courses extends Component {
 	                            <div id="introduction" className="section scrollspy">
 	                            	<div className="section">
 	                            		<div style={this.state.styles.profileDiv}>
-	                            			<img src="img/Courses/pajards.png" style={this.state.styles.imgProfile}/>
+	                            			<img src={window.location.origin + '/img/Courses/pajards.png'} style={this.state.styles.imgProfile}/>
 	                            			<div style={this.state.styles.profileContent}>
 	                            				<strong>Professor:</strong><span className="webinarDescription"> Dr. Kimberly Ray R. Fajardo</span>
 	                            			</div>

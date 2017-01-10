@@ -30,11 +30,11 @@ var LatestUploads = React.createClass({
                                                 <p className="webinarDescription">
                                                     The current trend of the dental profession is geared towards esthetics and beauty.
                                                 </p>
-                                                <Link style={{fontFamily: 'Oxygen', fontWeight: 'bold'}} to="/courses" id="download-button" className="btn waves-effect waves-light indigo darken-3">VIEW COURSE</Link>
+                                                <Link style={{fontFamily: 'Oxygen', fontWeight: 'bold'}} to="/courses/1" id="download-button" className="btn waves-effect waves-light indigo darken-3">VIEW COURSE</Link>
                                             </div>
                                         </div>
                                         <div className="col l6">
-                                            <img className="responsive-img" src="img/Courses/pajards.png" />
+                                            <img className="responsive-img" src={window.location.origin + '/img/Courses/pajards.png'} />
                                         </div>
                                     </li>
                                 </ul>

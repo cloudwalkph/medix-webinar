@@ -7,14 +7,14 @@ import AboutUs from './container/AboutUs';
 import Courses from './container/Courses';
 
 export default (
-	<Route path={path.join(location.pathname + '/')}>
+	<Route path={'/'}>
 		<IndexRoute component={Main} />
 
 		<Route path="/aboutUs" component={index}>
 			<IndexRoute component={AboutUs} />
 			
 		</Route>
-		<Route path="/courses" component={index}>
+		<Route path="/courses/:courseId" component={index}>
 			<IndexRoute component={Courses}/>
 		</Route>
 	</Route>
