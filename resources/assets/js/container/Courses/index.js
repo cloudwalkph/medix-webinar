@@ -62,16 +62,17 @@ export default class Courses extends Component {
 		                        	<strong>TEMPORIZATION:</strong> THE ROAD TO FINAL RESTORATION
 		                        </h4>
 		                        <p className="webinarDescription">
-		                            The current trent of the dental profession is geared towards esthetics and beauty. All patients want a beautiful and pleasant smile. 
+		                            The current trend of the dental profession is geared towards esthetics and beauty. All patients want a beautiful and pleasant smile. 
 		                            Practitioners all agree that Temporization is one basic and essential procedure that ensures optimal esthetics for our fixed
 		                            restorative cases.
 		                        </p>
 		                        <h6 style={{color: '#4444ff'}}>LEARNING OBJECTIVES:</h6>
 		                        <p className="webinarDescription">
-		                            Review the basic fundamentals of Temporization <br/>
-		                            Revisit the classic techniques<br/>
-		                            Introduce new innovations to create an easy work
-		                            flow to the clinician and the patient.
+									<ul className="browser-default">
+										<li>Review the basic fundamentals of Temporization.</li>
+		                            	<li>Revisit the classic techniques.</li>
+		                            	<li>Introduce new innovations to create an easy work flow to the clinician and the patient.</li>
+									</ul>
 		                        </p>
 	                    	</div>
 	                    </div>
