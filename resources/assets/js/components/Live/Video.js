@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class Video extends Component {
 
 	render() {
+
 		return(
 			<video id="my-video" className="video-js" controls preload="auto" height="500" data-setup="{}" style={{width : '100%',height : '500px'}}>
 				<source src="rtmp://54.238.155.160/live/test" type='rtmp/mp4' />

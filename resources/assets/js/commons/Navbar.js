@@ -97,10 +97,12 @@ export default class Navbar extends Component {
     loginValidation = (form) => {
         if(!form[0].username.value)
         {
+            form[0].username.focus();
             return 0;
         }
         if(!form[0].password.value)
         {
+            form[0].password.focus();
             return 0;
         }
         return 1;
@@ -143,6 +145,12 @@ export default class Navbar extends Component {
         })
     }
 
+    handleLogout = (e) => {
+        sessionStorage.removeItem('access');
+        // window.location = self.location;
+        browserHistory.push('/');
+    }
+
     componentDidMount() {
         $('.button-collapse').sideNav({
             closeOnClick: true
@@ -168,10 +176,16 @@ export default class Navbar extends Component {
         if(user)
         {
             liLinks = <ul className="right hide-on-med-and-down">
-                        {/*<li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>*/}
                         <li><Link to="/myprofile" >My Profile</Link></li>
-                        <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>LOG OUT</a></li>
+                        <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleLogout}>LOG OUT</a></li>
                     </ul>
+        }else if(pathName != '/')
+        {
+            liLinks = <ul className="right hide-on-med-and-down">
+                        <li><a href="#" onClick={this.handleLogin}>LOG IN</a></li>
+                        <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>
+                        
+                    </ul>;
         }
 
         let actions = [

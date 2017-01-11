@@ -60,6 +60,10 @@ export default class Courses extends Component {
 	}
 
 	handleCourseRegistration = (e) => {
+		if(!sessionStorage.getItem('access'))
+		{
+			return;
+		}
 		this.setState({
 			openRegistration : true
 		});
@@ -159,13 +163,11 @@ export default class Courses extends Component {
 		                            restorative cases.
 		                        </p>
 		                        <h6 style={{color: '#4444ff'}}>LEARNING OBJECTIVES:</h6>
-		                        <p className="webinarDescription">
-									<ul className="browser-default">
-										<li>Review the basic fundamentals of Temporization.</li>
-		                            	<li>Revisit the classic techniques.</li>
-		                            	<li>Introduce new innovations to create an easy work flow to the clinician and the patient.</li>
-									</ul>
-		                        </p>
+								<ul className="browser-default webinarDescription">
+									<li>Review the basic fundamentals of Temporization.</li>
+	                            	<li>Revisit the classic techniques.</li>
+	                            	<li>Introduce new innovations to create an easy work flow to the clinician and the patient.</li>
+								</ul>
 	                    	</div>
 	                    </div>
                     </div>
