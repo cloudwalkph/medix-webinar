@@ -199,3 +199,31 @@ footer.page-footer {
   /* "transparent" only works here because == rgba(0,0,0,0) */
   background-image: linear-gradient(to bottom, transparent, white);
 }
+
+
+/******        PROFILE         *******/
+
+.verticalLine {
+  border-right: 2px solid rgb(100, 181, 246);
+}
+
+.contentListLink li {
+  padding : 20px 0;
+}
+
+.contentListLink li a {
+  font-size : 25px;
+}
+
+.heightView {
+  height : 90vh;
+}
+
+.card .card-image .card-medix-title {
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 15px;
+    background-color: #000056;
+}

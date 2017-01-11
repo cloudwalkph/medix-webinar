@@ -6,6 +6,7 @@ import SignUp from './SignUp';
 import Login from './Login';
 import baseUrl from '../config';
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 
 export default class Navbar extends Component {
     state = {
@@ -83,10 +84,14 @@ export default class Navbar extends Component {
                 });
             })
         }
+        this.setState({
+            disableButton : false
+        });
     }
 
     getSession = (data) => {
         sessionStorage.setItem('access',JSON.stringify(data));
+        browserHistory.push('/myprofile');
     }
 
     loginValidation = (form) => {
@@ -149,6 +154,25 @@ export default class Navbar extends Component {
 
 	render() {
         let pathName = this.props.storeData.location.pathname;
+        let user = JSON.parse(sessionStorage.getItem('access'));
+        
+        let liLinks = <ul className="right hide-on-med-and-down">
+                        {/*<li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>*/}
+                        <li className={this.state.active == 'LatestUploads' ? 'active' : ''}><a href="#LatestUploads" onClick={this.handleLinkClick}>NEW COURSES</a></li>
+                        <li className={this.state.active == 'aboutUs' ? 'active' : ''}><a href="#aboutUs" onClick={this.handleLinkClick}>ABOUT</a></li>
+                        <li><a href="#" onClick={this.handleLogin}>LOG IN</a></li>
+                        <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>
+                        
+                    </ul>
+
+        if(user)
+        {
+            liLinks = <ul className="right hide-on-med-and-down">
+                        {/*<li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>*/}
+                        <li><Link to="/myprofile" >My Profile</Link></li>
+                        <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>LOG OUT</a></li>
+                    </ul>
+        }
 
         let actions = [
             <FlatButton
@@ -189,21 +213,8 @@ export default class Navbar extends Component {
                                 <img src={window.location.origin + '/img/logo.png'} style={this.state.style.logo} />
                             </Link>
                             
-                            {
-                                pathName == '/' ?
-                                <div>
-                                    <ul className="right hide-on-med-and-down">
-                                        {/*<li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>*/}
-                                        <li className={this.state.active == 'LatestUploads' ? 'active' : ''}><a href="#LatestUploads" onClick={this.handleLinkClick}>NEW COURSES</a></li>
-                                        <li className={this.state.active == 'aboutUs' ? 'active' : ''}><a href="#aboutUs" onClick={this.handleLinkClick}>ABOUT</a></li>
-                                        <li><a href="#" onClick={this.handleLogin}>LOG IN</a></li>
-                                        <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>
-                                        
-                                    </ul>
-                                </div>
-                                :
-                                    null
-                            }
+                            {liLinks}
+
                             <a href="#" data-activates="nav-mobile" className="button-collapse"><i className="material-icons black-text">menu</i></a>
                             </div>
                         </div>

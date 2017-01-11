@@ -7,12 +7,17 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import FlatButton from 'material-ui/FlatButton';
 import baseUrl from '../../config';
 import axios from 'axios';
+import Dialog from 'material-ui/Dialog';
+import { browserHistory } from 'react-router';
 
 
 export default class Courses extends Component {
 	
 	state = {
+		openRegistration : false,
+		disableButton : false,
 		data : [],
+		hasCourse : false,
 		styles : {
 			linkList : {
 				padding : '20px 0'
@@ -43,7 +48,6 @@ export default class Courses extends Component {
 
 	getApiCourses = () => {
 		let user = JSON.parse(sessionStorage.getItem('access'));
-		
 		let url = baseUrl.apiUrl + 'user/' + user.data.user.id;
 		
 		axios.get(url).then((res) => {
@@ -53,6 +57,46 @@ export default class Courses extends Component {
         }).catch((error) => {
             
         });
+	}
+
+	handleCourseRegistration = (e) => {
+		this.setState({
+			openRegistration : true
+		});
+	}
+
+	handleGotoCourse = () => {
+		this.courseRegistration();
+	}
+
+	courseRegistration = () => {
+		let url = baseUrl.apiUrl + 'enroll';
+		let user = JSON.parse(sessionStorage.getItem('access'));
+		let formData = {
+			user_id : user.data.user.id,
+			course_id : 1
+		}
+
+		this.setState({
+            disableButton : true
+        });
+		
+		axios.post(url, formData).then((res) => {
+            this.setState({
+				openRegistration : false,
+				hasCourse : true,
+				disableButton : false
+			});
+        }).catch((error) => {
+            this.setState({
+                disableButton : false
+            });
+        })
+	}
+
+	handleProceedToCourse = () => {
+		let courseId = this.props.params.courseId;
+		browserHistory.push('/video/' + courseId);
 	}
 
 	componentDidMount () {
@@ -66,8 +110,8 @@ export default class Courses extends Component {
 
 	render() {
 		let courses = this.state.data.courses;
-		let startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3">Enroll Now</button>;
-		let hasCourse = false;
+		let startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3" onClick={this.handleCourseRegistration}>Enroll Now</button>;
+		let hasCourse = this.state.hasCourse;
 		
 		if(courses)
 		{
@@ -81,8 +125,18 @@ export default class Courses extends Component {
 
 		if(hasCourse)
 		{
-			startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3">Start</button>;
+			startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3" onClick={this.handleProceedToCourse}>Start</button>;
 		}
+
+		let actions = [
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                disabled={this.state.disableButton}
+                onTouchTap={this.handleGotoCourse}
+            />
+        ];
 		
 		return (
 			<div>
@@ -292,7 +346,15 @@ export default class Courses extends Component {
                     </div>*/}
 
                 </div>
-
+                <Dialog
+                    title="Registration"
+                    actions={actions}
+                    modal={false}
+                    open={this.state.openRegistration}
+                    autoScrollBodyContent={true}
+                >
+                	<p>You have been successfully enrolled on this course</p>
+                </Dialog>
             </div>
 		)
 	}
