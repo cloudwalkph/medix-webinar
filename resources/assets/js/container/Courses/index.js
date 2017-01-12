@@ -154,19 +154,20 @@ export default class Courses extends Component {
                     <div className="col l6 offset-l1">
 	                    <div className="row">
 	                    	<div className="col l7">
+	                    		<h3>COURSE PAGE</h3>
 	                    		<h4>
 		                        	<strong>TEMPORIZATION:</strong> THE ROAD TO FINAL RESTORATION
 		                        </h4>
 		                        <p className="webinarDescription">
-		                            The current trend of the dental profession is geared towards esthetics and beauty. All patients want a beautiful and pleasant smile. 
+		                            The current trend of the dental profession is geared towards esthetics and beauty. All patients would want a beautiful and pleasant smile. 
 		                            Practitioners all agree that Temporization is one basic and essential procedure that ensures optimal esthetics for our fixed
 		                            restorative cases.
 		                        </p>
 		                        <h6 style={{color: '#4444ff'}}>LEARNING OBJECTIVES:</h6>
 								<ul className="browser-default webinarDescription">
 									<li>Review the basic fundamentals of Temporization.</li>
-	                            	<li>Revisit the classic techniques.</li>
-	                            	<li>Introduce new innovations to create an easy work flow to the clinician and the patient.</li>
+	                            	<li>Revisit the classic techniques of Temporization.</li>
+	                            	<li>Introduce innovations in techniques to create an easy work flow to the clinician and the patient.</li>
 								</ul>
 	                    	</div>
 	                    </div>

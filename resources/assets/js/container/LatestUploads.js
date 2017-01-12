@@ -26,7 +26,7 @@ var LatestUploads = React.createClass({
                                                 <h5>
                                                     <strong>TEMPORIZATION:</strong> THE ROAD TO FINAL RESTORATION
                                                 </h5>
-                                                <strong style={{fontFamily: 'Source Sans Pro'}}>Lecture of Dr. Kim Fajardo</strong>
+                                                <strong style={{fontFamily: 'Source Sans Pro'}}>Lecture by Dr. Kim Fajardo</strong>
                                                 <p className="webinarDescription">
                                                     The current trend of the dental profession is geared towards esthetics and beauty.
                                                 </p>

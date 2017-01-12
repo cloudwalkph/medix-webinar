@@ -16,10 +16,10 @@ export default class AboutUs extends Component {
 						<h5>ABOUT DENTAL ACCESS WEBINARS</h5>
 						<div className="section">
 							<p style={{fontFamily: 'Source Sans Pro'}}>
-								Dental Access Webinar is committed to provide the highest 
-								standards of education in the Dental profession with the noble 
-								intention of helping address human problems through introduction of the 
-								latest technologies, keeping in par with global standards, thereby helping people live better lives.  
+								Dental Access Webinar is committed to provide the highest quality of education in the 
+								Dental profession with the noble intention of helping address human problems through 
+								introduction of the latest technologies, keeping in par with global standards, 
+								and helping people live better lives.  
 							</p>
 						</div>
 						<div className="section">

@@ -34,27 +34,27 @@ export default class SignUp extends Component {
 					<form className="col s12" id="signUpForm">
 						<div className="row">
 							<div className="input-field col s6">
-								<input id="first_name" type="text" className="validate" name="first_name" />
-								<label htmlFor="first_name">First Name</label>
-							</div>
-							<div className="input-field col s6">
-								<input id="last_name" type="text" className="validate" name="last_name" />
-								<label htmlFor="last_name">Last Name</label>
-							</div>
-						</div>
-						<div className="row">
-							<div className="input-field col s6">
-								<input id="email" type="email" className="validate" name="email" />
+								<input id="email" type="email" className="validate" name="email" required />
 								<label htmlFor="email" data-error="Please input a correct email">Email</label>
 							</div>
 							<div className="input-field col s6">
-								<input id="password" type="password" name="password" className="validate" />
+								<input id="password" type="password" name="password" className="validate" required />
 								<label htmlFor="password">Password</label>
 							</div>
 						</div>
 						<div className="row">
 							<div className="input-field col s6">
-								<input type="hidden" name="birthdate" value={this.state.birthdate}/>
+								<input id="first_name" type="text" className="validate" name="first_name" required />
+								<label htmlFor="first_name">First Name</label>
+							</div>
+							<div className="input-field col s6">
+								<input id="last_name" type="text" className="validate" name="last_name" required />
+								<label htmlFor="last_name">Last Name</label>
+							</div>
+						</div>
+						<div className="row">
+							<div className="input-field col s6">
+								<input type="hidden" name="birthdate" value={this.state.birthdate} required/>
 								<DatePicker 
 									hintText="Birthday" 
 									className="birthdate" 

@@ -48,13 +48,13 @@ export default class Readmore extends Component {
 			<div>
 				<div className="sidebar-box">
 					<p>
-						Dr.  Kimberly Ray R. Fajardo is an alumni of the University of the East College of Dentistry way 
+						Dr.  Kimberly Ray R. Fajardo is an alumnus of the University of the East College of Dentistry way 
 						back in 2009. He became  a professor at the same university at the department of Prosthodontics, 
 						Practice Management and Undergraduate Research. In 2013, he became a visiting scholar at the 
 						Seoul National University - Bounding Hospital.  Among his many achievements, Dr Kim as he is 
 						fondly called co-authored and published a study entitled: "The Antimicrobial Effect of Different 
 						Xylitol Concentrations on Streptococcus mutant and Lactobacillus acidophilus count" for the 
-						Journal of Restorative Dentistry. Today, he is an active member of officer of the Philippine 
+						Journal of Restorative Dentistry. Today, he is an active member and officer of the Philippine 
 						Prosthodontics Society, member of the Cavite Dental Chapter and  International Association of 
 						Orthodontics - Philippine Section.
 					</p>

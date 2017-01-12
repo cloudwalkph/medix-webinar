@@ -40,24 +40,29 @@ export default class Navbar extends Component {
 
         let url = baseUrl.apiUrl + 'user';
         let formData = $('#signUpForm').serialize();
+        
         this.setState({
             disableButton : true
         });
-        if(this.formValidation() == 1)
+
+        if(this.formValidation() == 0)
         {
-            axios.post(url, formData).then((res) => {
-                this.setState({
-                    disableButton : false,
-                    open : false
-                });
-            }).catch((error) => {
-                this.setState({
-                    disableButton : false
-                });
-            })
+            this.setState({
+                disableButton : false
+            });
+            return;
         }
 
-        
+        axios.post(url, formData).then((res) => {
+            this.setState({
+                disableButton : false,
+                open : false
+            });
+        }).catch((error) => {
+            this.setState({
+                disableButton : false
+            });
+        })
     }
 
     handleLoginForm = (e) => {
@@ -110,23 +115,33 @@ export default class Navbar extends Component {
 
     formValidation = () => {
 
+        if(!$('#signUpForm')[0].email.value)
+        {
+            $('#signUpForm')[0].email.focus();
+            return 0;
+        }
+
+        if(!$('#signUpForm')[0].password.value)
+        {
+            $('#signUpForm')[0].password.focus();
+            return 0;
+        }
+
         if(!$('#signUpForm')[0].first_name.value)
         {
+            $('#signUpForm')[0].first_name.focus();
             return 0;
         }
         
         if(!$('#signUpForm')[0].last_name.value)
         {
-            return 0;
-        }
-        
-        if(!$('#signUpForm')[0].email.value)
-        {
+            $('#signUpForm')[0].last_name.focus();
             return 0;
         }
         
         if(!$('#signUpForm')[0].gender.value)
         {
+            $('#signUpForm')[0].gender.focus();
             return 0;
         }
 
