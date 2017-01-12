@@ -51,6 +51,28 @@ export default class AboutUs extends Component {
 								same time assist dental patients in reaching information as regards dental health situations. 
 							</p>
 						</div>
+						<div className="section">
+							<div className="row">
+								<div className="col l3">
+									<img src={window.location.origin + '/img/id4.jpg'} style={{width : '100%'}} />
+								</div>
+								<div className="col l9">
+									<div className="section">
+										<strong style={{fontWeight: 'bolder',fontSize: '1.6rem'}}>Project Manager:</strong><span style={{fontSize: '1.6rem'}}> Arvin B. Laguna, DDM, PhD</span>
+										<p>
+											Dr. Arvin B. Laguna is a graduate of Doctor 
+											of Philosophy in Educational Management and has been 
+											in the teaching profession for 18 years, serving both 
+											as faculty and clinical instructor at the Adventist University 
+											of the Philippines and the University of Perpetual Help System DALTA. 
+											He is a graduate of the University of the Philippines College of Dentistry 
+											and has taught in various dental courses as well as served as a Research 
+											Coordinator and Technical Panel in the university.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div className="parallax">
                         <img src="img/Rectangle-532.jpg" width="100%" />

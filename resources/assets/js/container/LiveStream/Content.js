@@ -7,6 +7,7 @@ export default class Content extends Component {
 		return(
 			<div className="container heightView">
 				<div className="section">
+					
 					<Video/>
 				
 				</div>
