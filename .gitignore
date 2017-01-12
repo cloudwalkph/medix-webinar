@@ -222,5 +222,3 @@ Homestead.json
 .env
 
 .elasticbeanstalk/
-app.css
-app.js
