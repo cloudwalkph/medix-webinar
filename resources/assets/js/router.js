@@ -7,6 +7,7 @@ import AboutUs from './container/AboutUs';
 import Courses from './container/Courses';
 import MyProfile from './container/Profile/MyProfile';
 import LiveStream from './container/LiveStream/Content';
+import admin from './container/Admin';
 
 export default (
 	<Route path={'/'}>
@@ -25,6 +26,9 @@ export default (
 		<Route path="/video" component={index}>
 			<IndexRoute component={MyProfile} />
 			<Route path=":courseId" component={LiveStream}/>
+		</Route>
+		<Route path="/admin" component={admin}>
+			
 		</Route>
 	</Route>
 )

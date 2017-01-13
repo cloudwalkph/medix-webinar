@@ -8,7 +8,7 @@ export default class Content extends Component {
 			<div className="container heightView">
 				<div className="section">
 					
-					<Video/>
+					<Video />
 				
 				</div>
 			</div>

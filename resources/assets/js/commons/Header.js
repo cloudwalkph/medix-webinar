@@ -39,7 +39,7 @@ export default class Header extends Component {
         axios.post(url, formData).then((res) => {
             this.setState({
                 disableButton : false,
-                open : false
+                openModal : false
             });
         }).catch((error) => {
             this.setState({
