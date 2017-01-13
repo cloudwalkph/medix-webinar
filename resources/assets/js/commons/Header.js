@@ -43,7 +43,8 @@ export default class Header extends Component {
             });
         }).catch((error) => {
             this.setState({
-                disableButton : false
+                disableButton : false,
+                openModal : false
             });
         });
     }
