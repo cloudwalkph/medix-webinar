@@ -37,7 +37,7 @@ export default class Navbar extends Component {
     }
 
     handleSubmitForm = (e) => {
-
+        e.preventDefault();
         let url = baseUrl.apiUrl + 'user';
         let formData = $('#signUpForm').serialize();
         
@@ -275,7 +275,7 @@ export default class Navbar extends Component {
                     autoScrollBodyContent={true}
 
                 >
-                    <Login/>
+                    <Login handleSubmit={(e) => {e.preventDefault()}}/>
 
                 </Dialog>
 
