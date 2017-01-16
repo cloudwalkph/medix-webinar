@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import DatePicker from 'material-ui/DatePicker';
+// import DatePicker from 'material-ui/DatePicker';
+import DatePicker from './DatePicker';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import moment from 'moment';
 
@@ -33,48 +34,47 @@ export default class SignUp extends Component {
 				<div className="row">
 					<form className="col s12" id="signUpForm">
 						<div className="row">
-							<div className="input-field col s6">
+							<div className="input-field col s12 m6">
 								<input id="email" type="email" className="validate" name="email" required />
 								<label htmlFor="email" data-error="Please input a correct email">Email</label>
 							</div>
-							<div className="input-field col s6">
+							<div className="input-field col s12 m6">
 								<input id="password" type="password" name="password" className="validate" required />
 								<label htmlFor="password">Password</label>
 							</div>
 						</div>
 						<div className="row">
-							<div className="input-field col s6">
+							<div className="input-field col s12 m6">
 								<input id="first_name" type="text" className="validate" name="first_name" required />
 								<label htmlFor="first_name">First Name</label>
 							</div>
-							<div className="input-field col s6">
+							<div className="input-field col s12 m6">
 								<input id="last_name" type="text" className="validate" name="last_name" required />
 								<label htmlFor="last_name">Last Name</label>
 							</div>
 						</div>
 						<div className="row">
-							<div className="input-field col s6">
-								<input type="hidden" name="birthdate" value={this.state.birthdate} required/>
+							<div className="input-field col s12 m6">
 								<DatePicker 
-									hintText="Birthday" 
-									className="birthdate" 
+									hintText="Birthday"
+									name="birthdate"
+									className="birthdate"
 									autoOk={true}
 									onChange={this.handleChange} />
 							</div>
-						</div>
-						<div className="row">
-							<div className="input-field col s6">
-								<RadioButtonGroup name="gender" defaultSelected="" style={this.state.styles.block}>
+							<div className="input-field col s12 m6">
+								<RadioButtonGroup
+									name="gender" 
+									defaultSelected=""
+								>
 									<RadioButton
 										value="1"
 										label="Male"
-										style={this.state.styles.radioButton}
 										labelStyle={this.state.styles.radioLabel}
 									/>
 									<RadioButton
 										value="0"
 										label="Female"
-										style={this.state.styles.radioButton}
 										labelStyle={this.state.styles.radioLabel}
 									/>
 								</RadioButtonGroup>
