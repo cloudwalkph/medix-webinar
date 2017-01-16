@@ -26,6 +26,25 @@ export default class Dashboard extends Component {
 				<ul id="nav-mobile" className="side-nav">
                     <li><a href="#" className="btn waves-effect waves-light indigo darken-3">LOG OUT</a></li>
                 </ul>
+
+                <div className="section">
+                	<div className="container">
+                		<div className="row">
+                			<div className="col s6">
+                				<h4>Course</h4>
+                				<div style={{border : '1px solid #ddd'}}>
+                					live CHat
+                				</div>
+                			</div>
+                			<div className="col s6">
+                				<h4>Generated questions</h4>
+                				<div style={{border : '1px solid #ddd'}}>
+                					Questions
+                				</div>
+                			</div>
+                		</div>
+                	</div>
+                </div>
 			</div>
 		)
 	}

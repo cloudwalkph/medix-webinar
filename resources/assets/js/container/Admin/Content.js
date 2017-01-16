@@ -7,7 +7,7 @@ export default class Content extends Component {
 	render() {
 		return(
 			<div className="row">
-				<Login/>
+				<Dashboard/>
 			</div>
 		)
 	}
