@@ -15,7 +15,9 @@ export default class Content extends Component {
 		e.preventDefault();
 		let formData = $('#askQuestionForm').serializeArray();
 		let userId = userSession.data.user.id;
+		let courseId = this.props.params.courseId;
 		formData.push({name: 'user_id', value : userId});
+		formData.push({name: 'course_id', value : courseId});
 		
 		this.postApiMessage(formData);
 	}
