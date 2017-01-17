@@ -100,7 +100,8 @@ export default class Courses extends Component {
 
 	handleProceedToCourse = () => {
 		let courseId = this.props.params.courseId;
-		browserHistory.push('/video/' + courseId);
+		window.location.href = window.location.origin + '/video/' + courseId;
+		// browserHistory.push('/video/' + courseId);
 	}
 
 	componentDidMount () {
@@ -113,6 +114,8 @@ export default class Courses extends Component {
     }
 
 	render() {
+
+		let session = sessionStorage.getItem('access');
 		let courses = this.state.data.courses;
 		let startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3" onClick={this.handleCourseRegistration}>Enroll Now</button>;
 		let hasCourse = this.state.hasCourse;
@@ -132,6 +135,11 @@ export default class Courses extends Component {
 			startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3" onClick={this.handleProceedToCourse}>Start</button>;
 		}
 
+		if(!session)
+		{
+			startEnrollButton = null;
+		}
+
 		let actions = [
             <FlatButton
                 label="Ok"
@@ -141,7 +149,7 @@ export default class Courses extends Component {
                 onTouchTap={this.handleGotoCourse}
             />
         ];
-		
+	
 		return (
 			<div>
 

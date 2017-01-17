@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ChatBox from '../../components/Admin/ChatBox';
 
 export default class Dashboard extends Component {
 
@@ -26,6 +27,8 @@ export default class Dashboard extends Component {
 				<ul id="nav-mobile" className="side-nav">
                     <li><a href="#" className="btn waves-effect waves-light indigo darken-3">LOG OUT</a></li>
                 </ul>
+
+                <ChatBox/>
 			</div>
 		)
 	}

@@ -8,6 +8,8 @@ import Courses from './container/Courses';
 import MyProfile from './container/Profile/MyProfile';
 import LiveStream from './container/LiveStream/Content';
 import admin from './container/Admin';
+import Login from './container/Admin/Login';
+import Dashboard from './container/Admin/Dashboard';
 
 export default (
 	<Route path={'/'}>
@@ -28,7 +30,8 @@ export default (
 			<Route path=":courseId" component={LiveStream}/>
 		</Route>
 		<Route path="/admin" component={admin}>
-			
+			<IndexRoute component={Login} />
+			<Route path="dashboard" component={Dashboard}/> 
 		</Route>
 	</Route>
 )
