@@ -18,7 +18,7 @@ class Video extends Component {
 	render() {
 
 		return(
-			<video id="my-video" className="video-js" controls preload="auto" height="500" data-setup="{}" style={{width : '100%',height : '500px'}}>
+			<video id="my-video" className="video-js" controls preload="auto" height="500" data-setup="{}" style={{width : '100%',height : '300px'}}>
 				<source src={this.state.videoSrc} type='rtmp/mp4' />
 				<p className="vjs-no-js">
 					To view this video please enable JavaScript, and consider upgrading to a web browser that

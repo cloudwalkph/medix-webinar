@@ -42,14 +42,14 @@ var DatePicker = React.createClass({
     componentDidMount () {
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
-            selectYears: 15 // Creates a dropdown of 15 years to control year
+            selectYears: 100 // Creates a dropdown of 15 years to control year
         });
     },
 
     render () {
         return(
             <div>
-                <label for={this.state.id} className="active">{this.state.hintText}</label>
+                <label htmlFor={this.state.id} className="active">{this.state.hintText}</label>
                 <input type="date" id={this.state.id} name={this.state.name} className={this.state.className} onChange={this.handleOnChange} />
             </div>
         )
