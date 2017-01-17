@@ -30,6 +30,11 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::post('enroll', 'EnrollCourseController@index');
 
+    Route::resource('message', 'MessageController');
+
+    Route::get('course/{courseId}/messages', 'MessageController@showByCourseId');
+    Route::get('user/{userId}/messages', 'MessageController@showByUserId');
+
 });
 
 Route::get('/{page}', function () {
