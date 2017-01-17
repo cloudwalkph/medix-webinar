@@ -24,7 +24,7 @@ export default class ChatBox extends Component {
 	}
 
 	getApiMessages = () => {
-		
+		alert('asd');
 	}
 
 	handleSelectMessage = (id) => {
@@ -40,6 +40,12 @@ export default class ChatBox extends Component {
 			listOfMessages : messages
 		});
 
+
+		this.postApiMessages(id);
+	}
+
+	postApiMessages = (id) => {
+		alert(id)
 	}
 
 	componentDidMount() {

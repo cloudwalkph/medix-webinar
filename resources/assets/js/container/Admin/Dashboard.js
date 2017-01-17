@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ChatBox from '../../components/Admin/ChatBox';
+import { Link } from 'react-router';
 
 export default class Dashboard extends Component {
 
@@ -15,9 +16,9 @@ export default class Dashboard extends Component {
 				<nav className="white">
 					<div className="container">
 						<div className="nav-wrapper">
-							<a href="#" className="brand-logo">
+							<Link to="/admin/dashboard" className="brand-logo">
 								<img src={window.location.origin + '/img/logo.png'} style={this.state.style.logo} />
-							</a>
+							</Link>
 							<ul id="nav-mobile" className="right hide-on-med-and-down">
 								<li><a href="#" className="btn waves-effect waves-light indigo darken-3">LOG OUT</a></li>
 							</ul>

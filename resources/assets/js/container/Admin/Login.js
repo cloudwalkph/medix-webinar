@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import LoginForm from '../../commons/Login';
+import { browserHistory } from 'react-router';
 
 export default class Login extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
 		let formData = $(e.target).serialize();
-		console.log(formData)
+		console.log(formData);
+		browserHistory.push('/admin/dashboard');
 	}
 
 	render() {
