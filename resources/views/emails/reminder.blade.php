@@ -8,5 +8,5 @@
 </p><br />
 <p>Thank you for your participation,
 </p><br />
-<p>Dental Tribune International
+<p>Dental Access Publications Inc
 </p>

@@ -239,7 +239,7 @@ export default class Navbar extends Component {
                         <div className="container">
                             <div className="nav-wrapper" style={{fontFamily: 'Oxygen', fontWeight: 'bold'}}>
                             <Link to="/" id="logo-container" className="brand-logo">
-                                <img src={window.location.origin + '/img/logo.png'} style={this.state.style.logo} />
+                                <img className="responsive-img" src={window.location.origin + '/img/logo.png'} />
                             </Link>
                             
                             {liLinks}
