@@ -227,3 +227,8 @@ footer.page-footer {
     padding: 15px;
     background-color: #000056;
 }
+
+.chatBox {
+  max-height : 420px;
+  overflow-y : auto;
+}
