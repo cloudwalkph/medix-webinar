@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import baseUrl from '../config';
+import axios from 'axios';
 
 var LatestUploads = React.createClass({
 
