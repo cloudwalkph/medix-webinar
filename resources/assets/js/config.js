@@ -1,4 +1,4 @@
 module.exports = {
 	env: 'local',
-    apiUrl: '/api/'
+    apiUrl: '/api/v1/'
 };

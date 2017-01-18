@@ -17,6 +17,7 @@ class CreateMessagesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('course_id')->unsigned();
             $table->text('message');
+            $table->boolean('flag');
             $table->timestamps();
             $table->softDeletes();            
 

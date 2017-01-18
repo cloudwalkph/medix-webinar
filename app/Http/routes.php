@@ -15,9 +15,8 @@ Route::get('/', function () {
     return view('react');
 });
 
-Route::group(['prefix' => 'api'], function () {
-    header('Access-Control-Allow-Origin: *');
-
+Route::group(['prefix' => 'api/v1', 'middleware' => 'cors'], function () {
+    
     Route::get('/', function() {
         return view('api/documentation');
     });
@@ -35,6 +34,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('course/{courseId}/messages', 'MessageController@showByCourseId');
     Route::get('user/{userId}/messages', 'MessageController@showByUserId');
 
+    Route::post('message/{message_id}/select', 'MessageController@selectMessage');
+
 });
 
 Route::get('/{page}', function () {
@@ -44,5 +45,3 @@ Route::get('/{page}', function () {
 Route::get('/{page}/{params}', function () {
 	return view('react');
 })->where('page', '[0-9A-Za-z\-]+')->where('params', '[0-9A-Za-z\-]+');
-
-Route::post('user/add','UserController@store');

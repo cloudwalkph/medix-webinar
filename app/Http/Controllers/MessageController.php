@@ -104,13 +104,39 @@ class MessageController extends Controller
 
     
     // custom functions
-    function showByCourseId($course_id)
+    function showByCourseId(Request $request, $course_id)
     {
-        return Message::with('user')->where('course_id', $course_id)->get();
+        $result = Message::with('user')
+            ->where('course_id', $course_id);
+
+        if($request->has('flag')) {
+            $flag = $request->get('flag');
+            $result->where('flag', $flag);
+        };
+
+        return response()->json($result->get(), 200);
     }
 
-    function showByUserId($user_id)
+    function showByUserId(Request $request, $user_id)
     {
-        return Message::where('user_id', $user_id)->get();
+        $result = Message::with('user')
+            ->where('user_id', $user_id);
+
+        if($request->has('flag')) {
+            $flag = $request->get('flag');
+            $result->where('flag', $flag);
+        };
+
+        return response()->json($result->get(), 200);
+    }
+
+    function selectMessage($message_id)
+    {
+        $message = Message::where('id', $message_id)
+            ->update([
+                'flag' => 1
+            ]);
+
+        return response()->json($message, 200);
     }
 }
