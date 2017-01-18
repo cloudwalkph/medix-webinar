@@ -20,7 +20,7 @@ export default class LiveChat extends Component {
 				
 				<span className="title">{this.props.data.user.first_name + ' ' + this.props.data.user.last_name}</span>
 				<p>{this.props.data.message}</p>
-				<a href="#!" className="secondary-content" onClick={this.handleSubmitMessage}><i className="material-icons">send</i></a>
+				<a href="#!" className="secondary-content" onClick={this.handleSubmitMessage} title="Send"><i className="material-icons">send</i></a>
 			</li>
 		)
 	}

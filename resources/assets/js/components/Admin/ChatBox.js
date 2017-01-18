@@ -39,7 +39,15 @@ export default class ChatBox extends Component {
 	}
 
 	getApiMessages = () => {
-		alert('asd');
+		let url = baseUrl.apiUrl + 'course/1/messages?flag=1';
+
+		axios.get(url).then((res) => {
+			this.setState({
+				listOfMessages : res.data
+			});
+		}).catch((error) => {
+			console.log(error);
+		})
 	}
 
 	handleSelectMessage = (id) => {
@@ -69,6 +77,7 @@ export default class ChatBox extends Component {
 
 	componentDidMount() {
 		this.getApiLiveChat();
+		this.getApiMessages();
 	}
 
 	render() {
