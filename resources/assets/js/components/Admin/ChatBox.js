@@ -12,15 +12,30 @@ export default class ChatBox extends Component {
 	}
 
 	getApiLiveChat = () => {
-		let url = baseUrl.apiUrl + 'course/1/messages';
+		// let url = baseUrl.apiUrl + 'course/1/messages';
 		
-		axios.get(url).then((res) => {
-			this.setState({
-				listLiveChat : res.data
-			});
-		}).catch((error) => {
-			console.log(error);
-		});
+		// axios.get(url).then((res) => {
+		// 	this.setState({
+		// 		listLiveChat : res.data
+		// 	});
+		// }).catch((error) => {
+		// 	console.log(error);
+		// });
+
+		let w;
+
+        if(typeof(Worker) !== "undefined") {
+            if(typeof(w) == "undefined") {
+                w = new Worker("../worker.js"); // public/worker.js
+            }
+            w.onmessage = (event) => {
+                this.setState({
+					listLiveChat : JSON.parse(event.data)
+				});
+            }
+        } else {
+            console.log('no data');
+        }
 	}
 
 	getApiMessages = () => {
@@ -53,7 +68,7 @@ export default class ChatBox extends Component {
 	}
 
 	render() {
-		console.log(this.state.listOfMessages)
+		
 		return(
 			<div className="section">
             	<div className="container">

@@ -28,8 +28,8 @@ export default class Content extends Component {
 			isSending : true
 		})
 
-		let url = baseUrl.apiUrl + 'messsage';
-		axios.post(url,formData).then((res) => {
+		let url = baseUrl.apiUrl + 'message';
+		axios.post(url,$.param(formData)).then((res) => {
 			this.setState({
 				isSending : false,
 				textArea : ''
@@ -45,7 +45,7 @@ export default class Content extends Component {
 
 	render() {
 		return(
-			<div className="container heightView">
+			<div className="container">
 				<div className="section">
 					<div className="container">
 						<Video />
