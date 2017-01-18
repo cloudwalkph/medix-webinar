@@ -8,8 +8,7 @@ function timedCount() {
 	       postMessage(xhttp.responseText);
 	    }
 	};
-	xhttp.open("GET", '/api/v1/course/1/messages', true);
-	xhttp.send();
+	xhttp.open("GET", '/api/v1/course/1/messages?flag=0', true);
     
     setTimeout("timedCount()",3000);
 }
