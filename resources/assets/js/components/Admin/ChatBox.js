@@ -50,17 +50,21 @@ export default class ChatBox extends Component {
 		messages.unshift(data[index]); // set to message
 		data.splice(index, 1); // remove from live chat
 		
-		this.setState({
-			listLiveChat : data,
-			listOfMessages : messages
-		});
-
-
-		this.postApiMessages(id);
+		this.postApiMessages(id, data, messages);
 	}
 
-	postApiMessages = (id) => {
-		alert(id)
+	postApiMessages = (id, data, messages) => {
+		let url = baseUrl.apiUrl + 'message/' + id + '/select';
+
+		axios.post(url, {}).then((res) => {
+			this.setState({
+				listLiveChat : data,
+				listOfMessages : messages
+			});
+		}).catch((error) => {
+			console.log(error);
+		})
+		
 	}
 
 	componentDidMount() {
