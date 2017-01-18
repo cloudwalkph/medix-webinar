@@ -10,6 +10,7 @@ import LiveStream from './container/LiveStream/Content';
 import admin from './container/Admin';
 import Login from './container/Admin/Login';
 import Dashboard from './container/Admin/Dashboard';
+import Print from './container/Print';
 
 export default (
 	<Route path={'/'}>
@@ -32,6 +33,7 @@ export default (
 		<Route path="/admin" component={admin}>
 			<IndexRoute component={Login} />
 			<Route path="dashboard" component={Dashboard}/> 
+			<Route path="printView" component={Print}/> 
 		</Route>
 	</Route>
 )
