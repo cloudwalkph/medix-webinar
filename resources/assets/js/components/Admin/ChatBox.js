@@ -3,6 +3,7 @@ import LiveChat from './LiveChat';
 import Messages from './Messages';
 import baseUrl from '../../config';
 import axios from 'axios';
+import { Link } from 'react-router';
 
 export default class ChatBox extends Component {
 
@@ -105,6 +106,7 @@ export default class ChatBox extends Component {
             					})}
             					</ul>
             				</div>
+            				<Link to="/admin/printView" className="btn waves-effect waves-light indigo darken-3 right">For Posting</Link>
             			</div>
             		</div>
             	</div>

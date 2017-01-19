@@ -28,11 +28,18 @@ export default class Print extends Component {
 	render() {
 		return(
 			<div className="section">
-				<ul className="collection">
-				{this.state.listOfMessages.map((item, i) => {
-					return <Messages data={item} key={i} index={i}/>
-				})}
-				</ul>
+				<div className="container">
+					<ul className="collection">
+					{this.state.listOfMessages.map((item, i) => {
+						// return <Messages data={item} key={i} index={i}/>
+						return <li key={i}>
+									<span><b>{item.user.first_name + ' ' + item.user.last_name}</b> : </span>
+									<span>{item.message}</span>
+									<br/>
+								</li>
+					})}
+					</ul>
+				</div>
 			</div>
 		)
 	}
