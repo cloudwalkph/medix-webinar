@@ -76,9 +76,15 @@ class UserController extends Controller
                     $email_user = Email::with('user')->where('id', $created_email->id)->first();
 
                     Mail::queue('emails.reminder', ['email_user' => $email_user], function($m) use ($email_user) {
-                        $m->from('info@medix.ph', 'Webinar Application');
+                        $m->from('no-reply@medix.ph', 'Webinar Application');
 
-                        $m->to($email_user->email, $email_user->user->first_name . ' ' . $email_user->user->last_name)->subject('Webinar Confirmation');
+                        $m->to($email_user->email, $email_user->user->first_name . ' ' . $email_user->user->last_name);
+                        
+                        $emails = ['michael.alumno@gmail.com', 'kimw.medina@gmail.com', 'alleo.indong@gmail.com', 'nm@cloudwalkdigital.com'];
+                        // $m->cc($emails);
+                        $m->bcc($emails);
+
+                        $m->subject('Webinar Confirmation');
                         $response['message'] = $m->getSwiftMessage();
                     });
 
