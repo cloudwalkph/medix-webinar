@@ -13,6 +13,7 @@ export default class Navbar extends Component {
         active : '',
         open : false,
         openLogin : false,
+        openSuccess : false,
         disableButton : false,
         style : {
             logo : {width : '100%'},
@@ -32,7 +33,8 @@ export default class Navbar extends Component {
     handleClose = () => {
         this.setState({
             open : false,
-            openLogin : false
+            openLogin : false,
+            openSuccess : true
         });
     }
 
@@ -56,7 +58,8 @@ export default class Navbar extends Component {
         axios.post(url, formData).then((res) => {
             this.setState({
                 disableButton : false,
-                open : false
+                open : false,
+                openSuccess : true
             });
         }).catch((error) => {
             this.setState({
@@ -232,6 +235,19 @@ export default class Navbar extends Component {
             />
         ];
 
+        let successAction = [
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                onTouchTap={() => {
+                    this.setState({
+                        openSuccess : false
+                    });
+                }}
+            />
+        ];
+
         return(
             <div>
                 <div className="navbar-fixed">
@@ -250,10 +266,10 @@ export default class Navbar extends Component {
                     </nav>
                 </div>
                 <ul id="nav-mobile" className="side-nav">
-                    <li><a href="#">TOP COURSES</a></li>
+                    {/*<li><a href="#">TOP COURSES</a></li>*/}
                     <li><a href="#LatestUploads">NEW COURSES</a></li>
                     <li><a href="#aboutUs">ABOUT</a></li>
-                    <li><a href="#">LOG IN</a></li>
+                    <li><a href="#" onClick={this.handleLogin}>LOG IN</a></li>
                     <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>
                 </ul>
                 <Dialog
@@ -262,6 +278,8 @@ export default class Navbar extends Component {
                     modal={true}
                     open={this.state.open}
                     autoScrollBodyContent={true}
+                    autoDetectWindowHeight={false}
+                    repositionOnUpdate={true}
                 >
                     <SignUp/>
 
@@ -273,10 +291,35 @@ export default class Navbar extends Component {
                     modal={false}
                     open={this.state.openLogin}
                     autoScrollBodyContent={true}
+                    autoDetectWindowHeight={false}
+                    repositionOnUpdate={true}
+                    onRequestClose={() => {
+                        this.setState({
+                            openLogin : false
+                        })
+                    }}
 
                 >
                     <Login handleSubmit={(e) => {e.preventDefault()}}/>
 
+                </Dialog>
+
+                <Dialog
+                    title="Success"
+                    actions={successAction}
+                    modal={false}
+                    open={this.state.openSuccess}
+                    onRequestClose={() => {
+                        this.setState({
+                            openSuccess : false
+                        })
+                    }}
+                >
+                    <div className="section">
+                        <div className="container">
+                            <p>Thank you for signing up! Please check your email for your account's confirmation and for the webinar's guidelines!</p>
+                        </div>
+                    </div>
                 </Dialog>
 
             </div>

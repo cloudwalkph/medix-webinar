@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import baseUrl from '../config';
 import axios from 'axios';
-import Messages from '../components/admin/Messages';
+import Messages from '../components/Admin/Messages';
 
 export default class Print extends Component {
 
