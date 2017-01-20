@@ -53,7 +53,7 @@ class UserController extends Controller
             $first_name = $request->input('first_name');
             $last_name = $request->input('last_name');
             $gender = $request->input('gender');
-            $birthdate = $request->input('birthdate');
+            // $birthdate = $request->input('birthdate');
             $password = $request->input('password');
 
             
@@ -62,7 +62,7 @@ class UserController extends Controller
                         'first_name' => $first_name, 
                         'last_name' => $last_name,
                         'gender' => $gender,
-                        'birthdate' => $birthdate,
+                        // 'birthdate' => $birthdate,
                         'password' => Hash::make($password)
                 ]);
 

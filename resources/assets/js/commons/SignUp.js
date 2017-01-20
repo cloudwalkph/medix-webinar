@@ -54,15 +54,15 @@ export default class SignUp extends Component {
 							</div>
 						</div>
 						<div className="row">
-							<div className="input-field col s12 m6">
+							{/*<div className="input-field col s12 m6">
 								<DatePicker 
 									hintText="Birthday"
 									name="birthdate"
 									className="birthdate"
 									autoOk={true}
 									onChange={this.handleChange} />
-							</div>
-							<div className="input-field col s12 m6">
+							</div>*/}
+							<div className="input-field col s12">
 								<RadioButtonGroup
 									name="gender" 
 									defaultSelected=""
