@@ -33,8 +33,7 @@ export default class Navbar extends Component {
     handleClose = () => {
         this.setState({
             open : false,
-            openLogin : false,
-            openSuccess : true
+            openLogin : false
         });
     }
 
