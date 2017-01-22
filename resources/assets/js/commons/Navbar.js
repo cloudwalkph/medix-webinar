@@ -46,13 +46,15 @@ export default class Navbar extends Component {
         let formData = $('#signUpForm').serialize();
         
         this.setState({
-            disableButton : true
+            disableButton : true,
+            loaders : true
         });
 
         if(this.formValidation() == 0)
         {
             this.setState({
-                disableButton : false
+                disableButton : false,
+                loaders : false
             });
             return;
         }
@@ -61,13 +63,15 @@ export default class Navbar extends Component {
             this.setState({
                 disableButton : false,
                 open : false,
-                openSuccess : true
+                openSuccess : true,
+                loaders : false
             });
         }).catch((error) => {
             alert('email already exist');
             $('#signUpForm')[0].email.focus();
             this.setState({
-                disableButton : false
+                disableButton : false,
+                loaders : false
             });
         })
     }
@@ -318,6 +322,19 @@ export default class Navbar extends Component {
                         <h4>Sign up</h4>
                         <SignUp/>
                     </div>
+
+                    {this.state.loaders ? 
+                        <div className="row">
+                            <div className="progress">
+                                <div className="indeterminate"></div>
+                            </div>
+                        </div>
+                        
+                        :
+                        
+                        null
+                    }
+
                     <div className="modal-footer right-align">
                         {actions}
                     </div>
