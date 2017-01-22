@@ -7,6 +7,7 @@ import Login from './Login';
 import baseUrl from '../config';
 import axios from 'axios';
 import { browserHistory } from 'react-router';
+import Snackbar from 'material-ui/Snackbar';
 
 export default class Navbar extends Component {
     state = {
@@ -15,6 +16,8 @@ export default class Navbar extends Component {
         openLogin : false,
         openSuccess : false,
         disableButton : false,
+        loaders : false,
+        openSnackbarMessage : false,
         style : {
             logo : {width : '100%'},
             smallModal : {width : '50%'}
@@ -61,6 +64,8 @@ export default class Navbar extends Component {
                 openSuccess : true
             });
         }).catch((error) => {
+            alert('email already exist');
+            $('#signUpForm')[0].email.focus();
             this.setState({
                 disableButton : false
             });
@@ -72,7 +77,8 @@ export default class Navbar extends Component {
         let formData = $('#loginForm');
 
         this.setState({
-            disableButton : true
+            disableButton : true,
+            loaders : true
         });
         if(this.loginValidation(formData) == 1)
         {
@@ -80,14 +86,18 @@ export default class Navbar extends Component {
             axios.post(url, data).then((res) => {
                 this.setState({
                     disableButton : false,
-                    openLogin : false
+                    openLogin : false,
+                    loaders : false
                 },() => {
                     this.getSession(res.data);
                 });
             }).catch((error) => {
                 console.log(error);
+                formData[0].username.focus();
                 this.setState({
-                    disableButton : false
+                    disableButton : false,
+                    loaders : false,
+                    openSnackbarMessage : true
                 });
             })
         }
@@ -168,6 +178,12 @@ export default class Navbar extends Component {
         browserHistory.push('/');
     }
 
+    handleRequestCloseSnackbar = () => {
+        this.setState({
+            openSnackbarMessage : false
+        })
+    }
+
     componentDidMount() {
         $('.button-collapse').sideNav({
             closeOnClick: true
@@ -175,9 +191,19 @@ export default class Navbar extends Component {
         $('.scrollspy').scrollSpy({
             offset : 0
         });
+        $('.modal').modal();
     }
 
 	render() {
+        
+        if(this.state.open)
+        {
+            $('#signUpModal').modal('open');
+        }else
+        {
+            $('#signUpModal').modal('close');
+        }
+
         let pathName = this.props.storeData.location.pathname;
         let user = JSON.parse(sessionStorage.getItem('access'));
         
@@ -207,11 +233,13 @@ export default class Navbar extends Component {
 
         let actions = [
             <FlatButton
+                key="1"
                 label="Cancel"
                 primary={true}
                 onTouchTap={this.handleClose}
             />,
             <FlatButton
+                key="2"
                 label="Submit"
                 primary={true}
                 keyboardFocused={true}
@@ -224,6 +252,7 @@ export default class Navbar extends Component {
                 label="Cancel"
                 primary={true}
                 onTouchTap={this.handleClose}
+                disabled={this.state.disableButton}
             />,
             <FlatButton
                 label="Login"
@@ -271,7 +300,7 @@ export default class Navbar extends Component {
                     <li><a href="#" onClick={this.handleLogin}>LOG IN</a></li>
                     <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>
                 </ul>
-                <Dialog
+                {/*<Dialog
                     title="Sign up"
                     actions={actions}
                     modal={true}
@@ -282,7 +311,17 @@ export default class Navbar extends Component {
                 >
                     <SignUp/>
 
-                </Dialog>
+                </Dialog>*/}
+
+                <div id="signUpModal" className="modal">
+                    <div className="modal-content">
+                        <h4>Sign up</h4>
+                        <SignUp/>
+                    </div>
+                    <div className="modal-footer right-align">
+                        {actions}
+                    </div>
+                </div>
 
                 <Dialog
                     title="Login"
@@ -299,6 +338,18 @@ export default class Navbar extends Component {
                     }}
 
                 >
+                    {this.state.loaders ? 
+                        <div className="row">
+                            <div className="progress">
+                                <div className="indeterminate"></div>
+                            </div>
+                        </div>
+                        
+                        :
+                        
+                        null
+                    }
+
                     <Login handleSubmit={(e) => {e.preventDefault()}}/>
 
                 </Dialog>
@@ -320,6 +371,13 @@ export default class Navbar extends Component {
                         </div>
                     </div>
                 </Dialog>
+
+                <Snackbar
+                    open={this.state.openSnackbarMessage}
+                    message="Invalid email and password"
+                    autoHideDuration={4000}
+                    onRequestClose={this.handleRequestCloseSnackbar}
+                />
 
             </div>
         )

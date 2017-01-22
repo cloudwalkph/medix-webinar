@@ -141,6 +141,7 @@ export default class Header extends Component {
                     <SignUp/>
 
                 </Dialog>
+                
 			</div>
 		)
 	}
