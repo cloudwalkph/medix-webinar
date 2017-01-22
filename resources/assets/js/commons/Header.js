@@ -110,6 +110,8 @@ export default class Header extends Component {
             />
         ];
 
+        let user = JSON.parse(sessionStorage.getItem('access'));
+
 		return (
 			<div className="section valign-wrapper" style={{height : '90vh'}}>
 				<div className="container">
@@ -124,10 +126,16 @@ export default class Header extends Component {
 							</h6>
 						</div>
 					</div>
+                {user ? 
+                    null
+
+                    :
+
+                    <div className="row center">
+                        <a href="#" id="download-button" className="btn-large waves-effect waves-light indigo darken-4" onClick={this.handleSignUpButton}>REGISTER HERE</a>
+                    </div>
+                }
 					
-					<div className="row center">
-						<a href="#" id="download-button" className="btn-large waves-effect waves-light indigo darken-4" onClick={this.handleSignUpButton}>REGISTER HERE</a>
-					</div>
 				</div>
 
 
