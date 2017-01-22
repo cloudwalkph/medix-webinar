@@ -114,8 +114,6 @@ class MessageController extends Controller
             $result->where('flag', $flag);
         };
 
-        $result->orderBy('created_at', 'desc');
-
         return response()->json($result->get(), 200);
     }
 
