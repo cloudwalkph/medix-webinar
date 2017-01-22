@@ -28,7 +28,7 @@ export default class Print extends Component {
 	render() {
 		return(
 			<div className="section">
-				<div className="container">
+				<div className="container" style={{backgroundColor : '#fff'}}>
 					<ul className="collection">
 					{this.state.listOfMessages.map((item, i) => {
 						// return <Messages data={item} key={i} index={i}/>
