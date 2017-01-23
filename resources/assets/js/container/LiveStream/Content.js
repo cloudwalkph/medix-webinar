@@ -8,7 +8,8 @@ export default class Content extends Component {
 
 	state = {
 		isSending : false,
-		textArea : ''
+		textArea : '',
+		course: 1
 	}
 
 	handleSubmit = (e) => {
@@ -45,39 +46,47 @@ export default class Content extends Component {
 
 	render() {
 		return(
-			<div className="container">
-				<div className="section">
-					<div className="container">
-						<Video />
-						<div className="section">
-							<div className="row">
-								<form id="askQuestionForm" className="col s12" onSubmit={this.handleSubmit}>
-									<div className="input-field col s12">
-										<textarea id="chatboxTextarea" rows="4" name="message" className="materialize-textarea" value={this.state.textArea} onChange={(e) => {this.setState({textArea : e.target.value})}} required></textarea>
-										<label htmlFor="chatboxTextarea">Ask a question</label>
+			<main>
+				<div className="container">
+					<div className="section">
+						<div className="container">
+							<Video 
+								videoSrc="https://s3-ap-southeast-1.amazonaws.com/medix-webinar/KF+2.mp4" 
+								videoType="video/mp4"	
+							/>
+							{ this.state.course == 2 ? 
+								<div className="section">
+									<div className="row">
+										<form id="askQuestionForm" className="col s12" onSubmit={this.handleSubmit}>
+											<div className="input-field col s12">
+												<textarea id="chatboxTextarea" rows="4" name="message" className="materialize-textarea" value={this.state.textArea} onChange={(e) => {this.setState({textArea : e.target.value})}} required></textarea>
+												<label htmlFor="chatboxTextarea">Ask a question</label>
+											</div>
+											<div className="input-field col s12">
+											{this.state.isSending ?
+
+												<button className="btn waves-effect waves-light right indigo darken-3 disabled" type="button">
+													Sending
+													<i className="material-icons right">send</i>
+												</button>
+
+												:
+
+												<button className="btn waves-effect waves-light right indigo darken-3" type="submit">
+													Submit
+													<i className="material-icons right">send</i>
+												</button>
+											}
+											</div>
+										</form>
 									</div>
-									<div className="input-field col s12">
-									{this.state.isSending ?
-
-										<button className="btn waves-effect waves-light right indigo darken-3 disabled" type="button">
-											Sending
-										    <i className="material-icons right">send</i>
-										</button>
-
-										:
-
-										<button className="btn waves-effect waves-light right indigo darken-3" type="submit">
-											Submit
-										    <i className="material-icons right">send</i>
-										</button>
-									}
-									</div>
-								</form>
-							</div>
+								</div>
+							: '' }
+							
 						</div>
 					</div>
 				</div>
-			</div>
+			</main>
 		)
 	}
 }
