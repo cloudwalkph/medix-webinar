@@ -171,12 +171,12 @@ export default class Courses extends Component {
 			}	
 		}
 
-		/*if(hasCourse)
+		if(hasCourse)
 		{
 			startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3" onClick={this.handleProceedToCourse}>Start</button>;
 		}
 
-		if(!session)
+		/*if(!session)
 		{
 			startEnrollButton = null;
 		}*/
@@ -278,7 +278,7 @@ export default class Courses extends Component {
 	                            				<img src={window.location.origin + '/img/Courses/johanna.jpg'} style={this.state.styles.imgProfile}/>
 	                            			}
 	                            			<div style={this.state.styles.profileContent}>
-	                            				<strong>Professor:</strong><span className="webinarDescription"> Dr. Kimberly Ray R. Fajardo</span>
+	                            				<strong>Professor:</strong><span className="webinarDescription">{this.props.params.courseId == 1 ? ' Dr. Kimberly Ray R. Fajardo' : ' Dr. Johanna Rosette'}</span>
 	                            			</div>
 	                            		</div>
 	                            	</div>
@@ -426,6 +426,24 @@ export default class Courses extends Component {
                     open={this.state.openRegistration}
                     autoScrollBodyContent={true}
                 >
+                	{/*<div class="row">
+    					<form class="col s12">
+    						<div className="row">
+    							<div className="input-field col s12">
+    								<input name="email" type="email" id="emailRegister" className="validate" />
+    								<label for="emailRegister">Email</label>
+    							</div>
+    							<div className="input-field col s12">
+    								<input name="first_name" type="text" id="firstNameRegister" className="validate" />
+    								<label for="firstNameRegister">First Name</label>
+    							</div>
+    							<div className="input-field col s12">
+    								<input name="last_name" type="text" id="lastNameRegister" className="validate" />
+    								<label for="lastNameRegister">Last Name</label>
+    							</div>
+    						</div>
+    					</form>
+    				</div>*/}
                 	<p>You have been successfully enrolled on this course</p>
                 </Dialog>
             </div>
