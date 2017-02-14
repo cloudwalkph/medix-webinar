@@ -80,9 +80,9 @@ class UserController extends Controller
 
                         $m->to($email_user->email, $email_user->user->first_name . ' ' . $email_user->user->last_name);
                         
-                        $emails = ['michael.alumno@gmail.com', 'kimw.medina@gmail.com', 'alleo.indong@gmail.com', 'nm@cloudwalkdigital.com'];
+                        // $emails = ['michael.alumno@gmail.com', 'kimw.medina@gmail.com', 'alleo.indong@gmail.com', 'nm@cloudwalkdigital.com'];
                         // $m->cc($emails);
-                        $m->bcc($emails);
+                        // $m->bcc($emails);
 
                         $m->subject('Webinar Confirmation');
                         $response['message'] = $m->getSwiftMessage();

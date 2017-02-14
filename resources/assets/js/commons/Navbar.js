@@ -281,7 +281,7 @@ export default class Navbar extends Component {
         ];
 
         return(
-            <div>
+            <header>
                 <div className="navbar-fixed">
                     <nav className="white" role="navigation">
                         <div className="container">
@@ -396,7 +396,7 @@ export default class Navbar extends Component {
                     onRequestClose={this.handleRequestCloseSnackbar}
                 />
 
-            </div>
+            </header>
         )
     }
 }
