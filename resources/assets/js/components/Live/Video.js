@@ -13,6 +13,7 @@ class Video extends Component {
 		},() => {
 			// window.location.href = self.location;
 		});
+
 	}
 
 	render() {

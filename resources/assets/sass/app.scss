@@ -236,3 +236,20 @@ footer.page-footer {
   max-height : 420px;
   overflow-y : auto;
 }
+
+
+/*COUNTDOWN*/
+.divTime {
+	padding-right: 10px;
+    display: inline-block;
+    line-height: 20px;
+    text-align: center;
+}
+.spanTime {
+	font-size: 30px;
+    font-weight: 700;
+    display: block;
+}
+.spanLabel {
+	display: block;
+}
