@@ -8,16 +8,11 @@ class Video extends Component {
 	}
 
 	componentDidMount() {
-
-<<<<<<< HEAD
 		this.setState({
 			videoSrc : 'rtmp://54.238.155.160/live/test'
 		},() => {
 			// window.location.href = self.location;
 		});
-
-=======
->>>>>>> eae509b92bc8c623ee95f770fbce3358bc41f762
 	}
 
 	render() {
