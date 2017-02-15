@@ -95,7 +95,6 @@ export default class Courses extends Component {
 		axios.post(url, $.param(formData)).then((res) => {
             this.setState({
 				openRegistration : false,
-				hasCourse : true,
 				disableButton : false
 			});
         }).catch((error) => {
@@ -126,9 +125,15 @@ export default class Courses extends Component {
     }
 
 	handleProceedToCourse = () => {
-		let courseId = this.props.params.courseId;
-		window.location.href = window.location.origin + '/video/' + courseId;
-		// browserHistory.push('/video/' + courseId);
+        if(!this.state.countDown)
+        {
+            let courseId = this.props.params.courseId;
+            window.location.href = window.location.origin + '/video/' + courseId;
+            // browserHistory.push('/video/' + courseId);    
+            return;
+        }
+        alert('This webinar will start soon');
+		
 	}
 
 	countTimer = () => {
@@ -166,11 +171,41 @@ export default class Courses extends Component {
 		return;
 	}
 
-	handleClose = () => {
-		this.setState({
-			openRegistration: false
-		})
-	}
+    handlerVisitor = () => {
+        let session = JSON.parse(sessionStorage.getItem('access'));
+
+        if(this.props.location.query.uid)
+        {
+            let url = baseUrl.apiUrl + 'user/' + this.props.location.query.uid
+            axios.get(url).then((res) => {
+                
+                sessionStorage.setItem('access', JSON.stringify(res.data))
+                
+                for (var i = 0; i < res.data.courses.length; i++) {
+                    if(res.data.courses[i].id == this.props.params.courseId)
+                    {
+                        this.setState({
+                            hasCourse : true
+                        });
+                    }
+                } 
+            }).catch((error) => {
+                console.log(error);
+            });
+
+            return;
+        }
+
+        for(var e = 0; e < session.courses.length; e++) {
+            if(session.courses[e].id == this.props.params.courseId)
+            {
+                this.setState({
+                    hasCourse : true
+                });
+            }
+        }
+
+    }
 
 	componentDidMount () {
         $('.parallax').parallax();
@@ -181,24 +216,14 @@ export default class Courses extends Component {
         this.getApiCourses();
 
         this.countTimer();
+
+        this.handlerVisitor();
     }
 
 	render() {
 		
-		let session = sessionStorage.getItem('access');
-		let courses = this.state.data.courses;
 		let startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3" onClick={this.handleCourseRegistration}>Enroll Now</button>;
 		let hasCourse = this.state.hasCourse;
-		
-		if(courses)
-		{
-			for (var i = 0; i < courses.length; i++) {
-			    if(courses[i].id == this.props.params.courseId)
-			    {
-			    	hasCourse = true;
-			    }
-			}	
-		}
 
 		if(hasCourse)
 		{
@@ -298,69 +323,7 @@ export default class Courses extends Component {
 	                            </div>
 
 	                            <div className="section"><div className="divider"></div></div>
-	                            {/*<div className="section scrollspy" id="syllabus">
-	                            	<h5>Syllabus</h5>
-	                            	<h5 className="grey-text">Week 1</h5>
-	                            </div>
-
-	                            <div className="section">
-	                            	<p className="grey-text">
-	                            		God, you are a God. I will earnesty seek you. My soul thirsts for you. My flesh longs for you, in
-	                            		a dry and weary land, where there is no water. So i have seen you in the sanctuary, watching your 
-	                            		power and your glory.
-	                            	</p>
-	                            </div>
-
-	                            <div className="section">
-	                            	<span className="grey-text">5 Articles / 2 Videos</span>
-	                            </div>
-
-	                            <div className="section">
-									<List>
-										<ListItem primaryText="Video : Welcome to Class - Dr. Chappin Aaron Harris" />
-										<ListItem primaryText="Article :  I will lift up my hands in your name"  />
-										<ListItem primaryText="Video :  God, you are my God. I will earnestly seek you"  />
-										<ListItem primaryText="My soul thirst for you" />
-										<ListItem primaryText="Because of your loving kindness is better than life" />
-										<ListItem primaryText="So i will bless you while i live" />
-									</List>
-	                            </div>
-
-	                            <div className="section"><div className="divider"></div></div>
-
-	                            <div className="section">
-	                            	<h5>Rating & Reviews</h5>
-	                            </div>
-	                            <div className="section scrollspy" id="ratingReview">
-	                            	<div className="row">
-		                            	<div className="col m6 offset-m3">
-		                            		<img src="http://www.emergingrnleader.com/wp-content/uploads/2016/08/Five-Stars.jpg" style={{width : '100%'}}/>
-		                            		<div className="amber-text accent-4 center-align">Rated 4.8 out of 15,656 ratings</div>
-		                            	</div>
-	                            	</div>
-	                            </div>
-
-	                            <div className="section"><div className="divider"></div></div>
-
-	                            <div className="section">
-	                            	<List>
-										<ListItem 
-											primaryText={<img src="http://www.emergingrnleader.com/wp-content/uploads/2016/08/Five-Stars.jpg" style={{width : '10%'}}/>} 
-											leftAvatar={<Avatar src="http://www.material-ui.com/images/kolage-128.jpg" />} 
-											secondaryText="I Will rejoice in the shadow of your wings. My soul stays close to you. Your right hand holds me up" />
-											
-										<div className="section"><div className="divider"></div></div>
-										
-										<ListItem 
-											primaryText={<img src="http://www.emergingrnleader.com/wp-content/uploads/2016/08/Five-Stars.jpg" style={{width : '10%'}}/>} 
-											leftAvatar={<Avatar src="http://www.material-ui.com/images/chexee-128.jpg" />}  
-											secondaryText="But those who seek my soul, to destroy it, shall go into the lower parts of the earth" />
-									</List>
-	                            </div>
-
-	                            <div className="section center-align">
-	                            	<a href="javascript:void(0)" className="btn waves-effect waves-light indigo darken-3">see all reviews</a>
-	                            </div>*/}
+	                       
 
 	                        </div>
                         </div>

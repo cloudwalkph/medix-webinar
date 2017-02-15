@@ -11,4 +11,4 @@
 <p>Dental Access Publications Inc
 </p>
 <p>You may follow your webinar at this link</p>
-<a href="//medix-webinar.dev/video/{{$course_id}}"></a>
+<a href="http://medix-webinar.dev/courses/{{$course_id}}?uid={{$user_id}}">Click here</a>
