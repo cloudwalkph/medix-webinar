@@ -73,7 +73,7 @@ export default class Navbar extends Component {
                 disableButton : false,
                 loaders : false
             });
-        })
+        });
     }
 
     handleLoginForm = (e) => {

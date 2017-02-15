@@ -9,6 +9,7 @@ import baseUrl from '../../config';
 import axios from 'axios';
 import Dialog from 'material-ui/Dialog';
 import { browserHistory } from 'react-router';
+import moment from 'moment';
 
 
 export default class Courses extends Component {
@@ -43,27 +44,30 @@ export default class Courses extends Component {
 			profileContent : {
 				fontSize: '24px'
 			}
-		}
+		},
+		countDown : ''
 	}
 
 	getApiCourses = () => {
-		let user = JSON.parse(sessionStorage.getItem('access'));
-		let url = baseUrl.apiUrl + 'user/' + user.data.user.id;
+		
+		let url = baseUrl.apiUrl + 'course/' + this.props.params.courseId;
 		
 		axios.get(url).then((res) => {
+			
             this.setState({
             	data : res.data
             })
         }).catch((error) => {
             
         });
+		
 	}
 
 	handleCourseRegistration = (e) => {
-		if(!sessionStorage.getItem('access'))
-		{
-			return;
-		}
+		//if(!sessionStorage.getItem('access'))
+		//{
+		//	return;
+		//}
 		this.setState({
 			openRegistration : true
 		});
@@ -104,6 +108,41 @@ export default class Courses extends Component {
 		// browserHistory.push('/video/' + courseId);
 	}
 
+	countTimer = () => {
+		setInterval(() => {
+			let now  = moment();
+			let releaseDate = moment(this.state.data.start);
+
+			let day = moment.utc(moment(releaseDate,"YYYY-MM-DD HH:mm:ss").diff(moment(now,"YYYY-MM-DD HH:mm:ss"))).format("DD");
+			let hours = moment.utc(moment(releaseDate,"YYYY-MM-DD HH:mm:ss").diff(moment(now,"YYYY-MM-DD HH:mm:ss"))).format("HH");
+			let minutes = moment.utc(moment(releaseDate,"YYYY-MM-DD HH:mm:ss").diff(moment(now,"YYYY-MM-DD HH:mm:ss"))).format("mm");
+			let seconds = moment.utc(moment(releaseDate,"YYYY-MM-DD HH:mm:ss").diff(moment(now,"YYYY-MM-DD HH:mm:ss"))).format("ss");
+			let timer = <div className="col s12 l12 m12"> 
+							<div className="divTime">
+								<span className="spanTime">{day}</span><small className="spanLabel"> Days </small>
+							</div>
+							<div className="divTime">
+								<span className="spanTime">{hours}</span> <small className="spanLabel"> Hours </small>
+							</div>
+							<div className="divTime">
+								<span className="spanTime">{minutes}</span> <small className="spanLabel"> Minutes </small>
+							</div>
+							<div className="divTime">
+								<span className="spanTime">{seconds}</span> <small className="spanLabel"> Seconds </small>
+							</div>
+						</div>;
+			if(now > releaseDate)
+			{
+				timer = "";
+			}
+			this.setState({
+				countDown : timer
+			});
+		},1000);
+
+		return;
+	}
+
 	componentDidMount () {
         $('.parallax').parallax();
         $('.scrollspy').scrollSpy();
@@ -111,10 +150,12 @@ export default class Courses extends Component {
         $('body').scrollTop(0);
 
         this.getApiCourses();
+
+        this.countTimer();
     }
 
 	render() {
-
+		
 		let session = sessionStorage.getItem('access');
 		let courses = this.state.data.courses;
 		let startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3" onClick={this.handleCourseRegistration}>Enroll Now</button>;
@@ -135,10 +176,10 @@ export default class Courses extends Component {
 			startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3" onClick={this.handleProceedToCourse}>Start</button>;
 		}
 
-		if(!session)
+		/*if(!session)
 		{
 			startEnrollButton = null;
-		}
+		}*/
 
 		let actions = [
             <FlatButton
@@ -149,14 +190,18 @@ export default class Courses extends Component {
                 onTouchTap={this.handleGotoCourse}
             />
         ];
-	
+		
 		return (
 			<div>
 
                 <div className="row valign-wrapper">
                     <div className="col l5">
 	                    <div className="row">
-	                        <img className="responsive-img" src={window.location.origin + '/img/Courses/pajards.png'} />
+	                    	{this.props.params.courseId == 1 ?
+	                        	<img className="responsive-img" src={window.location.origin + '/img/Courses/pajards.png'} />
+		                        :
+		                        <img className="responsive-img" src={window.location.origin + '/img/Courses/johanna.jpg'} />
+		                    }	
                         </div>
                     </div>
                     <div className="col l6 offset-l1">
@@ -164,19 +209,32 @@ export default class Courses extends Component {
 	                    	<div className="col l7">
 	                    		<h3>COURSE PAGE</h3>
 	                    		<h4>
-		                        	<strong>TEMPORIZATION:</strong> THE ROAD TO FINAL RESTORATION
+		                        	{this.state.data.title}
 		                        </h4>
 		                        <p className="webinarDescription">
-		                            The current trend of the dental profession is geared towards esthetics and beauty. All patients would want a beautiful and pleasant smile. 
-		                            Practitioners all agree that Temporization is one basic and essential procedure that ensures optimal esthetics for our fixed
-		                            restorative cases.
+		                            {this.state.data.description}
 		                        </p>
-		                        <h6 style={{color: '#4444ff'}}>LEARNING OBJECTIVES:</h6>
-								<ul className="browser-default webinarDescription">
-									<li>Review the basic fundamentals of Temporization.</li>
-	                            	<li>Revisit the classic techniques of Temporization.</li>
-	                            	<li>Introduce innovations in techniques to create an easy work flow to the clinician and the patient.</li>
-								</ul>
+		                        {this.props.params.courseId == 1 ?
+		                        	<div>
+			                        	<h6 style={{color: '#4444ff'}}>LEARNING OBJECTIVES:</h6>
+										<ul className="browser-default webinarDescription">
+											<li>Review the basic fundamentals of Temporization.</li>
+			                            	<li>Revisit the classic techniques of Temporization.</li>
+			                            	<li>Introduce innovations in techniques to create an easy work flow to the clinician and the patient.</li>
+										</ul>
+									</div>
+									:
+									null
+		                        }
+		                        
+	                    	</div>
+	                    </div>
+	                    <div className="row">
+	                    	{this.state.countDown}
+	                    </div>
+	                    <div className="row">
+	                    	<div className="col m12 l12 s12">
+	                    	{startEnrollButton}
 	                    	</div>
 	                    </div>
                     </div>
@@ -186,7 +244,7 @@ export default class Courses extends Component {
                 <div className="section">
 
                     <div className="row">
-                        <div className="col hide-on-small-only m4 l4" style={{borderRight : '2px solid #64b5f6'}}>
+                        {/*<div className="col hide-on-small-only m4 l4" style={{borderRight : '2px solid #64b5f6'}}>
 	                        <div className="container" id="tab-scroll-pin">
 	                            <ul className="section table-of-contents">
 	                                <li style={this.state.styles.linkList}>
@@ -208,28 +266,32 @@ export default class Courses extends Component {
 	                                </li>
 	                            </ul>
 	                        </div>
-                        </div>
-                        <div className="col s12 m8 l8">
+                        </div>*/}
+                        <div className="col s12 m8 l8 offset-m2 offset-l2">
 	                        <div className="container">
 	                            <div id="introduction" className="section scrollspy">
 	                            	<div className="section">
 	                            		<div style={this.state.styles.profileDiv}>
-	                            			<img src={window.location.origin + '/img/Courses/pajards.png'} style={this.state.styles.imgProfile}/>
+	                            			{this.props.params.courseId == 1 ?
+		                            			<img src={window.location.origin + '/img/Courses/pajards.png'} style={this.state.styles.imgProfile}/>
+		                            			:
+	                            				<img src={window.location.origin + '/img/Courses/johanna.jpg'} style={this.state.styles.imgProfile}/>
+	                            			}
 	                            			<div style={this.state.styles.profileContent}>
-	                            				<strong>Professor:</strong><span className="webinarDescription"> Dr. Kimberly Ray R. Fajardo</span>
+	                            				<strong>Professor:</strong><span className="webinarDescription">{this.props.params.courseId == 1 ? ' Dr. Kimberly Ray R. Fajardo' : ' Dr. Johanna Rosette'}</span>
 	                            			</div>
 	                            		</div>
 	                            	</div>
-	                            	<Readmore/>
+	                            	<Readmore {...this.props} />
 
 	                            </div>
 
 	                            <div className="section">
-	                            	<h5>Title : <span className="grey-text">Temporization: The Road to Final Restoration</span></h5>
+	                            	<h5>Title : <span className="grey-text">{this.state.data.title}</span></h5>
 	                            </div>
 
 	                            <div className="section">
-	                                <h5>Time : <span className="grey-text">8:00 pm - 9:00 pm (Sunday)</span></h5>
+	                                <h5>Time : <span className="grey-text">{moment(this.state.data.start).format('hh:mm A') + ' - ' + moment(this.state.data.end).format('hh:mm A') + ' (' + moment(this.state.data.end).format('dddd') + ')'}</span></h5>
 	                            </div>
 
 	                            <div className="section">
@@ -237,11 +299,11 @@ export default class Courses extends Component {
 	                            </div>
 
 	                            <div className="section">
-	                                <h5>Language : <span className="grey-text">English</span></h5>
+	                                <h5>Language : <span className="grey-text">{this.state.data.language}</span></h5>
 	                            </div>
 
 	                            <div className="section">
-	                                <h5>Price : <span className="grey-text">Free</span></h5>
+	                                <h5>Price : <span className="grey-text">{this.state.data.price <= 0 ? 'Free' : null}</span></h5>
 	                            </div>
 
 	                            <div className="section"><div className="divider"></div></div>
@@ -364,6 +426,24 @@ export default class Courses extends Component {
                     open={this.state.openRegistration}
                     autoScrollBodyContent={true}
                 >
+                	{/*<div class="row">
+    					<form class="col s12">
+    						<div className="row">
+    							<div className="input-field col s12">
+    								<input name="email" type="email" id="emailRegister" className="validate" />
+    								<label for="emailRegister">Email</label>
+    							</div>
+    							<div className="input-field col s12">
+    								<input name="first_name" type="text" id="firstNameRegister" className="validate" />
+    								<label for="firstNameRegister">First Name</label>
+    							</div>
+    							<div className="input-field col s12">
+    								<input name="last_name" type="text" id="lastNameRegister" className="validate" />
+    								<label for="lastNameRegister">Last Name</label>
+    							</div>
+    						</div>
+    					</form>
+    				</div>*/}
                 	<p>You have been successfully enrolled on this course</p>
                 </Dialog>
             </div>

@@ -44,9 +44,11 @@ export default class Readmore extends Component {
 	}
 
 	render() {
+
 		return (
 			<div>
 				<div className="sidebar-box">
+				{this.props.params.courseId == 1 ?
 					<p>
 						Dr.  Kimberly Ray R. Fajardo is an alumnus of the University of the East College of Dentistry way 
 						back in 2009. He became  a professor at the same university at the department of Prosthodontics, 
@@ -58,9 +60,19 @@ export default class Readmore extends Component {
 						Prosthodontics Society, member of the Cavite Dental Chapter and  International Association of 
 						Orthodontics - Philippine Section.
 					</p>
+					:
+					<p>
+						Alumna of the University of the East College of Dentistry. 
+						In 2004, she received her doctorate degree in molecular biology from Hokkaido University, specializing in cancer research. 
+						Member of the Philippine Association of Oral Maxillofacial Surgeons.
+						She continues to hold practice in Quezon City and teaches part-time at the Cranio-Facial Foundation of the Philippines.
+						Former Faculty at the University of the East Post Graduate  Division
+					</p>
+				}
 					<p className="read-more">
 						
 					</p>
+				
 				</div>
 				<a href="javascript:void(0)" className="btn-flat waves-effect waves-teal center-align" onClick={this.handleClickButton} style={this.state.style.button}>Read More</a>
 			</div>

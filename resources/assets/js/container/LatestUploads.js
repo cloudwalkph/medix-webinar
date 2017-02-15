@@ -1,15 +1,42 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router';
 import baseUrl from '../config';
 import axios from 'axios';
 
-var LatestUploads = React.createClass({
+class LatestUploads extends Component {
+
+	state = {
+		data : []
+	}
+
+	getApiCourses = () => {
+		
+		let url = baseUrl.apiUrl + 'course/';
+		
+		axios.get(url).then((res) => {
+			
+            this.setState({
+            	data : res.data
+            })
+        }).catch((error) => {
+            
+        });
+		
+	}
+
+	componentWillMount() {
+		this.getApiCourses();
+	}
 
     componentDidMount() {
-        $('.slider').slider();
-    },
+        setTimeout(() => {
+        	$('.slider').slider();
+        },1000)
+        
+    }
 
     render() {
+    	
         return(
             <div className="section scrollspy" id="LatestUploads">
                 <div className="container" >
@@ -17,28 +44,31 @@ var LatestUploads = React.createClass({
                         <div className="col s12">
                             <div className="slider" id="latestSliders">
                                 <ul className="slides" style={{backgroundColor: '#FFF',height : '90vh'}}>
-                                    <li>
-                                        <div className="col l6">
-                                            <div className="row">
-                                                <h3 style={{fontFamily: "Source Sans Pro"}}>LATEST UPLOADS</h3>
-                                                
-                                            </div>
-                                            <hr/>
-                                            <div className="row">
-                                                <h5>
-                                                    <strong>TEMPORIZATION:</strong> THE ROAD TO FINAL RESTORATION
-                                                </h5>
-                                                <strong style={{fontFamily: 'Source Sans Pro'}}>Lecture by Dr. Kim Fajardo</strong>
-                                                <p className="webinarDescription">
-                                                    The current trend of the dental profession is geared towards esthetics and beauty.
-                                                </p>
-                                                <Link style={{fontFamily: 'Oxygen', fontWeight: 'bold'}} to="/courses/1" id="download-button" className="btn waves-effect waves-light indigo darken-3">VIEW COURSE</Link>
-                                            </div>
-                                        </div>
-                                        <div className="col l6">
-                                            <img className="responsive-img" src={window.location.origin + '/img/Courses/pajards.png'} />
-                                        </div>
-                                    </li>
+                                {this.state.data.map((item, i) => {
+		                            return	<li key={i}>
+			                                    <div className="col l6">
+			                                        <div className="row">
+			                                            <h3 style={{fontFamily: "Source Sans Pro"}}>{i == 1 ? 'LATEST UPLOADS' : null}</h3>
+			                                            
+			                                        </div>
+			                                        <hr/>
+			                                        <div className="row">
+			                                            <h5>
+			                                                {item.title}
+			                                            </h5>
+			                                            <strong style={{fontFamily: 'Source Sans Pro'}}>Lecture by Dr. {i == 0 ? 'Kim Fajardo' : 'johanna rosette'}</strong>
+			                                            <p className="webinarDescription truncate">
+			                                                {item.description}
+			                                            </p>
+			                                            <Link style={{fontFamily: 'Oxygen', fontWeight: 'bold'}} to={"/courses/" + item.id} id="download-button" className="btn waves-effect waves-light indigo darken-3">VIEW COURSE</Link>
+			                                        </div>
+			                                    </div>
+			                                    <div className="col l6">
+			                                        <img className="responsive-img" src={i == 0 ? window.location.origin + '/img/Courses/pajards.png' : window.location.origin + '/img/Courses/johanna.jpg'} />
+			                                    </div>
+			                                </li>
+                                })}
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -47,7 +77,7 @@ var LatestUploads = React.createClass({
             </div>
         )
     }
-});
+};
 
-module.exports = LatestUploads;
+export default LatestUploads;
   
