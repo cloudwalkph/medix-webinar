@@ -25,7 +25,7 @@ class User extends Model
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'created_at', 'updated_at', 'deleted_at'
     ];
 
     function emails()
@@ -36,5 +36,15 @@ class User extends Model
     function courses()
     {
         return $this->belongsToMany('App\Course');
+    }
+
+    /**
+     * Scope a query to only include popular users.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeVisitors($query)
+    {
+        return $query->whereRaw('password IS null');
     }
 }

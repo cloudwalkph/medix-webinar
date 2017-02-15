@@ -33,6 +33,8 @@ Route::group(['prefix' => 'api'], function () {
 
         Route::resource('message', 'MessageController');
 
+        Route::resource('visitor', 'VisitorController');
+
         Route::get('course/{courseId}/messages', 'MessageController@showByCourseId');
         Route::get('user/{userId}/messages', 'MessageController@showByUserId');
 
