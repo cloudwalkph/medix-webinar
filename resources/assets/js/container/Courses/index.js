@@ -72,8 +72,8 @@ export default class Courses extends Component {
 	}
 
 	courseRegistration = () => {
-		//let url = baseUrl.apiUrl + 'visitor';
-        let url = 'http://192.168.1.52:8000/api/v1/visitor';
+		let url = baseUrl.apiUrl + 'visitor';
+        //let url = 'http://192.168.1.52:8000/api/v1/visitor';
 		let courseId = this.props.params.courseId;
         let form = $('#registrationVisitorForm');
 		let formData = form.serializeArray();
