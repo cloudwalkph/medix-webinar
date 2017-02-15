@@ -64,13 +64,7 @@ export default class Courses extends Component {
 	}
 
 	handleCourseRegistration = (e) => {
-		//if(!sessionStorage.getItem('access'))
-		//{
-		//	return;
-		//}
-		this.setState({
-			openRegistration : true
-		});
+		$('#modalVisitorRegistration').modal('open');
 	}
 
 	handleGotoCourse = () => {
@@ -78,18 +72,27 @@ export default class Courses extends Component {
 	}
 
 	courseRegistration = () => {
-		let url = baseUrl.apiUrl + 'enroll';
-		let user = JSON.parse(sessionStorage.getItem('access'));
-		let formData = {
-			user_id : user.data.user.id,
-			course_id : 1
-		}
+		//let url = baseUrl.apiUrl + 'visitor';
+        let url = 'http://192.168.1.52:8000/api/v1/visitor';
+		let courseId = this.props.params.courseId;
+        let form = $('#registrationVisitorForm');
+		let formData = form.serializeArray();
+
+		formData.push({
+			name: 'course_id',
+			value: courseId
+		});
+
+        if(this.formValidation(form) == 0) //validation
+        {
+            return;
+        }
 
 		this.setState({
             disableButton : true
         });
 		
-		axios.post(url, formData).then((res) => {
+		axios.post(url, $.param(formData)).then((res) => {
             this.setState({
 				openRegistration : false,
 				hasCourse : true,
@@ -101,6 +104,26 @@ export default class Courses extends Component {
             });
         })
 	}
+
+    formValidation = (form) => {
+        if(!form[0].email.value)
+        {
+            form[0].email.focus();
+            return 0;
+        }
+        if(!form[0].first_name.value)
+        {
+            form[0].first_name.focus();
+            return 0;
+        }
+        if(!form[0].last_name.value)
+        {
+            form[0].last_name.focus();
+            return 0;
+        }
+
+        return 1;
+    }
 
 	handleProceedToCourse = () => {
 		let courseId = this.props.params.courseId;
@@ -143,6 +166,12 @@ export default class Courses extends Component {
 		return;
 	}
 
+	handleClose = () => {
+		this.setState({
+			openRegistration: false
+		})
+	}
+
 	componentDidMount () {
         $('.parallax').parallax();
         $('.scrollspy').scrollSpy();
@@ -175,21 +204,6 @@ export default class Courses extends Component {
 		{
 			startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3" onClick={this.handleProceedToCourse}>Start</button>;
 		}
-
-		/*if(!session)
-		{
-			startEnrollButton = null;
-		}*/
-
-		let actions = [
-            <FlatButton
-                label="Ok"
-                primary={true}
-                keyboardFocused={true}
-                disabled={this.state.disableButton}
-                onTouchTap={this.handleGotoCourse}
-            />
-        ];
 		
 		return (
 			<div>
@@ -244,29 +258,6 @@ export default class Courses extends Component {
                 <div className="section">
 
                     <div className="row">
-                        {/*<div className="col hide-on-small-only m4 l4" style={{borderRight : '2px solid #64b5f6'}}>
-	                        <div className="container" id="tab-scroll-pin">
-	                            <ul className="section table-of-contents">
-	                                <li style={this.state.styles.linkList}>
-	                                	<a href="#introduction" style={this.state.styles.linkFont}>Overview</a>
-	                                </li>
-	                                <li style={this.state.styles.linkList}>
-	                                	<a href="#syllabus" style={this.state.styles.linkFont}>Syllabus</a>
-	                                </li>
-	                                <li style={this.state.styles.linkList}>
-	                                	<a href="#ratingReview" style={this.state.styles.linkFont}>Course Rating</a>
-	                                </li>
-	                                <li style={this.state.styles.linkList}>
-	                                	<div className='section'>
-	                                    	{startEnrollButton}
-	                                    </div>
-	                                    <div className="grey-text">
-	                                        This course requires at least 2 hours per session. 
-	                                    </div>
-	                                </li>
-	                            </ul>
-	                        </div>
-                        </div>*/}
                         <div className="col s12 m8 l8 offset-m2 offset-l2">
 	                        <div className="container">
 	                            <div id="introduction" className="section scrollspy">
@@ -419,33 +410,43 @@ export default class Courses extends Component {
                     </div>*/}
 
                 </div>
-                <Dialog
-                    title="Registration"
-                    actions={actions}
-                    modal={false}
-                    open={this.state.openRegistration}
-                    autoScrollBodyContent={true}
-                >
-                	{/*<div class="row">
-    					<form class="col s12">
-    						<div className="row">
-    							<div className="input-field col s12">
-    								<input name="email" type="email" id="emailRegister" className="validate" />
-    								<label for="emailRegister">Email</label>
-    							</div>
-    							<div className="input-field col s12">
-    								<input name="first_name" type="text" id="firstNameRegister" className="validate" />
-    								<label for="firstNameRegister">First Name</label>
-    							</div>
-    							<div className="input-field col s12">
-    								<input name="last_name" type="text" id="lastNameRegister" className="validate" />
-    								<label for="lastNameRegister">Last Name</label>
-    							</div>
-    						</div>
-    					</form>
-    				</div>*/}
-                	<p>You have been successfully enrolled on this course</p>
-                </Dialog>
+
+                <div id="modalVisitorRegistration" className="modal">
+                	<div className="modal-content">
+                		<div className="row">
+	    					<form className="col s12" id="registrationVisitorForm">
+	    						<div className="row">
+	    							<div className="input-field col s12">
+	    								<input name="email" type="email" id="emailRegister" className="validate" />
+	    								<label htmlFor="emailRegister">Email*</label>
+	    							</div>
+	    							<div className="input-field col s12">
+	    								<input name="first_name" type="text" id="firstNameRegister" className="validate" />
+	    								<label htmlFor="firstNameRegister">First Name*</label>
+	    							</div>
+	    							<div className="input-field col s12">
+	    								<input name="last_name" type="text" id="lastNameRegister" className="validate" />
+	    								<label htmlFor="lastNameRegister">Last Name*</label>
+	    							</div>
+	    							<div className="input-field col s12">
+	    								<input name="company" type="text" id="companyRegister" className="validate" />
+	    								<label htmlFor="companyRegister">Company</label>
+	    							</div>
+	    							<div className="input-field col s12">
+	    								<input name="job" type="text" id="jobRegister" className="validate" />
+	    								<label htmlFor="jobRegister">Title/Job</label>
+	    							</div>
+	    						</div>
+	    					</form>
+	    				</div>
+                	</div>
+                	<div className="modal-footer">
+                		<button 
+                            className={this.state.disableButton ? 'waves-effect waves-green btn-flat disabled' : 'waves-effect waves-green btn-flat'} 
+                            onClick={this.handleGotoCourse}>Send</button>
+                	</div>
+                </div>
+
             </div>
 		)
 	}
