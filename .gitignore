@@ -220,5 +220,12 @@ pip-log.txt
 Homestead.yaml
 Homestead.json
 .env
+
+# Elastic Beanstalk Files
 
-.elasticbeanstalk/
+.elasticbeanstalk/*
+
+!.elasticbeanstalk/*.cfg.yml
+
+!.elasticbeanstalk/*.global.yml
+
