@@ -14,6 +14,10 @@ class Course extends Model
         'title', 'description', 'start', 'end', 'language', 'price'
     ];
 
+    protected $hidden = [
+        'created_at', 'updated_at', 'deleted_at'
+    ];
+
     function users()
     {
         return $this->belongsToMany('App\User');

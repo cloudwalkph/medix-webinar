@@ -18,16 +18,11 @@ class Email extends Model
      * @var array
      */
     protected $hidden = [
-        'id', 'user_id'
+        'id', 'user_id', 'created_at', 'updated_at', 'deleted_at'
     ];
 
     function user()
     {
         return $this->belongsTo('App\User');
-    }
-
-    function courses()
-    {
-
     }
 }

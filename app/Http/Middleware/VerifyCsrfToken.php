@@ -13,6 +13,7 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         //
-        'api*'
+        'api*',
+        'http://medix-webinar.dev'
     ];
 }
