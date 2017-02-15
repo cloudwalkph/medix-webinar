@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('react');
 });
 
 Route::group(['prefix' => 'api'], function () {
@@ -43,3 +43,11 @@ Route::group(['prefix' => 'api'], function () {
     });
 
 });
+
+Route::get('/{page}', function () {
+    return view('react');
+})->where('page', '[0-9A-Za-z\-]+');
+
+Route::get('/{page}/{params}', function () {
+	return view('react');
+})->where('page', '[0-9A-Za-z\-]+')->where('params', '[0-9A-Za-z\-]+');
