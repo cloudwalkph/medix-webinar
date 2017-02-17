@@ -30,59 +30,30 @@ export default class SignUp extends Component {
 
 	render () {
 		return (
-			<div className="section">
+			<form className="col s12" id="signUpFormReg">
 				<div className="row">
-					<form className="col s12" id="signUpForm">
-						<div className="row">
-							<div className="input-field col s12 m6">
-								<input id="email" type="email" className="validate" name="email" required />
-								<label htmlFor="email" data-error="Please input a correct email">Email</label>
-							</div>
-							<div className="input-field col s12 m6">
-								<input id="password" type="password" name="password" className="validate" required />
-								<label htmlFor="password">Password</label>
-							</div>
-						</div>
-						<div className="row">
-							<div className="input-field col s12 m6">
-								<input id="first_name" type="text" className="validate" name="first_name" required />
-								<label htmlFor="first_name">First Name</label>
-							</div>
-							<div className="input-field col s12 m6">
-								<input id="last_name" type="text" className="validate" name="last_name" required />
-								<label htmlFor="last_name">Last Name</label>
-							</div>
-						</div>
-						<div className="row">
-							{/*<div className="input-field col s12 m6">
-								<DatePicker 
-									hintText="Birthday"
-									name="birthdate"
-									className="birthdate"
-									autoOk={true}
-									onChange={this.handleChange} />
-							</div>*/}
-							<div className="input-field col s12">
-								<RadioButtonGroup
-									name="gender" 
-									defaultSelected=""
-								>
-									<RadioButton
-										value="1"
-										label="Male"
-										labelStyle={this.state.styles.radioLabel}
-									/>
-									<RadioButton
-										value="0"
-										label="Female"
-										labelStyle={this.state.styles.radioLabel}
-									/>
-								</RadioButtonGroup>
-							</div>
-						</div>
-					</form>
+					<div className="input-field col s12">
+						<input name="email" type="email" id="emailUser" className="validate" />
+						<label htmlFor="emailUser">Email*</label>
+					</div>
+					<div className="input-field col s12">
+						<input name="first_name" type="text" id="firstNameUser" className="validate" />
+						<label htmlFor="firstNameUser">First Name*</label>
+					</div>
+					<div className="input-field col s12">
+						<input name="last_name" type="text" id="lastNameUser" className="validate" />
+						<label htmlFor="lastNameUser">Last Name*</label>
+					</div>
+					<div className="input-field col s12">
+						<input name="company" type="text" id="companyUser" className="validate" />
+						<label htmlFor="companyUser">Company</label>
+					</div>
+					<div className="input-field col s12">
+						<input name="job" type="text" id="jobUser" className="validate" />
+						<label htmlFor="jobUser">Title/Job</label>
+					</div>
 				</div>
-			</div>
+			</form>
 		)
 	}
 

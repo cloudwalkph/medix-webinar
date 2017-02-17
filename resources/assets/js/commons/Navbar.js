@@ -215,8 +215,8 @@ export default class Navbar extends Component {
                         {/*<li className={this.state.active == 'topSpecializations' ? 'active' : ''}><a href="#topSpecializations" onClick={this.handleLinkClick}>TOP COURSES</a></li>*/}
                         <li className={this.state.active == 'LatestUploads' ? 'active' : ''}><a href="#LatestUploads" onClick={this.handleLinkClick}>NEW COURSES</a></li>
                         <li className={this.state.active == 'aboutUs' ? 'active' : ''}><a href="#aboutUs" onClick={this.handleLinkClick}>ABOUT</a></li>
-                        <li><a href="#" onClick={this.handleLogin}>LOG IN</a></li>
-                        <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>
+                        {/*<li><a href="#" onClick={this.handleLogin}>LOG IN</a></li>
+                        <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>*/}
                         
                     </ul>
 
@@ -224,15 +224,15 @@ export default class Navbar extends Component {
         {
             liLinks = <ul className="right hide-on-med-and-down">
                         <li><Link to="/myprofile" >My Profile</Link></li>
-                        <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleLogout}>LOG OUT</a></li>
+                        {/*<li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleLogout}>LOG OUT</a></li>*/}
                     </ul>
         }else if(pathName != '/')
         {
-            liLinks = <ul className="right hide-on-med-and-down">
+            {/*liLinks = <ul className="right hide-on-med-and-down">
                         <li><a href="#" onClick={this.handleLogin}>LOG IN</a></li>
                         <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>
                         
-                    </ul>;
+                    </ul>;*/}
         }
 
         let actions = [
@@ -301,26 +301,14 @@ export default class Navbar extends Component {
                     {/*<li><a href="#">TOP COURSES</a></li>*/}
                     <li><a href="#LatestUploads">NEW COURSES</a></li>
                     <li><a href="#aboutUs">ABOUT</a></li>
-                    <li><a href="#" onClick={this.handleLogin}>LOG IN</a></li>
-                    <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>
+                    {/*<li><a href="#" onClick={this.handleLogin}>LOG IN</a></li>
+                    <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>*/}
                 </ul>
-                {/*<Dialog
-                    title="Sign up"
-                    actions={actions}
-                    modal={true}
-                    open={this.state.open}
-                    autoScrollBodyContent={true}
-                    autoDetectWindowHeight={false}
-                    repositionOnUpdate={true}
-                >
-                    <SignUp/>
-
-                </Dialog>*/}
 
                 <div id="signUpModal" className="modal">
                     <div className="modal-content">
                         <h4>Sign up</h4>
-                        <SignUp/>
+                        {/*<SignUp/>*/}
                     </div>
 
                     {this.state.loaders ? 

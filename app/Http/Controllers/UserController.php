@@ -10,7 +10,8 @@ use App\Jobs\SendRegistrationEmail;
 
 use App\User;
 use App\Email;
-
+use App\Course;
+use DB;
 use Hash;
 use Mail;
 
@@ -38,6 +39,37 @@ class UserController extends Controller
     }
 
     /**
+    *
+    * Check email if exist
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+    */
+    public function emailCheckWithCourse(Request $request) 
+    {
+    	$email = $request->input('email');
+    	$course_id = $request->input('course_id');
+    	$user_email = Email::with('user')->where('email', $email)->first();
+
+    	if($user_email)	
+    	{
+    		$enrolled_course = DB::table('course_user')->where('user_id',$user_email->user->id)->where('course_id', $course_id);
+    		if($enrolled_course->count() > 0)
+    		{
+    			return response()->json($user_email, 200);
+    		}
+
+    		$courses = DB::table('course_user')->insert([
+                'user_id' => $user_email->user->id,
+                'course_id' => $course_id
+            ]);
+    		
+    		return response()->json($user_email, 200);
+    	}
+
+    	return response()->json(['info' => 'email not found'], 404);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -52,18 +84,18 @@ class UserController extends Controller
         if($user_email->count() == 0) {
             $first_name = $request->input('first_name');
             $last_name = $request->input('last_name');
-            $gender = $request->input('gender');
+            $company = $request->input('company');
             // $birthdate = $request->input('birthdate');
-            $password = $request->input('password');
+            $job = $request->input('job');
 
             
                 /* insert to users table */
                 $created_user = User::create([
                         'first_name' => $first_name, 
                         'last_name' => $last_name,
-                        'gender' => $gender,
+                        'company' => ($company ? $company : null),
                         // 'birthdate' => $birthdate,
-                        'password' => Hash::make($password)
+                        'password' => ($job ? $job : null)
                 ]);
 
                 /* insert to emails table */
@@ -75,7 +107,7 @@ class UserController extends Controller
                 if($created_email->id) {
                     $email_user = Email::with('user')->where('id', $created_email->id)->first();
 
-                    Mail::queue('emails.reminder', ['email_user' => $email_user], function($m) use ($email_user) {
+                    Mail::queue('emails.registration_letter', ['email_user' => $email_user, 'user_id' => $email_user->user_id], function($m) use ($email_user) {
                         $m->from('no-reply@medix.ph', 'Webinar Application');
 
                         $m->to($email_user->email, $email_user->user->first_name . ' ' . $email_user->user->last_name);
