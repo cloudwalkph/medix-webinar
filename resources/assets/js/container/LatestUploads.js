@@ -56,7 +56,7 @@ class LatestUploads extends Component {
 			                                            <h5>
 			                                                {item.title}
 			                                            </h5>
-			                                            <strong style={{fontFamily: 'Source Sans Pro'}}>Lecture by Dr. {i == 0 ? 'Kim Fajardo' : 'johanna rosette'}</strong>
+			                                            <strong style={{fontFamily: 'Source Sans Pro'}}>Lecture by Dr. {i == 0 ? 'Kim Fajardo' : 'Johanna Rosette'}</strong>
 			                                            <p className="webinarDescription truncate">
 			                                                {item.description}
 			                                            </p>

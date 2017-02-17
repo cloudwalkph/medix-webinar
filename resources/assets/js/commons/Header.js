@@ -4,28 +4,28 @@ import FlatButton from 'material-ui/FlatButton';
 import baseUrl from '../config';
 import SignUp from './SignUp';
 import axios from 'axios';
+import Snackbar from 'material-ui/Snackbar';
 
 export default class Header extends Component {
 
 	state = {
 		items : ['hello', 'world', 'click', 'me'],
 		disableButton : false,
-		openModal : false
+		openModal : false,
+		open : false,
+		snackMessage : '',
+		snackDuration : 4000,
+		buttonLabel : 'Send'
 	}
 
-	handleClose = () => {
-        this.setState({
-            openModal : false
-        });
-    }
-
     handleSubmitForm = (e) => {
-
+  
         let url = baseUrl.apiUrl + 'user';
-        let formData = $('#signUpForm').serialize();
+        let formData = $('#signUpFormReg').serialize();
         
         this.setState({
-            disableButton : true
+            disableButton : true,
+            buttonLabel : 'Sending...'
         });
         
         if(this.formValidation() == 0)
@@ -39,45 +39,40 @@ export default class Header extends Component {
         axios.post(url, formData).then((res) => {
             this.setState({
                 disableButton : false,
-                openModal : false
+                snackMessage : 'Please check your email to verify your account. Thank you!',
+                open : true,
+                snackDuration : 10000,
+                buttonLabel : 'Send'
             });
         }).catch((error) => {
             this.setState({
+                open : true,
                 disableButton : false,
-                openModal : false
+                snackMessage : 'Email Already Exist!',
+                snackDuration : 4000,
+                buttonLabel : 'Send'
             });
         });
     }
 
     formValidation = () => {
 
-    	if(!$('#signUpForm')[0].email.value)
+    	if(!$('#signUpFormReg')[0].email.value)
         {
-        	$('#signUpForm')[0].email.focus();
+        	$('#signUpFormReg')[0].email.focus();
+
             return 0;
         }
 
-    	if(!$('#signUpForm')[0].password.value)
+        if(!$('#signUpFormReg')[0].first_name.value)
         {
-        	$('#signUpForm')[0].password.focus();
-            return 0;
-        }
-
-        if(!$('#signUpForm')[0].first_name.value)
-        {
-        	$('#signUpForm')[0].first_name.focus();
+        	$('#signUpFormReg')[0].first_name.focus();
             return 0;
         }
         
-        if(!$('#signUpForm')[0].last_name.value)
+        if(!$('#signUpFormReg')[0].last_name.value)
         {
-        	$('#signUpForm')[0].last_name.focus();
-            return 0;
-        }
-        
-        if(!$('#signUpForm')[0].gender.value)
-        {
-        	$('#signUpForm')[0].gender.focus();
+        	$('#signUpFormReg')[0].last_name.focus();
             return 0;
         }
 
@@ -85,9 +80,13 @@ export default class Header extends Component {
     }
 
     handleSignUpButton = (e) => {
-        this.setState({
-            openModal : true
-        })
+       	$('#modalUserRegistration').modal('open');
+    }
+
+    handleRequestClose = () => {
+    	this.setState({
+    		open : false
+    	})
     }
 
 	componentDidMount() {
@@ -95,20 +94,6 @@ export default class Header extends Component {
 	}
 
 	render() {
-		let actions = [
-            <FlatButton
-                label="Cancel"
-                primary={true}
-                onTouchTap={this.handleClose}
-            />,
-            <FlatButton
-                label="Submit"
-                primary={true}
-                keyboardFocused={true}
-                disabled={this.state.disableButton}
-                onTouchTap={this.handleSubmitForm}
-            />
-        ];
 
         let user = JSON.parse(sessionStorage.getItem('access'));
 
@@ -137,19 +122,27 @@ export default class Header extends Component {
                 }
 					
 				</div>
-
-
-				<Dialog
-                    title="Sign up"
-                    actions={actions}
-                    modal={false}
-                    open={this.state.openModal}
-                    autoScrollBodyContent={true}
-                >
-                    <SignUp/>
-
-                </Dialog>
                 
+                <div id="modalUserRegistration" className="modal">
+                	<div className="modal-content">
+                		<div className="row">
+                			<SignUp />
+                		</div>
+                	</div>  
+                	<div className="modal-footer">
+                		<button 
+                            className={this.state.disableButton ? 'waves-effect waves-green btn-flat disabled' : 'waves-effect waves-green btn-flat'} 
+                            onClick={this.handleSubmitForm}>{this.state.buttonLabel}</button>
+                	</div>
+                </div>
+
+                <Snackbar
+					open={this.state.open}
+					message={this.state.snackMessage}
+					autoHideDuration={this.state.snackDuration}
+					onRequestClose={this.handleRequestClose}
+		        />
+
 			</div>
 		)
 	}

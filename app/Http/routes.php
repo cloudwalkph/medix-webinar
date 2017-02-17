@@ -40,6 +40,8 @@ Route::group(['prefix' => 'api'], function () {
 
         Route::post('message/{message_id}/select', 'MessageController@selectMessage');
 
+        Route::post('userCheck','UserController@emailCheckWithCourse');
+
     });
 
 });

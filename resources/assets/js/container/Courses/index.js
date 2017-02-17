@@ -19,6 +19,7 @@ export default class Courses extends Component {
 		disableButton : false,
 		data : [],
 		hasCourse : false,
+		showFieldsContent : false,
 		styles : {
 			linkList : {
 				padding : '20px 0'
@@ -64,11 +65,49 @@ export default class Courses extends Component {
 	}
 
 	handleCourseRegistration = (e) => {
+		e.preventDefault();
 		$('#modalVisitorRegistration').modal('open');
 	}
 
 	handleGotoCourse = () => {
 		this.courseRegistration();
+	}
+
+	handleUser = () => {
+		let url = baseUrl.apiUrl + 'userCheck';
+		let form = $('#registrationVisitorForm');
+		let email = form[0].email.value;
+		let courseId = this.props.params.courseId;
+		if(!email)
+		{
+			form[0].email.focus();
+			return
+		}
+		let data = {
+			email : email,
+			course_id : courseId
+		};
+
+		this.setState({
+			disableButton : true
+		});
+
+		axios.post(url, data).then((res) => {
+            this.setState({
+				hasCourse : true,
+				disableButton : false
+			},() => {
+				$('#modalVisitorRegistration').modal('close');
+			});
+			
+        }).catch((error) => {
+        	console.log(error)
+            this.setState({
+                showFieldsContent : true,
+                disableButton : false
+            });
+        })
+
 	}
 
 	courseRegistration = () => {
@@ -196,14 +235,18 @@ export default class Courses extends Component {
             return;
         }
 
-        for(var e = 0; e < session.courses.length; e++) {
-            if(session.courses[e].id == this.props.params.courseId)
-            {
-                this.setState({
-                    hasCourse : true
-                });
-            }
+        if(session)
+        {
+        	for(var e = 0; e < session.courses.length; e++) {
+	            if(session.courses[e].id == this.props.params.courseId)
+	            {
+	                this.setState({
+	                    hasCourse : true
+	                });
+	            }
+	        }	
         }
+        
 
     }
 
@@ -383,30 +426,44 @@ export default class Courses extends Component {
 	    								<input name="email" type="email" id="emailRegister" className="validate" />
 	    								<label htmlFor="emailRegister">Email*</label>
 	    							</div>
-	    							<div className="input-field col s12">
-	    								<input name="first_name" type="text" id="firstNameRegister" className="validate" />
-	    								<label htmlFor="firstNameRegister">First Name*</label>
-	    							</div>
-	    							<div className="input-field col s12">
-	    								<input name="last_name" type="text" id="lastNameRegister" className="validate" />
-	    								<label htmlFor="lastNameRegister">Last Name*</label>
-	    							</div>
-	    							<div className="input-field col s12">
-	    								<input name="company" type="text" id="companyRegister" className="validate" />
-	    								<label htmlFor="companyRegister">Company</label>
-	    							</div>
-	    							<div className="input-field col s12">
-	    								<input name="job" type="text" id="jobRegister" className="validate" />
-	    								<label htmlFor="jobRegister">Title/Job</label>
-	    							</div>
+	    							{this.state.showFieldsContent ?
+	    								<div>
+			    							<div className="input-field col s12">
+			    								<input name="first_name" type="text" id="firstNameRegister" className="validate" />
+			    								<label htmlFor="firstNameRegister">First Name*</label>
+			    							</div>
+			    							<div className="input-field col s12">
+			    								<input name="last_name" type="text" id="lastNameRegister" className="validate" />
+			    								<label htmlFor="lastNameRegister">Last Name*</label>
+			    							</div>
+			    							<div className="input-field col s12">
+			    								<input name="company" type="text" id="companyRegister" className="validate" />
+			    								<label htmlFor="companyRegister">Company</label>
+			    							</div>
+			    							<div className="input-field col s12">
+			    								<input name="job" type="text" id="jobRegister" className="validate" />
+			    								<label htmlFor="jobRegister">Title/Job</label>
+			    							</div>
+		    							</div>
+	    								:
+	    								null
+	    								
+	    							}
 	    						</div>
 	    					</form>
 	    				</div>
                 	</div>
                 	<div className="modal-footer">
-                		<button 
-                            className={this.state.disableButton ? 'waves-effect waves-green btn-flat disabled' : 'waves-effect waves-green btn-flat'} 
-                            onClick={this.handleGotoCourse}>Send</button>
+                		{this.state.showFieldsContent ? 
+                			<button 
+	                            className={this.state.disableButton ? 'waves-effect waves-green btn-flat disabled' : 'waves-effect waves-green btn-flat'} 
+	                            onClick={this.handleGotoCourse}>Send</button>
+	                        :
+	                        <button 
+	                            className={this.state.disableButton ? 'waves-effect waves-green btn-flat disabled' : 'waves-effect waves-green btn-flat'} 
+	                            onClick={this.handleUser}>Send</button>
+                		}
+                		
                 	</div>
                 </div>
 
