@@ -10,7 +10,7 @@ export default class Content extends Component {
 		isSending : false,
 		textArea : '',
 		courseId: this.props.params.courseId,
-		videoSrc: 'rtmp://54.238.155.160/live/test',
+		videoSrc: 'rtmp://52.78.208.125/live/test',
 		videoType: 'rtmp/mp4'
 	}
 
@@ -51,12 +51,6 @@ export default class Content extends Component {
 			this.setState({
 				videoSrc: 'https://s3-ap-southeast-1.amazonaws.com/medix-webinar/KF+2.mp4',
 				videoType: 'video/mp4'
-			})
-		}
-		if(this.state.courseId == 2) {
-			this.setState({
-				videoSrc : 'rtmp://54.238.155.160/live/test',
-				videoType: 'rtmp/mp4'
 			})
 		}
 	}
