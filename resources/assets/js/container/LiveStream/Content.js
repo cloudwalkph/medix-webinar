@@ -9,7 +9,9 @@ export default class Content extends Component {
 	state = {
 		isSending : false,
 		textArea : '',
-		course: 1
+		courseId: this.props.params.courseId,
+		videoSrc: 'rtmp://54.238.155.160/live/test',
+		videoType: 'rtmp/mp4'
 	}
 
 	handleSubmit = (e) => {
@@ -44,6 +46,21 @@ export default class Content extends Component {
 		})
 	}
 
+	componentDidMount () {
+		if(this.state.courseId == 1) {
+			this.setState({
+				videoSrc: 'https://s3-ap-southeast-1.amazonaws.com/medix-webinar/KF+2.mp4',
+				videoType: 'video/mp4'
+			})
+		}
+		if(this.state.courseId == 2) {
+			this.setState({
+				videoSrc : 'rtmp://54.238.155.160/live/test',
+				videoType: 'rtmp/mp4'
+			})
+		}
+	}
+
 	render() {
 		return(
 			<main>
@@ -51,10 +68,10 @@ export default class Content extends Component {
 					<div className="section">
 						<div className="container">
 							<Video 
-								videoSrc="https://s3-ap-southeast-1.amazonaws.com/medix-webinar/KF+2.mp4" 
-								videoType="video/mp4"	
+								videoSrc={this.state.videoSrc}
+								videoType={this.state.videoType}
 							/>
-							{ this.state.course == 2 ? 
+							{ this.state.courseId > 1 ? 
 								<div className="section">
 									<div className="row">
 										<form id="askQuestionForm" className="col s12" onSubmit={this.handleSubmit}>
