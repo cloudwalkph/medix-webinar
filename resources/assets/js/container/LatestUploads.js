@@ -48,7 +48,7 @@ class LatestUploads extends Component {
 		                            return	<li key={i}>
 			                                    <div className="col l6">
 			                                        <div className="row">
-			                                            <h3 style={{fontFamily: "Source Sans Pro"}}>{i == 1 ? 'LATEST UPLOADS' : null}</h3>
+			                                            <h3 style={{fontFamily: "Source Sans Pro"}}>{'LATEST UPLOADS'}</h3>
 			                                            
 			                                        </div>
 			                                        <hr/>
