@@ -10,6 +10,8 @@ import axios from 'axios';
 import Dialog from 'material-ui/Dialog';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
+import Countdown from 'react-cntdwn';
+import Snackbar from 'material-ui/Snackbar';
 
 
 export default class Courses extends Component {
@@ -46,7 +48,12 @@ export default class Courses extends Component {
 				fontSize: '24px'
 			}
 		},
-		countDown : ''
+		countDownStart : true,
+		openSnackbarMessage : false
+	}
+
+	handleRegistrationForm = (e) => {
+		e.preventDefault();
 	}
 
 	getApiCourses = () => {
@@ -134,8 +141,11 @@ export default class Courses extends Component {
 		axios.post(url, $.param(formData)).then((res) => {
             this.setState({
 				openRegistration : false,
-				disableButton : false
+				disableButton : false,
+				openSnackbarMessage : true,
+				showFieldsContent : false
 			});
+			$('#modalVisitorRegistration').modal('close');
         }).catch((error) => {
             this.setState({
                 disableButton : false
@@ -162,9 +172,10 @@ export default class Courses extends Component {
 
         return 1;
     }
+   
 
 	handleProceedToCourse = () => {
-        if(!this.state.countDown)
+        if(!this.state.countDownStart)
         {
             let courseId = this.props.params.courseId;
             window.location.href = window.location.origin + '/video/' + courseId;
@@ -175,39 +186,10 @@ export default class Courses extends Component {
 		
 	}
 
-	countTimer = () => {
-		setInterval(() => {
-			let now  = moment();
-			let releaseDate = moment(this.state.data.start);
-
-			let day = moment.utc(moment(releaseDate,"YYYY-MM-DD HH:mm:ss").diff(moment(now,"YYYY-MM-DD HH:mm:ss"))).format("DD");
-			let hours = moment.utc(moment(releaseDate,"YYYY-MM-DD HH:mm:ss").diff(moment(now,"YYYY-MM-DD HH:mm:ss"))).format("HH");
-			let minutes = moment.utc(moment(releaseDate,"YYYY-MM-DD HH:mm:ss").diff(moment(now,"YYYY-MM-DD HH:mm:ss"))).format("mm");
-			let seconds = moment.utc(moment(releaseDate,"YYYY-MM-DD HH:mm:ss").diff(moment(now,"YYYY-MM-DD HH:mm:ss"))).format("ss");
-			let timer = <div className="col s12 l12 m12"> 
-							<div className="divTime">
-								<span className="spanTime">{day}</span><small className="spanLabel"> Days </small>
-							</div>
-							<div className="divTime">
-								<span className="spanTime">{hours}</span> <small className="spanLabel"> Hours </small>
-							</div>
-							<div className="divTime">
-								<span className="spanTime">{minutes}</span> <small className="spanLabel"> Minutes </small>
-							</div>
-							<div className="divTime">
-								<span className="spanTime">{seconds}</span> <small className="spanLabel"> Seconds </small>
-							</div>
-						</div>;
-			if(now > releaseDate)
-			{
-				timer = "";
-			}
-			this.setState({
-				countDown : timer
-			});
-		},1000);
-
-		return;
+	handleFinished = () => {
+		this.setState({
+			countDownStart : false
+		});
 	}
 
     handlerVisitor = () => {
@@ -250,6 +232,12 @@ export default class Courses extends Component {
 
     }
 
+    handleRequestCloseSnackbar = () => {
+        this.setState({
+            openSnackbarMessage : false
+        })
+    }
+
 	componentDidMount () {
         $('.parallax').parallax();
         $('.scrollspy').scrollSpy();
@@ -257,8 +245,6 @@ export default class Courses extends Component {
         $('body').scrollTop(0);
 
         this.getApiCourses();
-
-        this.countTimer();
 
         this.handlerVisitor();
     }
@@ -312,7 +298,21 @@ export default class Courses extends Component {
 	                    	</div>
 	                    </div>
 	                    <div className="row">
-	                    	{this.state.countDown}
+	                    	{this.state.countDownStart ? 
+		                    	<Countdown targetDate={this.state.data.start}
+						           format={{
+						           	 	day : 'DD',
+										hour: 'HH',
+										minute: 'MM',
+										second: 'SS'
+									}}
+						           interval={1000}
+						           timeSeparator={' : '}
+						           leadingZero 
+						           onFinished={this.handleFinished} />
+						        :
+						        null   
+					        }
 	                    </div>
 	                    <div className="row">
 	                    	<div className="col m12 l12 s12">
@@ -420,7 +420,7 @@ export default class Courses extends Component {
                 <div id="modalVisitorRegistration" className="modal">
                 	<div className="modal-content">
                 		<div className="row">
-	    					<form className="col s12" id="registrationVisitorForm">
+	    					<form className="col s12" id="registrationVisitorForm" onSubmit={this.handleRegistrationForm}>
 	    						<div className="row">
 	    							<div className="input-field col s12">
 	    								<input name="email" type="email" id="emailRegister" className="validate" />
@@ -466,6 +466,13 @@ export default class Courses extends Component {
                 		
                 	</div>
                 </div>
+
+                <Snackbar
+                    open={this.state.openSnackbarMessage}
+                    message="Thank you for signing up! Please check your email and click on the link we sent to confirm your registration. Thank you!"
+                    autoHideDuration={5000}
+                    onRequestClose={this.handleRequestCloseSnackbar}
+                />
 
             </div>
 		)
