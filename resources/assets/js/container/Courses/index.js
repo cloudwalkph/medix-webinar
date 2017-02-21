@@ -10,6 +10,7 @@ import axios from 'axios';
 import Dialog from 'material-ui/Dialog';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
+import Countdown from 'react-cntdwn';
 
 
 export default class Courses extends Component {
@@ -167,24 +168,13 @@ export default class Courses extends Component {
         return 1;
     }
 
-	handleProceedToCourse = () => {
-        if(!this.state.countDown)
-        {
-            let courseId = this.props.params.courseId;
-            window.location.href = window.location.origin + '/video/' + courseId;
-            // browserHistory.push('/video/' + courseId);    
-            return;
-        }
-        alert('This webinar will start soon');
-		
-	}
-
-	countTimer = () => {
+    countTimer = () => {
 		setInterval(() => {
 			let now  = moment();
 			let releaseDate = moment(this.state.data.start);
 
-			let day = moment.utc(moment(releaseDate,"YYYY-MM-DD HH:mm:ss").diff(moment(now,"YYYY-MM-DD HH:mm:ss"))).format("DD");
+			let day = moment.utc(moment(releaseDate,"DD").diff(moment(now,"DD"))).format("DD");
+			console.log(day)
 			let hours = moment.utc(moment(releaseDate,"YYYY-MM-DD HH:mm:ss").diff(moment(now,"YYYY-MM-DD HH:mm:ss"))).format("HH");
 			let minutes = moment.utc(moment(releaseDate,"YYYY-MM-DD HH:mm:ss").diff(moment(now,"YYYY-MM-DD HH:mm:ss"))).format("mm");
 			let seconds = moment.utc(moment(releaseDate,"YYYY-MM-DD HH:mm:ss").diff(moment(now,"YYYY-MM-DD HH:mm:ss"))).format("ss");
@@ -212,6 +202,24 @@ export default class Courses extends Component {
 		},1000);
 
 		return;
+	}
+
+	handleProceedToCourse = () => {
+        if(!this.state.countDown)
+        {
+            let courseId = this.props.params.courseId;
+            window.location.href = window.location.origin + '/video/' + courseId;
+            // browserHistory.push('/video/' + courseId);    
+            return;
+        }
+        alert('This webinar will start soon');
+		
+	}
+
+	handleFinished = () => {
+		this.setState({
+			coundDown : ''
+		});
 	}
 
     handlerVisitor = () => {
@@ -262,8 +270,6 @@ export default class Courses extends Component {
 
         this.getApiCourses();
 
-        this.countTimer();
-
         this.handlerVisitor();
     }
 
@@ -276,7 +282,7 @@ export default class Courses extends Component {
 		{
 			startEnrollButton = <button className="btn waves-effect waves-light indigo darken-3" onClick={this.handleProceedToCourse}>Start</button>;
 		}
-		
+		console.log('hello');
 		return (
 			<div>
 
@@ -316,7 +322,17 @@ export default class Courses extends Component {
 	                    	</div>
 	                    </div>
 	                    <div className="row">
-	                    	{this.state.countDown}
+	                    	<Countdown targetDate={this.state.data.start}
+					           format={{
+					           	 	day : 'DD',
+									hour: 'HH',
+									minute: 'MM',
+									second: 'SS'
+								}}
+					           interval={1000}
+					           timeSeparator={' : '}
+					           leadingZero 
+					           onFinished={this.handleFinished} />
 	                    </div>
 	                    <div className="row">
 	                    	<div className="col m12 l12 s12">
