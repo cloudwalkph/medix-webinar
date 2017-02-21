@@ -57,7 +57,7 @@ export default class MyProfile extends Component {
 										<div className="card-action">
 											<div className="row" style={{margin : 0}}>
 												<div className="col l8 left-align">
-													<a href={"/courses/" + item.id} className="brand-logo"  style={{margin : 0}}>Dr. {i == 0 ? 'Kim Fajardo' : 'Johanna Rosette'}</a>
+													<a href={"/courses/" + item.id} className="brand-logo"  style={{margin : 0}}>Dr. {i == 0 ? 'Kim Fajardo' : 'Johanna Rosette Po'}</a>
 												</div>
 												<div className="col l4 right-align">
 													<a href={"/courses/" + item.id} className="brand-logo"  style={{margin : 0}}>VISIT</a>

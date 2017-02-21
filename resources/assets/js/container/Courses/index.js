@@ -341,7 +341,7 @@ export default class Courses extends Component {
 	                            				<img src={window.location.origin + '/img/Courses/johanna.jpg'} style={this.state.styles.imgProfile}/>
 	                            			}
 	                            			<div style={this.state.styles.profileContent}>
-	                            				<strong>Professor:</strong><span className="webinarDescription">{this.props.params.courseId == 1 ? ' Dr. Kimberly Ray R. Fajardo' : ' Dr. Johanna Rosette'}</span>
+	                            				<strong>Professor:</strong><span className="webinarDescription">{this.props.params.courseId == 1 ? ' Dr. Kimberly Ray R. Fajardo' : ' Dr. Johanna Rosette Po'}</span>
 	                            			</div>
 	                            		</div>
 	                            	</div>
