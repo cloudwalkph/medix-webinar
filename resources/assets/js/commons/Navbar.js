@@ -233,6 +233,7 @@ export default class Navbar extends Component {
                         <li><a href="#" className="btn waves-effect waves-light indigo darken-3" onClick={this.handleSignUpButton}>SIGN UP</a></li>
                         
                     </ul>;*/}
+            liLinks = '';
         }
 
         let actions = [
