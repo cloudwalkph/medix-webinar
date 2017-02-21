@@ -49,6 +49,10 @@ export default class Courses extends Component {
 		countDown : ''
 	}
 
+	handleRegistrationForm = (e) => {
+		e.preventDefault();
+	}
+
 	getApiCourses = () => {
 		
 		let url = baseUrl.apiUrl + 'course/' + this.props.params.courseId;
@@ -420,7 +424,7 @@ export default class Courses extends Component {
                 <div id="modalVisitorRegistration" className="modal">
                 	<div className="modal-content">
                 		<div className="row">
-	    					<form className="col s12" id="registrationVisitorForm">
+	    					<form className="col s12" id="registrationVisitorForm" onSubmit={this.handleRegistrationForm}>
 	    						<div className="row">
 	    							<div className="input-field col s12">
 	    								<input name="email" type="email" id="emailRegister" className="validate" />
