@@ -72,7 +72,7 @@ class VisitorController extends Controller
                     }
                 );
                 
-                $response['data'] = $email_user;
+                $response = $email_user;
                 $code = 200;
             }
 
@@ -80,8 +80,6 @@ class VisitorController extends Controller
             $response = ['error' => 'email already exists'];
             $code = 400;
         }
-
-        return $response;
-
+        return response()->json($response, $code);
     }
 }

@@ -52,6 +52,10 @@ export default class Courses extends Component {
 		openSnackbarMessage : false
 	}
 
+	setUserSession = (data) => {
+		sessionStorage.setItem('access', JSON.stringify(data))
+	}
+
 	handleRegistrationForm = (e) => {
 		e.preventDefault();
 	}
@@ -100,6 +104,7 @@ export default class Courses extends Component {
 		});
 
 		axios.post(url, data).then((res) => {
+			this.setUserSession(res);
             this.setState({
 				hasCourse : true,
 				disableButton : false
@@ -139,6 +144,7 @@ export default class Courses extends Component {
         });
 		
 		axios.post(url, $.param(formData)).then((res) => {
+			this.setUserSession(res);
             this.setState({
 				openRegistration : false,
 				disableButton : false,
@@ -200,7 +206,7 @@ export default class Courses extends Component {
             let url = baseUrl.apiUrl + 'user/' + this.props.location.query.uid
             axios.get(url).then((res) => {
                 
-                sessionStorage.setItem('access', JSON.stringify(res.data))
+                this.setUserSession(res);
                 
                 for (var i = 0; i < res.data.courses.length; i++) {
                     if(res.data.courses[i].id == this.props.params.courseId)

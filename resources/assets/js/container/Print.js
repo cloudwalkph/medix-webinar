@@ -10,7 +10,7 @@ export default class Print extends Component {
 	}
 
 	getApiMessages = () => {
-		let url = baseUrl.apiUrl + 'course/1/messages?flag=1';
+		let url = baseUrl.apiUrl + 'course/2/messages?flag=1';
 
 		axios.get(url).then((res) => {
 			this.setState({

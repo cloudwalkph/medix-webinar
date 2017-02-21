@@ -54,20 +54,21 @@ class UserController extends Controller
     	if($user_email)	
     	{
     		$enrolled_course = DB::table('course_user')->where('user_id',$user_email->user->id)->where('course_id', $course_id);
-    		if($enrolled_course->count() > 0)
+    		if($enrolled_course->count() == 0)
     		{
-    			return response()->json($user_email, 200);
-    		}
+                $courses = DB::table('course_user')->insert([
+                    'user_id' => $user_email->user->id,
+                    'course_id' => $course_id
+                ]);
+            }
+            $response = $this->show($created_user->id);
+    		$code = 200;
+    	} else {
+            $response = ['error' => 'email already exists'];
+            $code = 400;
+        }
 
-    		$courses = DB::table('course_user')->insert([
-                'user_id' => $user_email->user->id,
-                'course_id' => $course_id
-            ]);
-    		
-    		return response()->json($user_email, 200);
-    	}
-
-    	return response()->json(['info' => 'email not found'], 404);
+        return response()->json($response, $code);
     }
 
     /**
@@ -87,6 +88,7 @@ class UserController extends Controller
             $last_name = $request->input('last_name');
             $company = $request->input('company');
             // $birthdate = $request->input('birthdate');
+            // $password = $request->input('password');
             $job = $request->input('job');
 
             
@@ -96,7 +98,8 @@ class UserController extends Controller
                         'last_name' => $last_name,
                         'company' => ($company ? $company : null),
                         // 'birthdate' => $birthdate,
-                        'password' => ($job ? $job : null)
+                        // 'password' => Hash::make($password),
+                        'job' => ($job ? $job : null)
                 ]);
 
                 /* insert to emails table */
@@ -129,7 +132,7 @@ class UserController extends Controller
                     });
 
                     
-                    $response['data'] = $email_user;
+                    $response = $this->show($created_user->id);
                     $code = 200;
                 }
             

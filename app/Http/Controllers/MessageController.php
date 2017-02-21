@@ -50,7 +50,7 @@ class MessageController extends Controller
             'message' => $message
         ]);
 
-        $response['data'] = $created_message;
+        $response = $created_message;
 
         return response()->json($response, 200);
     }

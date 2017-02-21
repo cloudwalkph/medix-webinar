@@ -17,7 +17,7 @@ export default class Content extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		let formData = $('#askQuestionForm').serializeArray();
-		let userId = userSession.data.user.id;
+		let userId = userSession.data.id;
 		let courseId = this.props.params.courseId;
 		formData.push({name: 'user_id', value : userId});
 		formData.push({name: 'course_id', value : courseId});
