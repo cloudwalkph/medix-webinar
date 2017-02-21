@@ -10,7 +10,7 @@
 </p>
 <br />
 <p>You may follow your webinar at this link</p>
-<a href="http://medix-webinar.dev/myprofile">Click here</a>
+<a href="{{$base_url}}/myprofile">Click here</a>
 <br />
 <p>Thank you for your participation,
 </p>

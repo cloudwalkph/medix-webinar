@@ -14,6 +14,7 @@ use App\Course;
 use DB;
 use Hash;
 use Mail;
+use URL;
 
 class UserController extends Controller
 {
@@ -107,7 +108,14 @@ class UserController extends Controller
                 if($created_email->id) {
                     $email_user = Email::with('user')->where('id', $created_email->id)->first();
 
-                    Mail::queue('emails.registration_letter', ['email_user' => $email_user, 'user_id' => $email_user->user_id], function($m) use ($email_user) {
+                    Mail::queue(
+                        'emails.registration_letter', 
+                        [
+                            'base_url' => URL::to('/'), 
+                            'email_user' => $email_user, 
+                            'user_id' => $email_user->user_id
+                        ], 
+                        function($m) use ($email_user) {
                         $m->from('no-reply@medix.ph', 'Webinar Application');
 
                         $m->to($email_user->email, $email_user->user->first_name . ' ' . $email_user->user->last_name);

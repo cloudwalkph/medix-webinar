@@ -11,6 +11,7 @@ use App\User;
 use App\Course;
 use DB;
 use Mail;
+use URL;
 
 class VisitorController extends Controller
 {
@@ -51,7 +52,12 @@ class VisitorController extends Controller
 
                 Mail::queue(
                     'emails.reminder', 
-                    ['email_user' => $email_user, 'course_id' => $course_id, 'user_id' => $created_user->id], 
+                    [
+                        'base_url' => URL::to('/'), 
+                        'email_user' => $email_user, 
+                        'course_id' => $course_id, 
+                        'user_id' => $created_user->id
+                    ], 
                     function($m) use ($email_user) {
                         $m->from('no-reply@medix.ph', 'Webinar Application');
 
