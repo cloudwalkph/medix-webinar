@@ -15,7 +15,6 @@ var webpackConfig = require('./webpack.config.js');
 
 elixir(function(mix) {
     mix.sass([
-        'materialize.scss',
         'app.scss'
     ]);
 
