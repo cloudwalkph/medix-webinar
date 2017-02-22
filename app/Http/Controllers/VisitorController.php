@@ -28,13 +28,17 @@ class VisitorController extends Controller
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
         $course_id = $request->input('course_id');
+        $company = $request->input('company');
+        $job = $request->input('job');
 
         $user_email = Email::where('email', $email);
 
         if($user_email->count() == 0) {
             $created_user = User::create([
                 'first_name' => $first_name, 
-                'last_name' => $last_name
+                'last_name' => $last_name,
+                'company' => ($company ? $company : null),
+                'job' => ($job ? $job : null)
             ]);
 
             $enrolled_course = DB::table('course_user')->insert([
