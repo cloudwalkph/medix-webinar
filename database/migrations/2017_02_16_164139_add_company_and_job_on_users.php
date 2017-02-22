@@ -25,9 +25,8 @@ class AddCompanyAndJobOnUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function(Blueprint $table) {
-            $table->string('company');
-            $table->string('job');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn(['company', 'job']);
         });
     }
 }
