@@ -61,7 +61,7 @@ class UserController extends Controller
                     'course_id' => $course_id
                 ]);
             }
-            $response = $this->show($created_user->id);
+            $response = $this->show($user_email->user->id);
     		$code = 200;
     	} else {
             $response = ['error' => 'email already exists'];
