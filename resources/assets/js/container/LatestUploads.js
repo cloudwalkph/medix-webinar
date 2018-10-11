@@ -5,13 +5,16 @@ import axios from 'axios';
 
 class LatestUploads extends Component {
 
-	state = {
-		data : []
+	constructor (props) {
+		super(props);
+		this.state = {
+			data: []
+		}
 	}
 
 	getApiCourses = () => {
 		
-		let url = baseUrl.apiUrl + 'course/';
+		let url = baseUrl.apiUrl + 'course';
 		
 		axios.get(url).then((res) => {
 			
@@ -27,13 +30,10 @@ class LatestUploads extends Component {
 	componentWillMount() {
 		this.getApiCourses();
 	}
-
-    componentDidMount() {
-        setTimeout(() => {
-        	$('.slider').slider();
-        },1000)
-        
-    }
+	
+	componentDidUpdate () {
+		$('.slider').slider();
+	}
 
     render() {
     	
@@ -64,7 +64,7 @@ class LatestUploads extends Component {
 			                                        </div>
 			                                    </div>
 			                                    <div className="col l6">
-			                                        <img className="responsive-img" src={i == 0 ? window.location.origin + '/img/Courses/pajards.png' : window.location.origin + '/img/Courses/johanna.jpg'} />
+			                                        <img className="responsive-img" src={item.image} />
 			                                    </div>
 			                                </li>
                                 })}

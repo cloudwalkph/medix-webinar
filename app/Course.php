@@ -18,8 +18,21 @@ class Course extends Model
         'created_at', 'updated_at', 'deleted_at'
     ];
 
+    protected $appends = [
+        'image'
+    ];
+
     function users()
     {
         return $this->belongsToMany('App\User');
+    }
+
+    function getImageAttribute ($value)
+    {
+        $images = array(
+            1 => asset('/img/courses/pajards.png'),
+            2 => asset('/img/courses/johanna.jpg')
+        );
+        return $images[$this->id];
     }
 }
