@@ -105,10 +105,10 @@ export default class Header extends Component {
 
 					<div className="row center">
 						<div className="col s8 offset-s2">
-							<h6 style={{ fontFamily: 'Source Sans Pro',fontSize: '16px', lineHeight : '1.6rem'}}>
+							<p style={{ fontFamily: 'Source Sans Pro', fontSize: '1.1em' }}>
 								Dental Access Webinar is an upstart technology platform that aims to deliver continuing dental education for all dentists that is easily accessible through the world-wide web. It provides an 
                                 alternative venue where Dentists would interact with each other and share basic and advanced knowledge in their field of specializations
-							</h6>
+							</p>
 						</div>
 					</div>
                 {user ? 

@@ -8,18 +8,15 @@ import About from './About';
 
 var Homepage = React.createClass({
 
-    render() {
-        
-        return(
+    render () {
+        return (
             <div>
                 <Header />
-
                 {/*<div className="divider"></div>*/}
-
                 <LatestUploads />
-                {/*<WeeklyPics />
-                <TopSpecialization />
-*/}                <About />
+                {/* <WeeklyPics /> */}
+                {/* <TopSpecialization /> */}
+                <About />
             </div>
         )
     }
